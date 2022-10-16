@@ -1,9 +1,10 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import RegisterForm from "./Components/RegisterForm";
 import * as Constants from "./constants.js";
 import { useState } from "react";
 import LoginForm from "./Components/LoginForm";
+import Navigation from "./Navigation";
 
 function App() {
   const [users, setUsers] = useState(
@@ -13,12 +14,13 @@ function App() {
     JSON.parse(localStorage.getItem(Constants.ACTIVE_USER_KEY)) || null
   );
 
-  const updateUsers = (newUser)=>{
+  const updateUsers = (newUser) => {
+   
     setUsers(users.push(newUser));
     localStorage.setItem(Constants.USER_LIST_KEY, JSON.stringify(users));
   }
-  
-  const updateActive= (user)=>{
+
+  const updateActive = (user) => {
     localStorage.setItem(
       Constants.ACTIVE_USER_KEY,
       JSON.stringify(user)
@@ -26,23 +28,61 @@ function App() {
     setActiveUser(user);
     console.log(activeUser)
   };
+
+  const isLogged = activeUser;
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="*" element={<div>Page Not Found</div>} />
-        <Route
-          path="register"
-          element={<RegisterForm users={users} updateUsers={updateUsers} />}
-        />
-        <Route
-          path="login"
-          element={<LoginForm users={users} updateActive={updateActive} />}
-        />
-        <Route
-          path="home"
-          element={<div>Home</div>}
-        />
-      </Routes>
+
+      {isLogged ? <>
+        <Navigation />
+        <Routes>
+          <Route path="*" element={<div>Page Not Found</div>} />
+          <Route
+            path="register"
+            element={<RegisterForm users={users} updateUsers={updateUsers} />}
+          />
+          <Route
+            path="login"
+            element={<LoginForm users={users} updateActive={updateActive} />}
+          />
+          <Route
+            path="home"
+            element={<div>Home</div>}
+          />
+          <Route
+            path="myBooks"
+            element={<div>My Books</div>}
+          />
+          <Route
+            path="categories"
+            element={<div>Categories</div>}
+          />
+          <Route
+            path="profile"
+            element={<div>Profile</div>}
+          />
+          <Route
+            path='/'
+            element={<Navigate to="/home" replace />} />
+        </Routes>
+      </> : <>
+        <Routes>
+          <Route
+            path="register"
+            element={<RegisterForm users={users} updateUsers={updateUsers} />}
+          />
+          <Route
+            path="login"
+            element={<LoginForm users={users} updateActive={updateActive} />}
+          />
+          <Route
+            path='*'
+            element={<Navigate to="/register" replace />}
+          />
+        </Routes>
+      </>}
+
     </BrowserRouter>
   );
 }
