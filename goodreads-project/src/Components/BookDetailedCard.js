@@ -6,7 +6,7 @@ function BookDetailedCard(props) {
       <div className="detailedCard-wrapper">
         <div className="detailedCard-img">
           <img
-            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1651426717i/60784641._SX300_.jpg"
+            src={props.picture}
             className="img-fluid rounded-start"
             alt="..."
           />
@@ -30,18 +30,16 @@ function BookDetailedCard(props) {
                 by Suu Morishita, Christine Dashiell
               </h4>
             </div>
-
             <div className="detailedCard-ratings">
               <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
               <small>4.54</small>
               <span>&nbsp;·&nbsp;</span>
-              <small>Rating details</small>
+              <a href="">Rating details</a>
               <span>&nbsp;·&nbsp;</span>
-              <small>4.215 ratings</small>
+              <a href="">4.215 ratings</a>
               <span>&nbsp;·&nbsp;</span>
-              <small>855 reviews</small>
+              <a href="">855 reviews</a>
             </div>
-
             <p className="detailedCard-plot">
               Yuki is a typical college student, whose world revolves around her
               friends, social media, and the latest sales. But when a chance
@@ -51,7 +49,6 @@ function BookDetailedCard(props) {
               one of them. Can the two learn to communicate the budding feelings
               between them?
             </p>
-
             <div className="detailedCard-text">
               <small>Kindle Edition, 198 pages</small>
               <small>Published March 31st 2020 by Kodansha Comics</small>

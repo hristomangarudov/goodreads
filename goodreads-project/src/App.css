@@ -73,3 +73,12 @@ button {
   color: #ccc;
 }
 
+.smallComentTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 60vw;
+  padding-bottom: 5px;
+  border-bottom: 1px solid grey;
+}
