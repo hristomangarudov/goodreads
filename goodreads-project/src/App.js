@@ -46,27 +46,33 @@ function App() {
               path="home"
               element={
                 <div>
-                 <div className="cards-wrapper">
-                  <div className="cards-container">
-                    <BookCard />
-                    <BookCard />
-                    <BookCard />
-                    <BookCard />
-                    <BookCard />
-                    <BookCard />
-                    <BookCard />
-                    <BookCard />
-                    <BookCard />
-                    <BookCard />
-                    <BookCard />
-                    <BookCard />
+                  <div className="cards-wrapper">
+                    <div className="cards-container">
+                      <BookCard />
+                      <BookCard />
+                      <BookCard />
+                      <BookCard />
+                      <BookCard />
+                      <BookCard />
+                      <BookCard />
+                      <BookCard />
+                      <BookCard />
+                      <BookCard />
+                      <BookCard />
+                      <BookCard />
+                    </div>
                   </div>
                 </div>
-                </div>
-
               }
             />
-            <Route path="myBooks" element={<div>My Books</div>} />
+            <Route
+              path="myBooks"
+              element={
+                <div className="cards-wrapper">
+                  <div className="cards-container"></div>
+                </div>
+              }
+            />
             <Route path="categories" element={<div>Categories</div>} />
             <Route path="profile" element={<div>Profile</div>} />
             <Route path="/" element={<Navigate to="/home" replace />} />

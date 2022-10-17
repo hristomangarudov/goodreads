@@ -56,7 +56,7 @@ function RegisterForm(props) {
   return (
     <div>
       <div className='form-container'>
-        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <Form noValidate validated={validated} onSubmit={handleSubmit} style={{width:400}}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" required name="email" onChange={handleChange} />

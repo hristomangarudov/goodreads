@@ -1,5 +1,4 @@
 import Card from 'react-bootstrap/Card';
-
 function BookCard(props) {
   return (
     <Card style={{ width: '15rem' }} bg="light" text='dark'>
