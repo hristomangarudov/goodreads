@@ -5,6 +5,7 @@ import * as Constants from "./constants.js";
 import { useState } from "react";
 import LoginForm from "./Components/LoginForm";
 import Navigation from "./Components/Navigation";
+import BookCard from "./Components/BookCard";
 
 function App() {
   const [users, setUsers] = useState(
@@ -22,7 +23,6 @@ function App() {
   const updateActive = (user) => {
     localStorage.setItem(Constants.ACTIVE_USER_KEY, JSON.stringify(user));
     setActiveUser(user);
-    
   };
 
   const isLogged = activeUser;
@@ -42,7 +42,30 @@ function App() {
               path="login"
               element={<LoginForm users={users} updateActive={updateActive} />}
             />
-            <Route path="home" element={<div>Home</div>} />
+            <Route
+              path="home"
+              element={
+                <div>
+                 <div className="cards-wrapper">
+                  <div className="cards-container">
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                    <BookCard />
+                  </div>
+                </div>
+                </div>
+
+              }
+            />
             <Route path="myBooks" element={<div>My Books</div>} />
             <Route path="categories" element={<div>Categories</div>} />
             <Route path="profile" element={<div>Profile</div>} />
