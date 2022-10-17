@@ -6,6 +6,9 @@ import { useState } from "react";
 import LoginForm from "./Components/LoginForm";
 import Navigation from "./Components/Navigation";
 import BookCard from "./Components/BookCard";
+import Profile from "./Components/Profile";
+import BookDetailedCard from "./Components/BookDetailedCard";
+import StarRating from "./Components/StarRating";
 
 function App() {
   const [users, setUsers] = useState(
@@ -65,16 +68,27 @@ function App() {
                 </div>
               }
             />
+            <Route path="myBooks" element={<div className="cards-wrapper" >
+                    <div className="cards-container"></div>
+                  </div>} />
             <Route
-              path="myBooks"
+              path="categories"
+              element={    
+                  <BookDetailedCard />
+              }
+            />
+            <Route
+              path="profile"
               element={
-                <div className="cards-wrapper">
-                  <div className="cards-container"></div>
+                <div>
+                  <div className="profile-wrapper">
+                    <div className="profile-container">
+                      <Profile />
+                    </div>
+                  </div>
                 </div>
               }
             />
-            <Route path="categories" element={<div>Categories</div>} />
-            <Route path="profile" element={<div>Profile</div>} />
             <Route path="/" element={<Navigate to="/home" replace />} />
           </Routes>
         </>
