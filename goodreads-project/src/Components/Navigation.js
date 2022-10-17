@@ -23,6 +23,11 @@ export default function Navigation() {
                         <li className="nav-item">
                             <Link className="nav-link active" to='/profile'>Profile</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link active" to='/detailed-info'>Detailed Book Info</Link>
+                        </li>
+
+                       
                     </ul>
                 </div>
             </div>

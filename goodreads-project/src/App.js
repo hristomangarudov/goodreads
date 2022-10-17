@@ -9,8 +9,9 @@ import BookCard from "./Components/BookCard";
 import Profile from "./Components/Profile";
 import BookDetailedCard from "./Components/BookDetailedCard";
 import StarRating from "./Components/StarRating";
-import "./Components/login-register.css"
-import MyBooksTable from "./Components/MyBooksTable"
+import "./Components/login-register.css";
+import MyBooksTable from "./Components/MyBooksTable";
+import SmallComment from "./Components/SmallComment";
 function App() {
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem(Constants.USER_LIST_KEY)) || []
@@ -69,15 +70,17 @@ function App() {
                 </div>
               }
             />
-            <Route path="mybooks" element={<div className="cards-wrapper" >
-                    <div className="cards-container"><MyBooksTable/></div>
-                  </div>} />
             <Route
-              path="categories"
-              element={    
-                  <BookDetailedCard />
+              path="mybooks"
+              element={
+                <div className="cards-wrapper">
+                  <div className="cards-container">
+                    <MyBooksTable />
+                  </div>
+                </div>
               }
             />
+            <Route path="categories" element={<div>Categories</div>} />
             <Route
               path="profile"
               element={
@@ -88,6 +91,25 @@ function App() {
                     </div>
                   </div>
                 </div>
+              }
+            />
+            <Route
+              path="detailed-info"
+              element={
+                <>
+                  <BookDetailedCard />
+                  <br/>
+                  <br/>
+                  <br/>
+                  <div>
+                  <p className="smallComentTitle">COMMUNITY REVIEWS</p>
+                    <SmallComment />
+                    <SmallComment />
+                    <SmallComment />
+                    <SmallComment />
+                    <SmallComment />
+                  </div>
+                </>
               }
             />
             <Route path="/" element={<Navigate to="/home" replace />} />

@@ -1,0 +1,24 @@
+.smallBook-container {
+  font-size: 14px;
+  align-items: center;
+}
+.smallBook-wrapper {
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  width: 60vw;
+  justify-content: space-between;
+}
+.smallBook-body-wrapper {
+  display: flex;
+}
+.smallBook-text {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.smallBook-body-wrapper img {
+  width: 65px;
+  height: 90px;
+}

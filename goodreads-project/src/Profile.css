@@ -33,10 +33,18 @@
 .profile-details p {
     margin-left: 10px;
 }
-.bookshelf-user{
+.bookshelf-user {
+    padding-bottom: 5px;
     border-bottom: 1px solid grey;
 }
 .bookshelf-links{
     display: flex;
     justify-content: space-between;
+}
+.currently-reading-wrapper{
+    margin-top: 20px;
+}
+.currently-reading-user{
+    padding-bottom: 5px;
+    border-bottom: 1px solid grey;
 }
