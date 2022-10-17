@@ -9,7 +9,8 @@ import BookCard from "./Components/BookCard";
 import Profile from "./Components/Profile";
 import BookDetailedCard from "./Components/BookDetailedCard";
 import StarRating from "./Components/StarRating";
-
+import "./Components/login-register.css"
+import MyBooksTable from "./Components/MyBooksTable"
 function App() {
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem(Constants.USER_LIST_KEY)) || []
@@ -68,8 +69,8 @@ function App() {
                 </div>
               }
             />
-            <Route path="myBooks" element={<div className="cards-wrapper" >
-                    <div className="cards-container"></div>
+            <Route path="mybooks" element={<div className="cards-wrapper" >
+                    <div className="cards-container"><MyBooksTable/></div>
                   </div>} />
             <Route
               path="categories"

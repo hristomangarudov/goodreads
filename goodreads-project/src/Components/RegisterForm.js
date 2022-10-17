@@ -54,7 +54,7 @@ function RegisterForm(props) {
   };
 
   return (
-    <div>
+    <div className='credentials-wrapper'>
       <div className='form-container'>
         <Form noValidate validated={validated} onSubmit={handleSubmit} style={{width:400}}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
