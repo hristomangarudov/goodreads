@@ -11,6 +11,8 @@ import BookDetailedCard from "./Components/BookDetailedCard";
 import StarRating from "./Components/StarRating";
 import "./Components/login-register.css"
 import MyBooksTable from "./Components/MyBooksTable"
+import ListGroupHome from "./Components/ListGroupHome"
+import "./Components/list-group-home.css"
 function App() {
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem(Constants.USER_LIST_KEY)) || []
@@ -51,6 +53,7 @@ function App() {
               element={
                 <div>
                   <div className="cards-wrapper">
+                    <ListGroupHome></ListGroupHome>
                     <div className="cards-container">
                       <BookCard />
                       <BookCard />
