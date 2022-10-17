@@ -68,8 +68,8 @@ function App() {
                 </div>
               }
             />
-            <Route path="myBooks" element={<div >
-                    
+            <Route path="myBooks" element={<div className="cards-wrapper" >
+                    <div className="cards-container"></div>
                   </div>} />
             <Route
               path="categories"
