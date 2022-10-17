@@ -6,7 +6,7 @@ function BookDetailedCard(props) {
       <div className="detailedCard-wrapper">
         <div className="detailedCard-img">
           <img
-            src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1651426717i/60784641._SX300_.jpg"
+            src={props.picture}
             className="img-fluid rounded-start"
             alt="..."
           />

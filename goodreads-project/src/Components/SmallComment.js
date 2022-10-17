@@ -6,7 +6,7 @@ function SmallComment(props) {
       <div className="smallComment-wrapper">
         <div className="smallComment-img">
           <img
-            src="https://i.mycdn.me/i?r=AzEOxUXG5QgodWC3x6hM10CklMpMRcj1GHtAW8TfNlAubVrkd-MCO-IiWZNcCBoUL94&fn=sqr_288"
+            src={props.picture}
             alt="..."
           />
         </div>

@@ -6,7 +6,7 @@ function SmallBookCard(props) {
       <div className="smallBook-wrapper">
         <div className="smallBook-body-wrapper">
           <img
-            src="https://play-lh.googleusercontent.com/OkbZGHFUkGrqnPycygoqxbAJBE1WzR28vQbifQ-c5aNAapFl8F-eGeipwkweFVYYSMQQTcMvcDte_7HpwA"
+            src={props.picture}
             alt="..."
           />
           <div className="smallBook-text">
