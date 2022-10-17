@@ -1,0 +1,29 @@
+.detailedCard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.detailedCard-wrapper {
+  padding: 40px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  width: 60vw;
+}
+.detailedCard-img {
+  min-width: 200px;
+}
+.detailedCard-ratings {
+  margin: 5px 0 5px 0;
+}
+.detailedCard-plot {
+  font-size: 18px;  
+  text-align: justify;
+  border-bottom: 1px solid grey;
+  padding-bottom: 20px;
+
+}
+.detailedCard-text {
+    display: flex;
+    flex-direction: column;
+}

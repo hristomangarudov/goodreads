@@ -24,15 +24,16 @@ function Profile(props) {
         </div>
       </div>
       <div className="bookshelf-wrapper">
-            <div className="bookshelf-user">Evlogi Bookshelf</div>
-            <div className="bookshelf-links">
-                <a>read(3)</a>
-                <a>currently-reading</a>
-                <a>to-read(2)</a>
-                <a>More...</a>
-
-            </div>
-            
+        <div className="bookshelf-user">Evlogi Bookshelf</div>
+        <div className="bookshelf-links">
+          <a href="">read(3)</a>
+          <a href="">currently-reading(1)</a>
+          <a href="">to-read(2)</a>
+          <a href="">More...</a>
+        </div>
+      </div>
+      <div className="currently-reading-wrapper">
+        <div></div>
       </div>
     </div>
   );
