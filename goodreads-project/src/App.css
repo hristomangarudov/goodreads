@@ -47,3 +47,29 @@
   justify-content: center;
   gap: 20px
 }
+
+
+.profile-wrapper{
+  display: flex;
+  justify-content: center;
+}
+.profile-container{
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: yellow;
+}
+.off {
+  color: #ccc;
+}
+

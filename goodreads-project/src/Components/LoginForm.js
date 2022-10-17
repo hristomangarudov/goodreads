@@ -35,15 +35,15 @@ function LoginForm(props) {
       [e.target.name]: value,
     });
   }
-  const login = (userLogIn) => {
+  function login (userLogIn) {
     //Може би типът данни на props.users не е това което очакваме
     let changeDataType = Array.from(props.users);
   
     let currentUser = changeDataType.find(
       (user) =>
         user.email === userLogIn.email && user.password === userLogIn.password
-       
     );
+    console.log(currentUser);
       
     if (currentUser) {
       props.updateActive(userLogIn);
