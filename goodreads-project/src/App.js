@@ -9,8 +9,11 @@ import BookCard from "./Components/BookCard";
 import Profile from "./Components/Profile";
 import BookDetailedCard from "./Components/BookDetailedCard";
 import StarRating from "./Components/StarRating";
+import "./Components/login-register.css"
+import MyBooksTable from "./Components/MyBooksTable"
+import ListGroupHome from "./Components/ListGroupHome"
+import "./Components/list-group-home.css"
 import "./Components/login-register.css";
-import MyBooksTable from "./Components/MyBooksTable";
 import SmallComment from "./Components/SmallComment";
 function App() {
   const [users, setUsers] = useState(
@@ -52,6 +55,7 @@ function App() {
               element={
                 <div>
                   <div className="cards-wrapper">
+                    <ListGroupHome></ListGroupHome>
                     <div className="cards-container">
                       <BookCard />
                       <BookCard />

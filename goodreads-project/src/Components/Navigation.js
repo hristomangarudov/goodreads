@@ -15,7 +15,7 @@ export default function Navigation() {
                             <Link className="nav-link active" to='/home'>Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link active" to='/myBooks'>My Books</Link>
+                            <Link className="nav-link active" to='/mybooks'>My Books</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link active" to='/categories'>Categories</Link>
