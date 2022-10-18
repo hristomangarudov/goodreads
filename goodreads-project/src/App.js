@@ -15,6 +15,8 @@ import ListGroupHome from "./Components/ListGroupHome"
 import "./Components/list-group-home.css"
 import "./Components/login-register.css";
 import SmallComment from "./Components/SmallComment";
+import WriteAReview from "./Components/WriteAReview";
+import "./Components/writeareview.css"
 function App() {
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem(Constants.USER_LIST_KEY)) || []
@@ -57,18 +59,18 @@ function App() {
                   <div className="cards-wrapper">
                     <ListGroupHome></ListGroupHome>
                     <div className="cards-container">
-                      <BookCard />
-                      <BookCard />
-                      <BookCard />
-                      <BookCard />
-                      <BookCard />
-                      <BookCard />
-                      <BookCard />
-                      <BookCard />
-                      <BookCard />
-                      <BookCard />
-                      <BookCard />
-                      <BookCard />
+                      <BookCard cardWidth="15rem"/>
+                      <BookCard cardWidth="15rem"/>
+                      <BookCard cardWidth="15rem"/>
+                      <BookCard cardWidth="15rem"/>
+                      <BookCard cardWidth="15rem"/>
+                      <BookCard cardWidth="15rem"/>
+                      <BookCard cardWidth="15rem"/>
+                      <BookCard cardWidth="15rem"/>
+                      <BookCard cardWidth="15rem"/>
+                      <BookCard cardWidth="15rem"/>
+                      <BookCard cardWidth="15rem"/>
+                      <BookCard cardWidth="15rem"/>
                     </div>
                   </div>
                 </div>
@@ -112,7 +114,7 @@ function App() {
             <Route
               path="/detailed-info/write-review"
               element={
-               <div>Write Review</div>
+               <WriteAReview/>
               }
             />
             <Route path="/" element={<Navigate to="/home" replace />} />
