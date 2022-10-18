@@ -101,15 +101,14 @@ function App() {
                   <br/>
                   <br/>
                   <br/>
-                  <div>
-                  <p className="smallComentTitle">COMMUNITY REVIEWS</p>
-                    <SmallComment picture={'https://jenite.bg/pictures/1542216_480_.png'}/>
-                    <SmallComment picture={'https://www.obekti.bg/sites/default/files/styles/article_gallery/public/images/shutterstock_125157233.jpg?itok=ro-c05c1'}/>
-                    <SmallComment picture={'https://www.obekti.bg/sites/default/files/styles/article_gallery/public/gallery/shutterstock_339451460.jpg?itok=gJWH6dJC'}/>
-                    <SmallComment picture={'https://img.cms.bweb.bg/media/images/gallery/Oct2014/2110250466.webp'}/>
-                    <SmallComment picture={'https://www.obekti.bg/sites/default/files/styles/article_gallery/public/gallery/shutterstock_220755979.jpg?itok=ZbpDDqT-'}/>
-                  </div>
+                
                 </>
+              }
+            />
+            <Route
+              path="/detailed-info/write-review"
+              element={
+               <div>Write Review</div>
               }
             />
             <Route path="/" element={<Navigate to="/home" replace />} />

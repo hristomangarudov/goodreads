@@ -26,6 +26,9 @@ export default function Navigation() {
                         <li className="nav-item">
                             <Link className="nav-link active" to='/detailed-info'>Detailed Book Info</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link active" to='/write-review'>Write Review</Link>
+                        </li>
 
                        
                     </ul>

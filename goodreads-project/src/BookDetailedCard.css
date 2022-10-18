@@ -6,6 +6,7 @@
 .detailedCard-wrapper {
   padding: 40px;
   display: flex;
+  
   gap: 30px;
   align-items: center;
   width: 60vw;
@@ -26,4 +27,32 @@
 .detailedCard-text {
     display: flex;
     flex-direction: column;
+}
+
+.write-review-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.write-review-wrapper{
+  padding: 30px;
+  display: flex;
+  gap: 10px;
+  /* align-items: center; */
+  width: 60vw;
+  
+}
+
+.user-img img{
+  height: 66px;
+  width: 55px;
+}
+.rating-review{
+ display: flex;
+ padding-top: 15px;
+}
+.write-review{
+  border: 1px solid grey;
+  margin-left: 20px;
 }
