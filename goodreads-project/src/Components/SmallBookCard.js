@@ -2,8 +2,8 @@ import "../SmallBookCard.css";
 
 function SmallBookCard(props) {
   return (
-    <div className="smallBook-container">
-      <div className="smallBook-wrapper">
+    <div className="smallBook-wrapper">
+      <div className="smallBook-container">
         <div className="smallBook-body-wrapper">
           <img
             src={props.picture}

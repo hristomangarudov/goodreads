@@ -47,6 +47,13 @@
   justify-content: center;
   gap: 20px
 }
+.category-container{
+  width: 70vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px
+}
 
 
 .profile-wrapper{

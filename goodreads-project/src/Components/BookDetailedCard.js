@@ -13,8 +13,8 @@ function BookDetailedCard(props) {
 
   return (
     <>
-      <div className="detailedCard-container">
-        <div className="detailedCard-wrapper">
+      <div className="detailedCard-wrapper">
+        <div className="detailedCard-container">
           <div className="detailedCard-img">
             <img
               src={props.picture}

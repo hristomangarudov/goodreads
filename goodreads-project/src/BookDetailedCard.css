@@ -1,9 +1,9 @@
-.detailedCard-container {
+.detailedCard-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.detailedCard-wrapper {
+.detailedCard-container {
   padding: 40px;
   display: flex;
   

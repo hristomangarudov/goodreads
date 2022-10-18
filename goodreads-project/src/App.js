@@ -9,14 +9,14 @@ import BookCard from "./Components/BookCard";
 import Profile from "./Components/Profile";
 import BookDetailedCard from "./Components/BookDetailedCard";
 import StarRating from "./Components/StarRating";
-import "./Components/login-register.css"
-import MyBooksTable from "./Components/MyBooksTable"
-import ListGroupHome from "./Components/ListGroupHome"
-import "./Components/list-group-home.css"
+import "./Components/login-register.css";
+import MyBooksTable from "./Components/MyBooksTable";
+import ListGroupHome from "./Components/ListGroupHome";
+import "./Components/list-group-home.css";
 import "./Components/login-register.css";
 import SmallComment from "./Components/SmallComment";
 import WriteAReview from "./Components/WriteAReview";
-import "./Components/writeareview.css"
+import "./Components/writeareview.css";
 function App() {
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem(Constants.USER_LIST_KEY)) || []
@@ -59,18 +59,18 @@ function App() {
                   <div className="cards-wrapper">
                     <ListGroupHome></ListGroupHome>
                     <div className="cards-container">
-                      <BookCard cardWidth="15rem"/>
-                      <BookCard cardWidth="15rem"/>
-                      <BookCard cardWidth="15rem"/>
-                      <BookCard cardWidth="15rem"/>
-                      <BookCard cardWidth="15rem"/>
-                      <BookCard cardWidth="15rem"/>
-                      <BookCard cardWidth="15rem"/>
-                      <BookCard cardWidth="15rem"/>
-                      <BookCard cardWidth="15rem"/>
-                      <BookCard cardWidth="15rem"/>
-                      <BookCard cardWidth="15rem"/>
-                      <BookCard cardWidth="15rem"/>
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
                     </div>
                   </div>
                 </div>
@@ -86,7 +86,30 @@ function App() {
                 </div>
               }
             />
-            <Route path="categories" element={<div>Categories</div>} />
+            <Route
+              path="categories"
+              element={
+                <div>
+                  <div className="cards-wrapper">
+
+                    <div className="category-container">
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                      <BookCard cardWidth="15rem" />
+                    </div>
+                  </div>
+                </div>
+              }
+            />
             <Route
               path="profile"
               element={
@@ -103,19 +126,20 @@ function App() {
               path="detailed-info"
               element={
                 <>
-                  <BookDetailedCard picture={'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1470082995l/29056083._SY475_.jpg'}/>
-                  <br/>
-                  <br/>
-                  <br/>
-                
+                  <BookDetailedCard
+                    picture={
+                      "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1470082995l/29056083._SY475_.jpg"
+                    }
+                  />
+                  <br />
+                  <br />
+                  <br />
                 </>
               }
             />
             <Route
               path="/detailed-info/write-review"
-              element={
-               <WriteAReview/>
-              }
+              element={<WriteAReview />}
             />
             <Route path="/" element={<Navigate to="/home" replace />} />
           </Routes>
