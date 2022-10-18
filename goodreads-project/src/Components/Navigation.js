@@ -41,6 +41,11 @@ export default function Navigation() {
                   Detailed Book Info
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link active" to="/detailed-info/write-review">
+                  Write Review
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
