@@ -1,3 +1,18 @@
+.detailedCard-white-container {
+  margin: 30px;
+  padding-top: 0;
+}
+.center-position {
+  display: flex;
+  justify-content: center;
+}
+.center-position a {
+  text-decoration: none;
+  // color: #78dbea;
+  color: purple;
+  // color: darkviolet;
+}
+
 .detailedCard-wrapper {
   display: flex;
   flex-direction: column;
@@ -6,7 +21,6 @@
 .detailedCard-container {
   padding: 40px;
   display: flex;
-  
   gap: 30px;
   align-items: center;
   width: 60vw;
@@ -18,41 +32,40 @@
   margin: 5px 0 5px 0;
 }
 .detailedCard-plot {
-  font-size: 18px;  
+  font-size: 18px;
   text-align: justify;
   border-bottom: 1px solid grey;
   padding-bottom: 20px;
-
 }
 .detailedCard-text {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.write-review-container{
+.write-review-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.write-review-wrapper{
+.write-review-wrapper {
   padding: 30px;
   display: flex;
   gap: 10px;
-  /* align-items: center; */
   width: 60vw;
-  
 }
 
-.user-img img{
+.user-img img {
   height: 66px;
   width: 55px;
 }
-.rating-review{
- display: flex;
- padding-top: 15px;
+.rating-review {
+  display: flex;
+  padding-top: 15px;
 }
-.write-review{
-  border: 1px solid grey;
+.write-review {
+  // border: 1px solid #78dbea;
+  border: 1px solid purple;
+  border-radius: 15px;
   margin-left: 20px;
 }

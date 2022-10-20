@@ -1,4 +1,4 @@
-import "../SmallBookCard.css";
+import "./SmallBookCard.scss";
 
 function SmallBookCard(props) {
   return (

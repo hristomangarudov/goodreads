@@ -1,14 +1,22 @@
-.credentials-wrapper{
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    flex-direction: column;
-    align-items: center;
-    padding: 150px;
+.credentials-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  padding: 150px;
 }
-.form-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 10px;
+  padding: 50px;
+  height: 80vh;
+  flex-direction: column;
+  background-color: white;
+}
+.loginText {
+  margin-bottom: 50px;
 }

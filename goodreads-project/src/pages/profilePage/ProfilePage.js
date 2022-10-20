@@ -1,4 +1,5 @@
-import Profile from "../../Components/Profile";
+import Profile from "../../Components/Profile/Profile";
+
 function ProfilePage() {
   return (
     <div>
