@@ -39,9 +39,37 @@
 .cards-wrapper{
   display: flex;
   justify-content: center;
+  padding: 30px 0;
+}
+.general-list-container{
+  background: #fcfaff;
+  display: flex;
+  justify-content: center;
+  /* width: 90%;
+  max-width: 1150px; */
+  max-height: 50vh;
+  margin: 0 30px;
+  border-radius: 12px;
+  padding-top: 30px;
+}
+.general-container{
+    background: #fcfaff;
+    width: 90%;
+    max-width: 1150px;
+    margin: 0 30px;
+    border-radius: 12px;
+    padding-top: 30px;
+    padding-bottom:30px;
+    h1{
+      font-size: 40px;
+      color: #333333eb;
+      font-family: "Nunito",sans-serif;
+      text-align: center;;
+      margin-bottom: 30px;
+
+    }
 }
 .cards-container{
-  width: 60vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

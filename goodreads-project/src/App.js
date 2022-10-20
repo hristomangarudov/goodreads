@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import RegisterForm from "./pages/registerPage/RegisterForm";
 import * as Constants from "./constants.js";
