@@ -77,7 +77,7 @@
   height: 150%;
   width: 0.25em;
   background-color: #fff;
-  box-shadow: 0px 0px 8px 4px #fff;
+  box-shadow: 0px 0px 8px 4px ;
   transform: translateX(-1em);
 }
 
@@ -86,7 +86,7 @@
 }
 
 .custom-class-btn:hover::after {
-  animation-duration: 300ms;
+  animation-duration: 700ms;
   animation-name: sweep;
 }
 
@@ -95,7 +95,7 @@
     transform: translateX(-1em)
   }
   to { 
-    transform: translateX(12.5em);
+    transform: translateX(20em);
     animation-timing-function: ease-out; 
   }
 }
