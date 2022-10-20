@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
+import ReactLogo from "./newLogo.svg";
 export default function Navigation() {
   return (
     <div className="nav-wrapper sticky-top">
       <nav className="navbar navbar-expand-lg bg-light nav-container">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            Navbar|
-          </a>
+          <div style={{ width: "150px" }}>
+            <a className="navbar-brand" href="#">
+              <img src={ReactLogo} />
+            </a>
+          </div>
+
           <button
             className="navbar-toggler"
             type="button"
@@ -42,7 +46,10 @@ export default function Navigation() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" to="/detailed-info/write-review">
+                <Link
+                  className="nav-link active"
+                  to="/detailed-info/write-review"
+                >
                   Write Review
                 </Link>
               </li>
