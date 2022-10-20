@@ -15,6 +15,7 @@ import ProfilePage from "./pages/profilePage/ProfilePage";
 import WriteAReviewPage from "./pages/writeReviewPage/WriteAReviewPage";
 import BookDetailedPage from "./pages/BookDetailedPage/BookDetailedPage";
 import CategoryPage from "./pages/categoryPage/CategoryPage";
+import BannerComponent from "./Components/Banner";
 function App() {
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem(Constants.USER_LIST_KEY)) || []
@@ -39,6 +40,7 @@ function App() {
     <BrowserRouter>
       {isLogged ? (
         <>
+          <BannerComponent/>
           <Navigation />
           <Routes>
             <Route path="*" element={<div>Page Not Found</div>} />
