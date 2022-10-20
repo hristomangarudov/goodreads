@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./LoginForm.module.scss";
+
 function LoginForm(props) {
   const [validated, setValidated] = useState(false);
   const [state, setState] = useState({
@@ -70,7 +70,7 @@ function LoginForm(props) {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
-              className={styles.formControl}
+              bsPrefix="custom-class-input"
               type="email"
               placeholder="Type your email"
               required
@@ -82,10 +82,11 @@ function LoginForm(props) {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label >Password</Form.Label>
             <Form.Control
+              bsPrefix="custom-class-input"
               type="password"
-              placeholder="Type your Password"
+              placeholder="Type your password"
               required
               name="password"
               onChange={handleChange}
@@ -94,11 +95,11 @@ function LoginForm(props) {
               Please input a password
             </Form.Control.Feedback>
           </Form.Group>
-          <Button style={{ width: "100%" }} variant="primary" type="submit">
-            Login
+          <Button bsPrefix="custom-class-btn"  variant="primary" type="submit">
+           <strong>LOGIN</strong> 
           </Button>
         </Form>
-          <Link to="/register">Don't have an account?Register instead.</Link>
+        <Link to="/register">Don't have an account?Register instead.</Link>
       </div>
     </div>
   );

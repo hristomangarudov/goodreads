@@ -13,10 +13,89 @@
   gap: 20px;
   border-radius: 10px;
   padding: 50px;
-  height: 80vh;
+  height: 60vh;
   flex-direction: column;
   background-color: white;
 }
+.form-container a{
+  text-decoration: none;
+}
 .loginText {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+}
+.custom-class-btn{
+  margin-top: 30px;
+  width: 100%;
+  font-size: 20px;
+  color: white  ;
+  height: 50px;
+  border-radius: 10px;
+  background: linear-gradient(45deg,rgba(28,198,221,.6),rgba(142,66,209,.6));
+
+}
+.custom-class-input{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgb(176, 174, 174);
+  outline: none;
+
+}
+
+.custom-class-btn {
+  /* padding: 0.75em 1.5em; */
+  background-color: white;
+  border: 2px solid;
+  font-size: larger;
+  border-radius: 1.65em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.custom-class-btn::before,
+.custom-class-btn::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.custom-class-btn::before {
+  background-image: linear-gradient(45deg,rgba(142,66,209,.6),rgba(28,198,221,.6));
+  z-index: -1;
+  transition: opacity 240ms linear;
+  opacity: 0;
+}
+
+.custom-class-btn::after {
+  content: '';
+  height: 150%;
+  width: 0.25em;
+  background-color: #fff;
+  box-shadow: 0px 0px 8px 4px #fff;
+  transform: translateX(-1em);
+}
+
+.custom-class-btn:hover::before {
+  opacity: 1;
+}
+
+.custom-class-btn:hover::after {
+  animation-duration: 300ms;
+  animation-name: sweep;
+}
+
+@keyframes sweep {
+  from { 
+    transform: translateX(-1em)
+  }
+  to { 
+    transform: translateX(12.5em);
+    animation-timing-function: ease-out; 
+  }
 }

@@ -68,8 +68,9 @@ function RegisterForm(props) {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
+            bsPrefix="custom-class-input"
               type="email"
-              placeholder="Enter email"
+              placeholder="Type your email"
               required
               name="email"
               onChange={handleChange}
@@ -84,8 +85,9 @@ function RegisterForm(props) {
           <Form.Group className="mb-3" controlId="formUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control
+            bsPrefix="custom-class-input"
               type="text"
-              placeholder="Username"
+              placeholder="Type your username"
               required
               name="username"
               onChange={handleChange}
@@ -97,8 +99,9 @@ function RegisterForm(props) {
           <Form.Group className="mb-3" controlId="formPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
+            bsPrefix="custom-class-input"
               type="password"
-              placeholder="Password"
+              placeholder="Type your password"
               required
               name="password"
               onChange={handleChange}
@@ -107,8 +110,8 @@ function RegisterForm(props) {
               Please input a password
             </Form.Control.Feedback>
           </Form.Group>
-          <Button style={{ width: "100%" }} variant="primary" type="submit">
-            Register
+          <Button bsPrefix="custom-class-btn" variant="primary" type="submit">
+            REGISTER
           </Button>
         </Form>
         <Link to="/login">Already have an account?Log in instead.</Link>
