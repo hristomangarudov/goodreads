@@ -12,9 +12,13 @@
 }
 .review-container form{
     display: flex;
-    width: 50%;
+    width: 75%;
     justify-content: center;
     flex-direction: column;
+    textarea{
+        max-height: 500px;
+        min-height: 300px;
+    }
 }
 .headers-container-titles{
     display: flex;
@@ -26,4 +30,11 @@
 }
 .headers-container-titles h5{
 margin-top: 4px;
+}
+.review-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }

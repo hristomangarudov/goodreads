@@ -24,7 +24,7 @@ export default function Navigation() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="nav">
               <li className="nav-item">
                 <Link className="nav-link active" to="/home">
                   Home
@@ -54,7 +54,7 @@ export default function Navigation() {
             </ul>
           </div>
           <div>
-            <Link className="nav-link active" to="/profile">
+            <Link className="nav-link active nav" to="/profile">
               Profile
             </Link>
           </div>

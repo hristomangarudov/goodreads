@@ -8,7 +8,7 @@ import Navigation from "./Components/Navigation";
 import "./Components/login-register.css";
 import "./Components/list-group-home.css";
 import "./Components/login-register.css";
-import "./Components/writeareview.css";
+import "./Components/writeareview.scss";
 import HomePage from "./pages/homePage/home";
 import MyBooksPage from "./pages/myBooksPage/MyBooksPage";
 import ProfilePage from "./pages/profilePage/ProfilePage";

@@ -1,5 +1,6 @@
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
+import StarRating from "./StarRating";
 function MyBooksTable(props) {
   return (
     <Table striped hover>
@@ -29,8 +30,8 @@ function MyBooksTable(props) {
           <td>
             <Link to="/mybooks">Catherine Steadman</Link>
           </td>
-          <td>4.5
-          <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <td>
+          <span>4.5<StarRating/></span>
           </td>
           <td>
             <Link to="/mybooks">Currently Reading</Link>
@@ -57,8 +58,8 @@ function MyBooksTable(props) {
           <td>
             <Link to="/mybooks">Catherine Steadman</Link>
           </td>
-          <td>4.5
-          <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <td>
+          <span>4.5<StarRating/></span>
           </td>
           <td>
             <Link to="/mybooks">Currently Reading</Link>
@@ -85,8 +86,8 @@ function MyBooksTable(props) {
           <td>
             <Link to="/mybooks">Catherine Steadman</Link>
           </td>
-          <td>4.5
-          <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <td>
+          <span>4.5<StarRating/></span>
           </td>
           <td>
             <Link to="/mybooks">Currently Reading</Link>
@@ -113,8 +114,8 @@ function MyBooksTable(props) {
           <td>
             <Link to="/mybooks">Catherine Steadman</Link>
           </td>
-          <td>4.5
-          <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <td>
+          <span>4.5<StarRating/></span>
           </td>
           <td>
             <Link to="/mybooks">Currently Reading</Link>
