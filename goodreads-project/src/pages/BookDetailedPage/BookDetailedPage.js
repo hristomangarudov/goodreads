@@ -1,4 +1,6 @@
-import BookDetailedCard from "../../Components/BookDetailedCard"
+import BookDetailedCard from "../../Components/BookDetailedCard/BookDetailedCard"
+
+
 function BookDetailedPage(){
 return(
     <>

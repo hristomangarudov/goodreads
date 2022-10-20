@@ -1,6 +1,6 @@
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
-import StarRating from "./StarRating";
+import StarRating from "./StartRating/StarRating";
 function MyBooksTable(props) {
   return (
     <Table striped hover>

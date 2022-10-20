@@ -1,4 +1,4 @@
-import "../SmallComment.css";
+import "./SmallComment.scss";
 
 function SmallComment(props) {
   return (
