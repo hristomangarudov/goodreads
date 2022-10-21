@@ -2,5 +2,6 @@
 transition: transform 0.2s ease-in-out;
     &:hover{
         transform: translateY(-5px);
+        box-shadow: 0 4px 6px 0 rgba(142,66,209,.5);
     }
 }

@@ -13,6 +13,7 @@ function BookDetailedCard(props) {
   return (
     <div className="center-position">
       <div className="general-container detailedCard-white-container">
+        <h1>Book Details</h1>
         <div className="detailedCard-wrapper ">
           <div className="detailedCard-container">
             <div className="detailedCard-img">

@@ -4,7 +4,7 @@ import "./navigation.scss"
 export default function Navigation() {
   return (
     <div className="nav-wrapper sticky-top">
-      <nav className="navbar navbar-expand-lg bg-light nav-container">
+      <nav className="navbar navbar-expand-lg bg-light nav-container padding-ref">
         <div className="container-fluid">
             <div style={{width:"150px"}}>
             <a className="navbar-brand" href="#">
@@ -36,8 +36,8 @@ export default function Navigation() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" to="/categories">
-                  Categories
+                <Link className="nav-link active" to="/challenges">
+                  Challenges
                 </Link>
               </li>
               <li className="nav-item"></li>

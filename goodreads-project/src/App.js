@@ -14,7 +14,7 @@ import MyBooksPage from "./pages/myBooksPage/MyBooksPage";
 import ProfilePage from "./pages/profilePage/ProfilePage";
 import WriteAReviewPage from "./pages/writeReviewPage/WriteAReviewPage";
 import BookDetailedPage from "./pages/BookDetailedPage/BookDetailedPage";
-import CategoryPage from "./pages/categoryPage/CategoryPage";
+import ChallengesPage from "./pages/challengesPage/CategoryPage";
 import BannerComponent from "./Components/Banner";
 function App() {
   const [users, setUsers] = useState(
@@ -63,9 +63,9 @@ function App() {
               }
             />
             <Route
-              path="categories"
+              path="challenges"
               element={
-                <CategoryPage/>
+                <ChallengesPage/>
               }
             />
             <Route
