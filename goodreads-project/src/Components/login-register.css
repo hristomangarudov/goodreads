@@ -81,7 +81,6 @@
   content: "";
   height: 150%;
   width: 0.25em;
-
   transform: translateX(-1em);
 }
 
@@ -90,7 +89,7 @@
 }
 
 .custom-class-btn:hover::after {
-  animation-duration: 300ms;
+  animation-duration: 700ms;
   animation-name: sweep;
 }
 

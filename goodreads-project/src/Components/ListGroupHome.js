@@ -16,9 +16,9 @@ function ListGroupHome() {
         </ListGroup.Item>
         <ListGroup.Item>
         <h5>BOOKSHELVES</h5>
-        <Link style={{display:"block"}} to='/mybooks'>Currently reading</Link>
-        <Link style={{display:"block"}} to='/mybooks'>Want to read</Link>
-        <Link style={{display:"block"}} to='/mybooks'>Browse your collection</Link>
+        <Link style={{display:"block"}} className="link-decoration" to='/mybooks'>Currently reading</Link>
+        <Link style={{display:"block"}} className="link-decoration" to='/mybooks'>Want to read</Link>
+        <Link style={{display:"block"}} className="link-decoration" to='/mybooks'>Browse your collection</Link>
             
         </ListGroup.Item>
         
