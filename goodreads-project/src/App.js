@@ -7,7 +7,7 @@ import LoginForm from "./pages/loginPage/LoginForm";
 import Navigation from "./Components/Navigation/Navigation";
 import "./Components/list-group-home.scss";
 import "./Components/login-register.scss";
-import "./Components/WriteAReview/WriteAReview.scss";
+import "./Components/WriteAReview.scss";
 import HomePage from "./pages/homePage/Home";
 import MyBooksPage from "./pages/myBooksPage/MyBooksPage";
 import ProfilePage from "./pages/profilePage/ProfilePage";
