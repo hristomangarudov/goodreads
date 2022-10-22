@@ -4,14 +4,6 @@ import "./BookCard.scss";
 function BookCard(props) {
   const navigate = useNavigate();
 
-  const navigateToDetailedBookInfo = () => {
-    navigate("/detailed-info");
-  };
-
-  const navigateToAuthorInfo = () => {
-    navigate("/author-info");
-  };
-
   return (
     <Card
       style={{ width: props.cardWidth }}
@@ -20,13 +12,12 @@ function BookCard(props) {
       className="book-card"
     >
       <Card.Img
-        onClick={navigateToDetailedBookInfo}
         variant="top"
         src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1651426717i/60784641._SX300_.jpg"
       />
       <Card.Body>
         <Card.Title>Card Title</Card.Title>
-        <Card.Text as="h6" onClick={navigateToAuthorInfo}>Author</Card.Text>
+        <Card.Text as="h6">Author</Card.Text>
         <div>
           <span className="single-star">&#9733;</span>4.5
         </div>
