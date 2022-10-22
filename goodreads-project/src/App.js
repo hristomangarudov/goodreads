@@ -5,9 +5,8 @@ import * as Constants from "./constants.js";
 import { useState } from "react";
 import LoginForm from "./pages/loginPage/LoginForm";
 import Navigation from "./Components/Navigation/Navigation";
-import "./Components/login-register.css";
-import "./Components/list-group-home.css";
-import "./Components/login-register.css";
+import "./Components/list-group-home.scss";
+import "./Components/login-register.scss";
 import "./Components/WriteAReview/WriteAReview.scss";
 import HomePage from "./pages/homePage/Home";
 import MyBooksPage from "./pages/myBooksPage/MyBooksPage";
@@ -16,6 +15,8 @@ import WriteAReviewPage from "./pages/writeReviewPage/WriteAReviewPage";
 import BookDetailedPage from "./pages/bookDetailedPage/BookDetailedPage";
 import ChallengesPage from "./pages/challengesPage/CategoryPage";
 import BannerComponent from "./Components/Banner/Banner";
+import AuthorInfo from "./Components/AuthorInfo/AuthorInfo";
+
 function App() {
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem(Constants.USER_LIST_KEY)) || []
@@ -57,6 +58,8 @@ function App() {
             <Route path="challenges" element={<ChallengesPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="detailed-info" element={<BookDetailedPage />} />
+            <Route path="author-info" element={<AuthorInfo />} />
+
             <Route
               path="/detailed-info/write-review"
               element={<WriteAReviewPage />}

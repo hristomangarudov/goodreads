@@ -3,8 +3,13 @@ import { useNavigate } from "react-router-dom";
 import "./BookCard.scss";
 function BookCard(props) {
   const navigate = useNavigate();
+
   const navigateToDetailedBookInfo = () => {
     navigate("/detailed-info");
+  };
+
+  const navigateToAuthorInfo = () => {
+    navigate("/author-info");
   };
 
   return (
@@ -21,7 +26,7 @@ function BookCard(props) {
       />
       <Card.Body>
         <Card.Title>Card Title</Card.Title>
-        <Card.Text as="h6">Author</Card.Text>
+        <Card.Text as="h6" onClick={navigateToAuthorInfo}>Author</Card.Text>
         <div>
           <span className="single-star">&#9733;</span>4.5
         </div>
