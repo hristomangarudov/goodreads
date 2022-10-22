@@ -1,11 +1,13 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import {Link} from 'react-router-dom'
+import WantToRead from '../assets/logo/want_to_read.svg'
+import CurrentlyReading from '../assets/logo/currently_reading.svg'
 function ListGroupHome() {
   return (
     <ListGroup variant="flush">
       <ListGroup.Item>
       <h5>CURRENTLY READING</h5>
-        <img src="https://s.gr-assets.com/assets/react_components/currently_reading/icn_default_CR_ltrail-16f28d39654104ceb329648a474943eb.svg"/>
+        <img src={CurrentlyReading} alt="Currently Reading"/>
         What are you reading?
         <div>
         <div className='input-field'>
@@ -16,7 +18,7 @@ function ListGroupHome() {
         </ListGroup.Item>
         <ListGroup.Item>
         <h5>WANT TO READ</h5>
-        <img src="https://s.gr-assets.com/assets/react_components/currently_reading/icn_default_CR_ltrail-16f28d39654104ceb329648a474943eb.svg"/>
+        <img src={WantToRead} alt="Want to read"/>
         What do you want to read next?
         </ListGroup.Item>
         <ListGroup.Item>
