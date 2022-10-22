@@ -8,12 +8,12 @@ import Navigation from "./Components/Navigation/Navigation";
 import "./Components/list-group-home.scss";
 import "./Components/login-register.scss";
 import "./Components/WriteAReview.scss";
-import HomePage from "./pages/homePage/home";
 import MyBooksPage from "./pages/myBooksPage/MyBooksPage";
+import HomePage from "./pages/homePage/home";
 import ProfilePage from "./pages/profilePage/ProfilePage";
+import BookDetailedPage from "./pages/bookDetailedPage/BookDetailedPage";
 import WriteAReviewPage from "./pages/writeReviewPage/WriteAReviewPage";
-import BookDetailedPage from "./pages/BookDetailedPage/BookDetailedPage";
-import ChallengesPage from "./pages/challengesPage/CategoryPage";
+import ChallengesPage from "./pages/challengesPage/ChallengesPage";
 import BannerComponent from "./Components/Banner/Banner";
 import AuthorInfo from "./Components/AuthorInfo/AuthorInfo";
 
