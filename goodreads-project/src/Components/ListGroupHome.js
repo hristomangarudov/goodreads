@@ -7,7 +7,12 @@ function ListGroupHome() {
       <h5>CURRENTLY READING</h5>
         <img src="https://s.gr-assets.com/assets/react_components/currently_reading/icn_default_CR_ltrail-16f28d39654104ceb329648a474943eb.svg"/>
         What are you reading?
+        <div>
+        <div className='input-field'>
         <input style={{display:"block"}} placeholder='search books'/>
+        <span></span>
+        </div>
+        </div>
         </ListGroup.Item>
         <ListGroup.Item>
         <h5>WANT TO READ</h5>
@@ -16,9 +21,12 @@ function ListGroupHome() {
         </ListGroup.Item>
         <ListGroup.Item>
         <h5>BOOKSHELVES</h5>
-        <Link style={{display:"block"}} className="link-decoration" to='/mybooks'>Currently reading</Link>
-        <Link style={{display:"block"}} className="link-decoration" to='/mybooks'>Want to read</Link>
-        <Link style={{display:"block"}} className="link-decoration" to='/mybooks'>Browse your collection</Link>
+        <div className='list-links-container'>
+        <Link className="link-decoration underline" to='/mybooks'><span>Currenty reading</span></Link>
+        <Link className="link-decoration underline" to='/mybooks'><span>Want to read</span></Link>
+        <Link className="link-decoration underline" to='/mybooks'><span>Browse collection</span></Link>
+        </div>
+
             
         </ListGroup.Item>
         

@@ -35,6 +35,16 @@ function App() {
     setActiveUser(user);
   };
 
+  fetch("https://www.googleapis.com/books/v1/volumes?q=subject:fiction&startIndex=0&maxResults=8&printType=books")
+  .then(res =>{
+    if(res.ok){
+      return res.json()
+    }
+  })
+  .then(data =>{
+    console.log(data)
+  })
+
   const isLogged = activeUser;
 
   return (
