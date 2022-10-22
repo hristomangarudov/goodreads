@@ -2,6 +2,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import {Link} from 'react-router-dom'
 function ListGroupMyBooks() {
   return (
+    <div className='list-group-mybooks'>
     <ListGroup variant="flush">
         <ListGroup.Item>
         <h5>BOOKSHELVES</h5>
@@ -17,6 +18,8 @@ function ListGroupMyBooks() {
         <Link style={{display:"block"}} className="link-decoration" to='/home'>Explore</Link>
         </ListGroup.Item>
     </ListGroup>
+    </div>
+
   );
 }
 

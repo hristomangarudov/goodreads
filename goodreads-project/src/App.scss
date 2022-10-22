@@ -52,9 +52,15 @@
   margin: 0 30px;
   border-radius: 12px;
   padding-top: 30px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 2px 3px 0px, rgba(60, 64, 67, 0.15) 0px 2px 4px 2px;
 }
 .list-my-books{
-  max-height: 25vh;
+  max-height: 35vh;
+  width: 15%;
+  max-width: 20%;
+}
+.list-group-mybooks{
+  width: 100%;
 }
 .general-container{
     background: #fcfaff;
@@ -64,6 +70,7 @@
     border-radius: 12px;
     padding-top: 30px;
     padding-bottom:30px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 2px 3px 0px, rgba(60, 64, 67, 0.15) 0px 2px 4px 2px;
     h1{
       font-size: 40px;
       color: #333333eb;
