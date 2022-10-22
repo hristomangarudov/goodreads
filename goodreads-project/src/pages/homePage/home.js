@@ -1,4 +1,4 @@
-import BookCard from "../../Components/BookCard";
+import BookCard from "../../Components/BookCard/BookCard";
 import ListGroupHome from "../../Components/ListGroupHome";
 function HomePage() {
   return (

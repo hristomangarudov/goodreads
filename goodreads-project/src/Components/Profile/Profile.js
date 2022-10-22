@@ -30,7 +30,7 @@ function Profile(props) {
         </div>
         <div className="bookshelf-links">
           <a href="">read(3)</a>
-          <a href="">currently-reading(1)</a>
+          <a href="">currently reading(1)</a>
           <a href="">to-read(2)</a>
           <a href="">More...</a>
         </div>

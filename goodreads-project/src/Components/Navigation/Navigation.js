@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import ReactLogo from "./newLogo.svg"
-import "./navigation.scss"
+import ReactLogo from "../newLogo.svg"
+import "./Navigation.scss"
 export default function Navigation() {
   return (
     <div className="nav-wrapper sticky-top">

@@ -1,4 +1,4 @@
-import MyBooksTable from "../../Components/MyBooksTable";
+import MyBooksTable from "../../Components/MyBooksTable/MyBooksTable";
 import ListGroupMyBooks from "../../Components/ListGroupMyBooks"
 function MyBooksPage() {
   return (

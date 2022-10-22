@@ -1,4 +1,4 @@
-import BookCard from "../../Components/BookCard";
+import BookCard from "../../Components/BookCard/BookCard";
 function ChallengesPage(){
     return(
       <div>

@@ -1,4 +1,4 @@
-import WriteAReview from "../../Components/WriteAReview"
+import WriteAReview from "../../Components/WriteAReview/WriteAReview"
 function WriteAReviewPage(){
     return (
         <WriteAReview />

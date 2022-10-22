@@ -3,19 +3,19 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import RegisterForm from "./pages/registerPage/RegisterForm";
 import * as Constants from "./constants.js";
 import { useState } from "react";
-import LoginForm from "./pages/loginPage/LoginForm"
-import Navigation from "./Components/Navigation";
+import LoginForm from "./pages/loginPage/LoginForm";
+import Navigation from "./Components/Navigation/Navigation";
 import "./Components/login-register.css";
 import "./Components/list-group-home.css";
 import "./Components/login-register.css";
-import "./Components/writeareview.scss";
-import HomePage from "./pages/homePage/home";
+import "./Components/WriteAReview/WriteAReview.scss";
+import HomePage from "./pages/homePage/Home";
 import MyBooksPage from "./pages/myBooksPage/MyBooksPage";
 import ProfilePage from "./pages/profilePage/ProfilePage";
 import WriteAReviewPage from "./pages/writeReviewPage/WriteAReviewPage";
-import BookDetailedPage from "./pages/BookDetailedPage/BookDetailedPage";
+import BookDetailedPage from "./pages/bookDetailedPage/BookDetailedPage";
 import ChallengesPage from "./pages/challengesPage/CategoryPage";
-import BannerComponent from "./Components/Banner";
+import BannerComponent from "./Components/Banner/Banner";
 function App() {
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem(Constants.USER_LIST_KEY)) || []
@@ -40,7 +40,7 @@ function App() {
     <BrowserRouter>
       {isLogged ? (
         <>
-          <BannerComponent/>
+          <BannerComponent />
           <Navigation />
           <Routes>
             <Route path="*" element={<div>Page Not Found</div>} />
@@ -52,37 +52,14 @@ function App() {
               path="login"
               element={<LoginForm users={users} updateActive={updateActive} />}
             />
-            <Route
-              path="home"
-              element={<HomePage/>}
-            />
-            <Route
-              path="mybooks"
-              element={
-                <MyBooksPage/>
-              }
-            />
-            <Route
-              path="challenges"
-              element={
-                <ChallengesPage/>
-              }
-            />
-            <Route
-              path="profile"
-              element={
-                <ProfilePage/>
-              }
-            />
-            <Route
-              path="detailed-info"
-              element={
-               <BookDetailedPage/>
-              }
-            />
+            <Route path="home" element={<HomePage />} />
+            <Route path="mybooks" element={<MyBooksPage />} />
+            <Route path="challenges" element={<ChallengesPage />} />
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="detailed-info" element={<BookDetailedPage />} />
             <Route
               path="/detailed-info/write-review"
-              element={<WriteAReviewPage/>}
+              element={<WriteAReviewPage />}
             />
             <Route path="/" element={<Navigate to="/home" replace />} />
           </Routes>
