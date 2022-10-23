@@ -16,21 +16,15 @@ import WriteAReviewPage from "./pages/writeReviewPage/WriteAReviewPage";
 import ChallengesPage from "./pages/challengesPage/ChallengesPage";
 import BannerComponent from "./Components/Banner/Banner";
 import AuthorInfoPage from "./pages/authorInfoPage/AuthorInfoPage";
-<<<<<<< HEAD
+import { getActiveUser } from "./server/users";
 import EditProfile from "./pages/editProfilePage/EditProfile";
-import Profile from "./Components/Profile/Profile";
-=======
-import EditProfilePage from "./pages/editProfilePage/EditProfilePage";
-import {getActiveUser} from "./server/users"
->>>>>>> d0a35697c23ec26e19f4d27b6231ca91657e9890
 
 function App() {
   const [isLogged, setIsLogged] = useState(getActiveUser());
 
   const handleSuccessLogin = () => {
-    setIsLogged(getActiveUser())
-  }
-
+    setIsLogged(getActiveUser());
+  };
 
   fetch(
     "https://www.googleapis.com/books/v1/volumes?q=subject:fiction&startIndex=0&maxResults=8&printType=books"
@@ -44,7 +38,6 @@ function App() {
       console.log(data);
     });
 
-
   return (
     <BrowserRouter>
       {isLogged ? (
@@ -53,13 +46,10 @@ function App() {
           <Navigation />
           <Routes>
             <Route path="*" element={<div>Page Not Found</div>} />
-            <Route
-              path="register"
-              element={<RegisterForm/>}
-            />
+            <Route path="register" element={<RegisterForm />} />
             <Route
               path="login"
-              element={<LoginForm successLogin={handleSuccessLogin}/>}
+              element={<LoginForm successLogin={handleSuccessLogin} />}
             />
             <Route path="home" element={<HomePage />} />
             <Route path="mybooks" element={<MyBooksPage />} />
@@ -79,13 +69,10 @@ function App() {
       ) : (
         <>
           <Routes>
-            <Route
-              path="register"
-              element={<RegisterForm/>}
-            />
+            <Route path="register" element={<RegisterForm />} />
             <Route
               path="login"
-              element={<LoginForm successLogin={handleSuccessLogin}/>}
+              element={<LoginForm successLogin={handleSuccessLogin} />}
             />
             <Route path="*" element={<Navigate to="/register" replace />} />
           </Routes>
