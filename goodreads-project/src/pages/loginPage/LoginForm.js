@@ -3,55 +3,23 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import {loginUser} from "../../server/users"
 
 function LoginForm(props) {
   const [validated, setValidated] = useState(false);
-  const [state, setState] = useState({
-    email: "",
-    password: "",
-  });
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
   const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    setValidated(true);
-    event.preventDefault();
-    event.stopPropagation();
-
-    try {
-      login(state);
-      navigate("/home");
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-  function handleChange(e) {
-    const value = e.target.value;
-    setState({
-      ...state,
-      [e.target.name]: value,
-    });
-  }
-  function login(userLogIn) {
-    //Може би типът данни на props.users не е това което очакваме
-    let changeDataType = Array.from(props.users);
-
-    let currentUser = changeDataType.find(
-      (user) =>
-        user.email === userLogIn.email && user.password === userLogIn.password
-    );
-    console.log(currentUser);
-
-    if (currentUser) {
-      props.updateActive(userLogIn);
+    event.preventDefault()
+    if(loginUser(username, password)) {  
+        props.successLogin();
+        navigate('/home');
     } else {
-      throw new Error("Invalid Login");
+        console.log('Wrong credentials');
     }
-  }
-
+};
   return (
     <div className="credentials-wrapper">
       <div className="form-container">
@@ -68,35 +36,37 @@ function LoginForm(props) {
           style={{ width: 400 }}
         >
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label>Username</Form.Label>
             <Form.Control
               bsPrefix="custom-class-input"
-              type="email"
-              placeholder="Type your email"
+              type="text"
+              placeholder="Type your username"
               required
-              name="email"
-              onChange={handleChange}
+              name="username"
+              value={username}
+              onChange={(e)=>setUsername(e.target.value)}
             />
             <Form.Control.Feedback type="invalid">
               Please enter a valid email
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formPassword">
-            <Form.Label >Password</Form.Label>
+            <Form.Label>Password</Form.Label>
             <Form.Control
               bsPrefix="custom-class-input"
               type="password"
               placeholder="Type your password"
               required
+              value={password}
               name="password"
-              onChange={handleChange}
+              onChange={(e)=>setPassword(e.target.value)}
             />
             <Form.Control.Feedback type="invalid">
               Please input a password
             </Form.Control.Feedback>
           </Form.Group>
-          <Button bsPrefix="custom-class-btn"  variant="primary" type="submit">
-           <strong>LOGIN</strong> 
+          <Button bsPrefix="custom-class-btn" variant="primary" type="submit">
+            <strong>LOGIN</strong>
           </Button>
         </Form>
         <Link to="/register">Don't have an account?Register instead.</Link>
