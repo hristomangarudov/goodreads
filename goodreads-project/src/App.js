@@ -15,7 +15,9 @@ import BookDetailedPage from "./pages/bookDetailedPage/BookDetailedPage";
 import WriteAReviewPage from "./pages/writeReviewPage/WriteAReviewPage";
 import ChallengesPage from "./pages/challengesPage/ChallengesPage";
 import BannerComponent from "./Components/Banner/Banner";
-import AuthorInfo from "./Components/AuthorInfo/AuthorInfo";
+import AuthorInfoPage from "./pages/authorInfoPage/AuthorInfoPage";
+import EditProfilePage from "./pages/editProfilePage/EditProfilePage";
+
 
 function App() {
   const [users, setUsers] = useState(
@@ -47,6 +49,7 @@ function App() {
 
   const isLogged = activeUser;
 
+  
   return (
     <BrowserRouter>
       {isLogged ? (
@@ -68,7 +71,8 @@ function App() {
             <Route path="challenges" element={<ChallengesPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="detailed-info" element={<BookDetailedPage />} />
-            <Route path="author-info" element={<AuthorInfo />} />
+            <Route path="author-info" element={<AuthorInfoPage />} />
+            <Route path="edit-profile" element={<EditProfilePage/>} />
 
             <Route
               path="/detailed-info/write-review"

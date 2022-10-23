@@ -16,7 +16,7 @@ function Profile(props) {
         <div className="profile-data">
           <div className="profile-name">
             <h4>Evlogi Georgiev</h4>
-            <a href="">(edit profile)</a>
+            <a href="/edit-profile">(edit profile)</a>
           </div>
           <div className="profile-details">
             <strong>Details:</strong>
