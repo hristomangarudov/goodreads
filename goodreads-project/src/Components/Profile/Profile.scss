@@ -26,6 +26,12 @@ h6 {
   flex-direction: column;
   align-items: center;
 }
+.profile-img img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+
+}
 .profile-data {
   margin-left: 20px;
 }

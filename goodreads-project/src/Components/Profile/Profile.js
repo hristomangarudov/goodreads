@@ -7,7 +7,6 @@ function Profile(props) {
       <div className="profile-wrapper">
         <div className="profile-img">
           <img
-            style={{ width: "160px", height: "160px", borderRadius: "80px" }}
             src="https://static.dir.bg/uploads/images/2019/10/03/1869405/768x.jpg?_=1570090953"
           ></img>
           <a href="">1 rating (4.00 avg)</a>
@@ -32,7 +31,7 @@ function Profile(props) {
           <a href="">read(3)</a>
           <a href="">currently reading(1)</a>
           <a href="">to-read(2)</a>
-          <a href="">More...</a>
+          <a href="/mybooks">More...</a>
         </div>
       </div>
       <div className="currently-reading-wrapper">
