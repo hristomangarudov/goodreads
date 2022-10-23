@@ -16,8 +16,8 @@ import WriteAReviewPage from "./pages/writeReviewPage/WriteAReviewPage";
 import ChallengesPage from "./pages/challengesPage/ChallengesPage";
 import BannerComponent from "./Components/Banner/Banner";
 import AuthorInfoPage from "./pages/authorInfoPage/AuthorInfoPage";
-import { getActiveUser } from "./server/users";
 import EditProfile from "./pages/editProfilePage/EditProfile";
+import { getActiveUser } from "./server/users";
 
 function App() {
   const [isLogged, setIsLogged] = useState(getActiveUser());
