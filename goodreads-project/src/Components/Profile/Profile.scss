@@ -12,8 +12,8 @@
   text-decoration: none;
   color: purple;
 }
-h6 {
-  color: purple;
+.profile-h6 {
+  color: black;
 }
 .profile-wrapper {
   display: flex;
@@ -30,7 +30,6 @@ h6 {
   width: 160px;
   height: 160px;
   border-radius: 50%;
-
 }
 .profile-data {
   margin-left: 20px;
@@ -47,7 +46,8 @@ h6 {
 
 .profile-details {
   display: flex;
-  flex-wrap: wrap;
+flex-direction: column;
+  // flex-wrap: wrap;
   justify-content: space-between;
 }
 .profile-details p {

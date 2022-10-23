@@ -16,8 +16,8 @@ import WriteAReviewPage from "./pages/writeReviewPage/WriteAReviewPage";
 import ChallengesPage from "./pages/challengesPage/ChallengesPage";
 import BannerComponent from "./Components/Banner/Banner";
 import AuthorInfoPage from "./pages/authorInfoPage/AuthorInfoPage";
-import EditProfilePage from "./pages/editProfilePage/EditProfilePage";
-
+import EditProfile from "./pages/editProfilePage/EditProfile";
+import Profile from "./Components/Profile/Profile";
 
 function App() {
   const [users, setUsers] = useState(
@@ -37,19 +37,20 @@ function App() {
     setActiveUser(user);
   };
 
-  fetch("https://www.googleapis.com/books/v1/volumes?q=subject:fiction&startIndex=0&maxResults=8&printType=books")
-  .then(res =>{
-    if(res.ok){
-      return res.json()
-    }
-  })
-  .then(data =>{
-    console.log(data)
-  })
+  fetch(
+    "https://www.googleapis.com/books/v1/volumes?q=subject:fiction&startIndex=0&maxResults=8&printType=books"
+  )
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then((data) => {
+      console.log(data);
+    });
 
   const isLogged = activeUser;
 
-  
   return (
     <BrowserRouter>
       {isLogged ? (
@@ -72,7 +73,7 @@ function App() {
             <Route path="profile" element={<ProfilePage />} />
             <Route path="detailed-info" element={<BookDetailedPage />} />
             <Route path="author-info" element={<AuthorInfoPage />} />
-            <Route path="edit-profile" element={<EditProfilePage/>} />
+            <Route path="edit-profile" element={<EditProfile />} />
 
             <Route
               path="/detailed-info/write-review"

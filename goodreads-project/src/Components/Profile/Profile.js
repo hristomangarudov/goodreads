@@ -1,42 +1,52 @@
 import "./Profile.scss";
 import SmallBookCard from "../SmallBookCard/SmallBookCard";
+import { useSelector } from "react-redux";
 
-function Profile(props) {
+function Profile() {
+  const editProfile = useSelector((state) => state.editProfile);
+
   return (
     <div className="profile-main-wrapper">
       <div className="profile-wrapper">
         <div className="profile-img">
-          <img
-            src="https://static.dir.bg/uploads/images/2019/10/03/1869405/768x.jpg?_=1570090953"
-          ></img>
-          <a href="">1 rating (4.00 avg)</a>
-          <a href="">0 reviews</a>
+          <img src={editProfile.profileImg}></img>
         </div>
         <div className="profile-data">
           <div className="profile-name">
-            <h4>Evlogi Georgiev</h4>
+            <h4>{editProfile.username}</h4>
+            {/* <h4>Evlogi Georgiev</h4> */}
+
             <a href="/edit-profile">(edit profile)</a>
           </div>
           <div className="profile-details">
-            <strong>Details:</strong>
-            <p>Sofia,22</p>
+            <span>
+              <strong>Age:</strong> {editProfile.age}
+            </span>
+            <span>
+              <strong>Gender:</strong> {editProfile.gender}
+            </span>
+            <span>
+              <strong>Country:</strong> {editProfile.country}
+            </span>
+            <span>
+              <strong>Profession:</strong> {editProfile.profession}
+            </span>
           </div>
         </div>
       </div>
       <div className="bookshelf-wrapper">
         <div className="bookshelf-user">
-          <h6> EVLOGI BOOKSHELF</h6>
+          <h6 className="profile-h6"> EVLOGI BOOKSHELF</h6>
         </div>
         <div className="bookshelf-links">
           <a href="">read(3)</a>
           <a href="">currently reading(1)</a>
           <a href="">to-read(2)</a>
-          <a href="/mybooks">More...</a>
         </div>
       </div>
       <div className="currently-reading-wrapper">
         <div className="currently-reading-user">
-          <h6>EVLOGI IS CURRENTLY READING</h6>
+          <h6 className="profile-h6">EVLOGI IS CURRENTLY READING</h6>
         </div>
         <div className="currently-reading-books">
           {
@@ -60,7 +70,7 @@ function Profile(props) {
       </div>
       <div className="recent-updates-wrapper">
         <div className="recent-updates-user">
-          <h6> EVLOGI BOOKSHELF</h6>
+          <h6 className="profile-h6"> EVLOGI BOOKSHELF</h6>
         </div>
         <div className="recent-updates-books">
           {

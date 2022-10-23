@@ -1,13 +1,8 @@
-import BookCard from "../../Components/BookCard/BookCard";
-function ChallengesPage(){
-    return(
-      <div>
-      <div className="cards-wrapper">
-        <div className="category-container">
-          <h1>Challenges</h1>
-        </div>
-      </div>
-    </div> 
-    )
+function ChallengesPage() {
+  return (
+    <div className="main-wrapper">
+      <div className="category-container"></div>
+    </div>
+  );
 }
-export default ChallengesPage
+export default ChallengesPage;
