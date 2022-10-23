@@ -16,26 +16,21 @@ import WriteAReviewPage from "./pages/writeReviewPage/WriteAReviewPage";
 import ChallengesPage from "./pages/challengesPage/ChallengesPage";
 import BannerComponent from "./Components/Banner/Banner";
 import AuthorInfoPage from "./pages/authorInfoPage/AuthorInfoPage";
+<<<<<<< HEAD
 import EditProfile from "./pages/editProfilePage/EditProfile";
 import Profile from "./Components/Profile/Profile";
+=======
+import EditProfilePage from "./pages/editProfilePage/EditProfilePage";
+import {getActiveUser} from "./server/users"
+>>>>>>> d0a35697c23ec26e19f4d27b6231ca91657e9890
 
 function App() {
-  const [users, setUsers] = useState(
-    JSON.parse(localStorage.getItem(Constants.USER_LIST_KEY)) || []
-  );
-  const [activeUser, setActiveUser] = useState(
-    JSON.parse(localStorage.getItem(Constants.ACTIVE_USER_KEY)) || null
-  );
+  const [isLogged, setIsLogged] = useState(getActiveUser());
 
-  const updateUsers = (newUser) => {
-    setUsers(users.push(newUser));
-    localStorage.setItem(Constants.USER_LIST_KEY, JSON.stringify(users));
-  };
+  const handleSuccessLogin = () => {
+    setIsLogged(getActiveUser())
+  }
 
-  const updateActive = (user) => {
-    localStorage.setItem(Constants.ACTIVE_USER_KEY, JSON.stringify(user));
-    setActiveUser(user);
-  };
 
   fetch(
     "https://www.googleapis.com/books/v1/volumes?q=subject:fiction&startIndex=0&maxResults=8&printType=books"
@@ -49,7 +44,6 @@ function App() {
       console.log(data);
     });
 
-  const isLogged = activeUser;
 
   return (
     <BrowserRouter>
@@ -61,11 +55,11 @@ function App() {
             <Route path="*" element={<div>Page Not Found</div>} />
             <Route
               path="register"
-              element={<RegisterForm users={users} updateUsers={updateUsers} />}
+              element={<RegisterForm/>}
             />
             <Route
               path="login"
-              element={<LoginForm users={users} updateActive={updateActive} />}
+              element={<LoginForm successLogin={handleSuccessLogin}/>}
             />
             <Route path="home" element={<HomePage />} />
             <Route path="mybooks" element={<MyBooksPage />} />
@@ -87,11 +81,11 @@ function App() {
           <Routes>
             <Route
               path="register"
-              element={<RegisterForm users={users} updateUsers={updateUsers} />}
+              element={<RegisterForm/>}
             />
             <Route
               path="login"
-              element={<LoginForm users={users} updateActive={updateActive} />}
+              element={<LoginForm successLogin={handleSuccessLogin}/>}
             />
             <Route path="*" element={<Navigate to="/register" replace />} />
           </Routes>

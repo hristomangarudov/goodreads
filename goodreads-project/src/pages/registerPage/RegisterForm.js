@@ -1,58 +1,49 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import {registerUser} from "../../server/users"
 
 function RegisterForm(props) {
   const [validated, setValidated] = useState(false);
-  const [state, setState] = useState({
-    email: "",
-    username: "",
-    password: "",
-  });
+  const [error,setError]= useState(false);
+
+  const [details,setDetails]=useState({
+    username:"",
+    password:"",
+    confirmPassword:""
+  })
+
   const navigate = useNavigate();
   const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    setValidated(true);
     event.preventDefault();
-    event.stopPropagation();
-
-    try {
-      addUser(state);
-      navigate("/login");
-    } catch (error) {
-      alert(error.message);
-    } finally {
-      form.reset();
+    const form = event.currentTarget;
+    if(form.checkValidity() === false){
+      setValidated(true)
+    }else if(form.checkValidity() === true && error === false){
+      if (registerUser(details.username, details.password)) {
+        navigate("/login");
+        setValidated(false)
     }
-  };
-  function handleChange(e) {
-    const value = e.target.value;
-    setState({
-      ...state,
-      [e.target.name]: value,
-    });
   }
-  const addUser = (newUser) => {
-    //Може би типът данни на props.users не е това което очакваме
-    let changeDataType = Array.from(props.users);
-
-    let isThereSuchUser = changeDataType.some(
-      (user) => user.email === newUser.email
-    );
-
-    if (isThereSuchUser) {
-      throw new Error("User with given email already exists");
-    } else {
-      props.updateUsers(newUser);
-    }
   };
-
+ const handleChange = (e)=>{
+    const name = e.target.name
+    const value =e.target.value
+    setDetails((prev)=>{
+      return {...prev, [name]:value}
+    })
+    validatePasswords()
+  }
+  function validatePasswords(){
+      if(details.confirmPassword === details.password){
+      setError(false)
+    }else{
+      console.log(details.password,details.confirmPassword)
+      setError(true)
+    }
+  }
   return (
     <div className="credentials-wrapper">
       <div className="form-container">
@@ -65,27 +56,10 @@ function RegisterForm(props) {
           onSubmit={handleSubmit}
           style={{ width: 400 }}
         >
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-            bsPrefix="custom-class-input"
-              type="email"
-              placeholder="Type your email"
-              required
-              name="email"
-              onChange={handleChange}
-            />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-            <Form.Control.Feedback type="invalid">
-              Please enter a valid email
-            </Form.Control.Feedback>
-          </Form.Group>
           <Form.Group className="mb-3" controlId="formUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control
-            bsPrefix="custom-class-input"
+              bsPrefix="custom-class-input"
               type="text"
               placeholder="Type your username"
               required
@@ -99,7 +73,7 @@ function RegisterForm(props) {
           <Form.Group className="mb-3" controlId="formPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
-            bsPrefix="custom-class-input"
+              bsPrefix="custom-class-input"
               type="password"
               placeholder="Type your password"
               required
@@ -108,6 +82,21 @@ function RegisterForm(props) {
             />
             <Form.Control.Feedback type="invalid">
               Please input a password
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formConfirmPassword">
+            <Form.Label>Confirm password</Form.Label>
+            <Form.Control
+              bsPrefix="custom-class-input"
+              type="password"
+              placeholder="Type your password"
+              required
+              name="confirmPassword"
+              onChange={handleChange}
+              isInvalid={error}
+            />
+            <Form.Control.Feedback type="invalid">
+              Passwords do not match
             </Form.Control.Feedback>
           </Form.Group>
           <Button bsPrefix="custom-class-btn" variant="primary" type="submit">
