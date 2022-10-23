@@ -16,13 +16,8 @@ import WriteAReviewPage from "./pages/writeReviewPage/WriteAReviewPage";
 import ChallengesPage from "./pages/challengesPage/ChallengesPage";
 import BannerComponent from "./Components/Banner/Banner";
 import AuthorInfoPage from "./pages/authorInfoPage/AuthorInfoPage";
-<<<<<<< HEAD
-import EditProfile from "./pages/editProfilePage/EditProfile";
-import Profile from "./Components/Profile/Profile";
-=======
-import EditProfilePage from "./pages/editProfilePage/EditProfilePage";
+import EditProfilePage from "./pages/editProfilePage/EditProfile";
 import {getActiveUser} from "./server/users"
->>>>>>> d0a35697c23ec26e19f4d27b6231ca91657e9890
 
 function App() {
   const [isLogged, setIsLogged] = useState(getActiveUser());
@@ -67,7 +62,7 @@ function App() {
             <Route path="profile" element={<ProfilePage />} />
             <Route path="detailed-info" element={<BookDetailedPage />} />
             <Route path="author-info" element={<AuthorInfoPage />} />
-            <Route path="edit-profile" element={<EditProfile />} />
+            <Route path="edit-profile" element={<EditProfilePage />} />
 
             <Route
               path="/detailed-info/write-review"

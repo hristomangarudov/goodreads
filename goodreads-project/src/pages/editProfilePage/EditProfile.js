@@ -6,8 +6,7 @@ import {
   changeProfilePicture,
   changeUserData,
 } from "../../store/editProfileSlice";
-import Professions from "../../server/dataProfessions";
-import Countries from "../../server/dataCountries";
+
 
 function EditProfile() {
   const navigate = useNavigate();
