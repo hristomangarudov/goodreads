@@ -48,7 +48,7 @@ function EditProfile() {
                   JPG or PNG no larger than 5 MB
                 </div>
                 <div>
-                  <label className="btn btn-primary">
+                  <label className="btn btn-primary edit-btn">
                     Upload Photo
                     <input
                       className="img-upload"
@@ -139,14 +139,14 @@ function EditProfile() {
 
                   <div className="buttons">
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-primary edit-btn"
                       type="button"
                       onClick={goToProfilePage}
                     >
                       Cancel
                     </button>
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-primary edit-btn"
                       type="button"
                       onClick={updtateProfileData}
                     >

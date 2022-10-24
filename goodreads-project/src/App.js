@@ -20,6 +20,7 @@ import EditProfilePage from "./pages/editProfilePage/EditProfile";
 import {getActiveUser} from "./server/users"
 import {makeInitApiCall} from "./server/users"
 import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
+import Profile from "./Components/Profile/Profile";
 
 function App() {
   const [isLogged, setIsLogged] = useState(getActiveUser());
@@ -34,11 +35,11 @@ function App() {
           <Navigation />
           <Routes>
             <Route path="*" element={<div>Page Not Found</div>} />
-            <Route path="register" element={<RegisterForm />} />
+            {/* <Route path="register" element={<RegisterForm />} />
             <Route
               path="login"
               element={<LoginForm successLogin={handleSuccessLogin} />}
-            />
+            /> */}
             <Route path="home" element={<HomePage/>} />
             <Route path="mybooks" element={<MyBooksPage />} />
             <Route path="challenges" element={<ChallengesPage />} />

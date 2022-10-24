@@ -3,14 +3,24 @@ import { Link, useNavigate } from "react-router-dom";
 import ReactLogo from "../newLogo.svg";
 import "./Navigation.scss";
 import "./DropdownMenu.scss";
+
 import { useSelector } from "react-redux";
-import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
+
 
 export default function Navigation() {
   const editProfile = useSelector((state) => state.editProfile);
 
+  const navigate = useNavigate();
   const logOut = () => {
     localStorage.removeItem("activeUser");
+    navigate('/login')
+  };
+
+  const goToProfile = () =>{
+    navigate('/profile')
+  };
+  const goToEdit = () =>{
+    navigate('/edit-profile')
   };
 
   return (
@@ -78,16 +88,16 @@ export default function Navigation() {
               </Dropdown.Toggle>
 
               <Dropdown.Menu bsPrefix="dropdown-menu">
-                <Dropdown.Item bsPrefix="dropdown-item" href="/profile">
+                <strong>{editProfile.username}</strong>
+                <Dropdown.Item bsPrefix="dropdown-item underline-items" onClick={goToEdit}>
                   Profile
                 </Dropdown.Item>
-                <Dropdown.Item bsPrefix="dropdown-item" href="/edit-profile">
+                <Dropdown.Item bsPrefix="dropdown-item underline-items"  onClick={goToProfile}>
                   Profile settings
                 </Dropdown.Item>
                 <Dropdown.Item
-                  bsPrefix="dropdown-item"
+                  bsPrefix="dropdown-item underline-items"
                   onClick={logOut}
-                  href="/login"
                 >
                   Log out
                 </Dropdown.Item>
