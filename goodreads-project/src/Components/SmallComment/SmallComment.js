@@ -1,12 +1,12 @@
 import "./SmallComment.scss";
 
-function SmallComment(props) {
+function SmallComment() {
   return (
     <div className="smallComment-container">
       <div className="smallComment-wrapper">
         <div className="smallComment-img">
           <img
-            src={props.picture}
+            src={'https://cdn-icons-png.flaticon.com/512/149/149071.png'}
             alt="..."
           />
         </div>
@@ -14,12 +14,12 @@ function SmallComment(props) {
           <div className="smallComment-body">
             <div>
               <p className="smallComment-title">
-                <a href="">Bahurcho "the GOAT"</a>
+                <a href="">Clay</a>
                 <span style={{ marginLeft: "5px" }}>rated it</span>
                 <span> &#9733;&#9733;&#9733;&#9733;&#9733;</span>
               </p>
               <h6 className="smallComment-title">
-                Nai sarcerazdiratelnata kniga koqto sam ql nqkoga
+              Special thanks to NetGalley and the publisher for a free, electronic copy of this novel received in exchange for an honest review.
               </h6>
             </div>
             <br />

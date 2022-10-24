@@ -1,7 +1,28 @@
-import { Link } from "react-router-dom";
+import Dropdown from "react-bootstrap/Dropdown";
+import { Link, useNavigate } from "react-router-dom";
 import ReactLogo from "../newLogo.svg";
 import "./Navigation.scss";
+import "./DropdownMenu.scss";
+
+import { useSelector } from "react-redux";
+
+
 export default function Navigation() {
+  const editProfile = useSelector((state) => state.editProfile);
+
+  const navigate = useNavigate();
+  const logOut = () => {
+    localStorage.removeItem("activeUser");
+    navigate('/login')
+  };
+
+  const goToProfile = () =>{
+    navigate('/profile')
+  };
+  const goToEdit = () =>{
+    navigate('/edit-profile')
+  };
+
   return (
     <div className="nav-wrapper sticky-top">
       <nav className="navbar navbar-expand-lg bg-light nav-container padding-ref">
@@ -57,9 +78,31 @@ export default function Navigation() {
             </ul>
           </div>
           <div>
-            <Link className="nav-link active nav" to="/profile">
-              Profile
-            </Link>
+            <Dropdown bsPrefix="dropdown">
+              <Dropdown.Toggle
+                bsPrefix="dropdown-toggle"
+                variant="success"
+                id="dropdown-basic"
+              >
+                <img src={editProfile.profileImg}></img>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu bsPrefix="dropdown-menu">
+                <strong>{editProfile.username}</strong>
+                <Dropdown.Item bsPrefix="dropdown-item underline-items" onClick={goToEdit}>
+                  Profile
+                </Dropdown.Item>
+                <Dropdown.Item bsPrefix="dropdown-item underline-items"  onClick={goToProfile}>
+                  Profile settings
+                </Dropdown.Item>
+                <Dropdown.Item
+                  bsPrefix="dropdown-item underline-items"
+                  onClick={logOut}
+                >
+                  Log out
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
         </div>
       </nav>

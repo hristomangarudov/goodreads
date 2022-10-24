@@ -14,8 +14,6 @@ function Profile() {
         <div className="profile-data">
           <div className="profile-name">
             <h4>{editProfile.username}</h4>
-            {/* <h4>Evlogi Georgiev</h4> */}
-
             <a href="/edit-profile">(edit profile)</a>
           </div>
           <div className="profile-details">

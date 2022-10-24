@@ -2,6 +2,7 @@ import "./BookDetailedCard.scss";
 import StarRating from "../StartRating/StarRating";
 import { useNavigate } from "react-router-dom";
 import SmallComment from "../SmallComment/SmallComment";
+import { useSelector } from "react-redux";
 
 function BookDetailedCard(props) {
   let navigate = useNavigate();
@@ -10,15 +11,19 @@ function BookDetailedCard(props) {
     navigate(path);
   };
 
+
+  const editProfile = useSelector((state) => state.editProfile);
+
   return (
     <div className="center-position">
       <div className="general-container detailedCard-white-container">
         <h1>Book Details</h1>
+
         <div className="detailedCard-wrapper ">
           <div className="detailedCard-container">
             <div className="detailedCard-img">
               <img
-                src={props.picture}
+                src={'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1649778755l/60095973._SX318_.jpg'}
                 className="img-fluid rounded-start"
                 alt="..."
               />
@@ -36,10 +41,10 @@ function BookDetailedCard(props) {
               <div className="detailedCard-body">
                 <div>
                   <h2 className="detailedCard-title">
-                    Istoriq za Hari Kozata, Vol. 1
+                  Carrie
                   </h2>
                   <h4 className="detailedCard-title">
-                    by Suu Morishita, Christine Dashiell
+                  by Stephen King (Goodreads Author)
                   </h4>
                 </div>
                 <div className="detailedCard-ratings">
@@ -53,13 +58,7 @@ function BookDetailedCard(props) {
                   <a href="">855 reviews</a>
                 </div>
                 <p className="detailedCard-plot">
-                  Yuki is a typical college student, whose world revolves around
-                  her friends, social media, and the latest sales. But when a
-                  chance encounter on a train leads to her meeting
-                  friend-of-a-friend and fellow student Itsuomi-san, her world
-                  starts to widen. But even though Itsuomi-kun can speak three
-                  languages, sign language isn't one of them. Can the two learn
-                  to communicate the budding feelings between them?
+                A modern classic, Carrie introduced a distinctive new voice in American fiction -- Stephen King. The story of misunderstood high school girl Carrie White, her extraordinary telekinetic powers, and her violent rampage of revenge, remains one of the most barrier-breaking and shocking novels of all time.
                 </p>
                 <div className="detailedCard-text">
                   <small>Kindle Edition, 198 pages</small>
@@ -73,7 +72,7 @@ function BookDetailedCard(props) {
         <div className="write-review-container">
           <div className="write-review-wrapper">
             <div className="user-img">
-              <img src="https://static.dir.bg/uploads/images/2019/10/03/1869405/768x.jpg?_=1570090953" />
+              <img src={editProfile.profileImg} />
             </div>
             <div>
               <div>
