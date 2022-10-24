@@ -79,6 +79,15 @@
       margin-bottom: 30px;
 
     }
+
+}
+.input-container{
+  width: 20%;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  padding: 30px;
+  height: 50vh;
 }
 .cards-container{
   display: flex;
@@ -222,4 +231,10 @@ align-items: center;
 			-2px 2px 10px rgb(32, 220, 244);
 	}
 	
+}
+.checkbox-container{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
 }

@@ -3,6 +3,8 @@ import ListGroupHome from "../../Components/ListGroupHome";
 import { useState,useEffect,useCallback,useRef } from "react";
 import {useBookSearch} from "./useBookSearch"
 import LoadingSpinner from "../../Components/Spinner/Spinner";
+import CheckboxBtn from "../../Components/CheckboxButton/CheckboxButton";
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 function HomePage(props) {
   const [query,setQuery] = useState("")
   const [pageNumber,setPageNumber] = useState(1)
@@ -79,12 +81,18 @@ function HomePage(props) {
           }):<div><LoadingSpinner/><div>Loading...</div></div>}
         </div>
       </div>
-      <div>
-      <div className='input-field'>
-        <input style={{display:"block"}} placeholder='search books' onChange={debounceHandler}/>
-        <span></span>
+      <div className="general-container input-container">
+      <h5>What are you looking for?</h5>
+        <div className='input-field'>
+          <input style={{display:"block"}} placeholder='search books' onChange={debounceHandler}/>
+          <span></span>
         </div>
+
+        <div className="checkbox-container">
+        <h6>Categories:</h6>
+          <CheckboxBtn/>
         </div>
+      </div>
     </div>
   );
 }
