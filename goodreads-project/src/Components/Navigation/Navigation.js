@@ -1,7 +1,18 @@
-import { Link } from "react-router-dom";
+import Dropdown from "react-bootstrap/Dropdown";
+import { Link, useNavigate } from "react-router-dom";
 import ReactLogo from "../newLogo.svg";
 import "./Navigation.scss";
+import "./DropdownMenu.scss";
+import { useSelector } from "react-redux";
+import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
+
 export default function Navigation() {
+  const editProfile = useSelector((state) => state.editProfile);
+
+  const logOut = () => {
+    localStorage.removeItem("activeUser");
+  };
+
   return (
     <div className="nav-wrapper sticky-top">
       <nav className="navbar navbar-expand-lg bg-light nav-container padding-ref">
@@ -57,9 +68,31 @@ export default function Navigation() {
             </ul>
           </div>
           <div>
-            <Link className="nav-link active nav" to="/profile">
-              Profile
-            </Link>
+            <Dropdown bsPrefix="dropdown">
+              <Dropdown.Toggle
+                bsPrefix="dropdown-toggle"
+                variant="success"
+                id="dropdown-basic"
+              >
+                <img src={editProfile.profileImg}></img>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu bsPrefix="dropdown-menu">
+                <Dropdown.Item bsPrefix="dropdown-item" href="/profile">
+                  Profile
+                </Dropdown.Item>
+                <Dropdown.Item bsPrefix="dropdown-item" href="/edit-profile">
+                  Profile settings
+                </Dropdown.Item>
+                <Dropdown.Item
+                  bsPrefix="dropdown-item"
+                  onClick={logOut}
+                  href="/login"
+                >
+                  Log out
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
         </div>
       </nav>

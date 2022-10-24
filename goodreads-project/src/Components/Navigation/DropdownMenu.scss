@@ -1,0 +1,20 @@
+.dropdown-toggle img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.dropdown-toggle{
+  background-color: white !important;
+  border-color: white !important;
+}
+
+.dropdown-toggle::after{
+  content: none !important;
+}
+// .dropdown-toggle::after{
+//   content: none !important;
+// }
+.btn{
+  all: unset !important;
+}

@@ -19,6 +19,8 @@ import AuthorInfoPage from "./pages/authorInfoPage/AuthorInfoPage";
 import EditProfilePage from "./pages/editProfilePage/EditProfile";
 import {getActiveUser} from "./server/users"
 import {makeInitApiCall} from "./server/users"
+import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
+
 function App() {
   const [isLogged, setIsLogged] = useState(getActiveUser());
   const handleSuccessLogin = () => {
@@ -44,6 +46,8 @@ function App() {
             <Route path="detailed-info" element={<BookDetailedPage />} />
             <Route path="author-info" element={<AuthorInfoPage />} />
             <Route path="edit-profile" element={<EditProfilePage />} />
+            <Route path="dropdown-menu" element={<DropdownMenu />} />
+
 
             <Route
               path="/detailed-info/write-review"
