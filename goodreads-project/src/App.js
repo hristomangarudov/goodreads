@@ -2,7 +2,7 @@ import "./App.scss";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import RegisterForm from "./pages/registerPage/RegisterForm";
 import * as Constants from "./constants.js";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import LoginForm from "./pages/loginPage/LoginForm";
 import Navigation from "./Components/Navigation/Navigation";
 import "./Components/list-group-home.scss";
@@ -18,28 +18,12 @@ import BannerComponent from "./Components/Banner/Banner";
 import AuthorInfoPage from "./pages/authorInfoPage/AuthorInfoPage";
 import EditProfilePage from "./pages/editProfilePage/EditProfile";
 import {getActiveUser} from "./server/users"
-
+import {makeInitApiCall} from "./server/users"
 function App() {
   const [isLogged, setIsLogged] = useState(getActiveUser());
-
   const handleSuccessLogin = () => {
     setIsLogged(getActiveUser())
   }
-
-
-  fetch(
-    "https://www.googleapis.com/books/v1/volumes?q=subject:fiction&startIndex=0&maxResults=8&printType=books"
-  )
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-    .then((data) => {
-      console.log(data);
-    });
-
-
   return (
     <BrowserRouter>
       {isLogged ? (
@@ -56,7 +40,7 @@ function App() {
               path="login"
               element={<LoginForm successLogin={handleSuccessLogin}/>}
             />
-            <Route path="home" element={<HomePage />} />
+            <Route path="home" element={<HomePage/>} />
             <Route path="mybooks" element={<MyBooksPage />} />
             <Route path="challenges" element={<ChallengesPage />} />
             <Route path="profile" element={<ProfilePage />} />

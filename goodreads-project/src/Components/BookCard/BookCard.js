@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./BookCard.scss";
 function BookCard(props) {
   const navigate = useNavigate();
-
   return (
     <Card
       style={{ width: props.cardWidth }}
@@ -13,14 +12,18 @@ function BookCard(props) {
     >
       <Card.Img
         variant="top"
-        src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1651426717i/60784641._SX300_.jpg"
+        src={props.cover}
       />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text as="h6">Author</Card.Text>
+        <Card.Title>{props.title}</Card.Title>
+        <Card.Text as="h6">{props.author.toString()}</Card.Text>
         <div>
-          <span className="single-star">&#9733;</span>4.5
+          <span className="single-star">&#9733;</span>{props.averageRating? props.averageRating:0}
+          <span className="total-ratings">
+          {props.ratingsCount? props.ratingsCount:0} Total Reviews
+        </span>
         </div>
+
       </Card.Body>
     </Card>
   );
