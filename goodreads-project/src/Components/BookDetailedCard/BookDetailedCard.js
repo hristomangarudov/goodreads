@@ -11,19 +11,19 @@ function BookDetailedCard(props) {
     navigate(path);
   };
 
-
   const editProfile = useSelector((state) => state.editProfile);
 
   return (
     <div className="center-position">
       <div className="general-container detailedCard-white-container">
-        <h1>Book Details</h1>
-
         <div className="detailedCard-wrapper ">
+          <h1 className='detailedCard-title'>Book Details</h1>
           <div className="detailedCard-container">
             <div className="detailedCard-img">
               <img
-                src={'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1649778755l/60095973._SX318_.jpg'}
+                src={
+                  "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1649778755l/60095973._SX318_.jpg"
+                }
                 className="img-fluid rounded-start"
                 alt="..."
               />
@@ -40,11 +40,9 @@ function BookDetailedCard(props) {
             <div className="detailedCard-body-wrapper">
               <div className="detailedCard-body">
                 <div>
-                  <h2 className="detailedCard-title">
-                  Carrie
-                  </h2>
+                  <h2 className="detailedCard-title">Carrie</h2>
                   <h4 className="detailedCard-title">
-                  by Stephen King (Goodreads Author)
+                    by Stephen King (Goodreads Author)
                   </h4>
                 </div>
                 <div className="detailedCard-ratings">
@@ -58,7 +56,11 @@ function BookDetailedCard(props) {
                   <a href="">855 reviews</a>
                 </div>
                 <p className="detailedCard-plot">
-                A modern classic, Carrie introduced a distinctive new voice in American fiction -- Stephen King. The story of misunderstood high school girl Carrie White, her extraordinary telekinetic powers, and her violent rampage of revenge, remains one of the most barrier-breaking and shocking novels of all time.
+                  A modern classic, Carrie introduced a distinctive new voice in
+                  American fiction -- Stephen King. The story of misunderstood
+                  high school girl Carrie White, her extraordinary telekinetic
+                  powers, and her violent rampage of revenge, remains one of the
+                  most barrier-breaking and shocking novels of all time.
                 </p>
                 <div className="detailedCard-text">
                   <small>Kindle Edition, 198 pages</small>

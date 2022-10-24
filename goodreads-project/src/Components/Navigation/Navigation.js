@@ -13,7 +13,7 @@ export default function Navigation() {
   const navigate = useNavigate();
   const logOut = () => {
     localStorage.removeItem("activeUser");
-    navigate('/login')
+
   };
 
   const goToProfile = () =>{
@@ -56,11 +56,11 @@ export default function Navigation() {
                   My Books
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link active" to="/challenges">
                   Challenges
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item"></li>
               <li className="nav-item">
                 <Link className="nav-link active" to="/detailed-info">
@@ -89,15 +89,16 @@ export default function Navigation() {
 
               <Dropdown.Menu bsPrefix="dropdown-menu">
                 <strong>{editProfile.username}</strong>
-                <Dropdown.Item bsPrefix="dropdown-item underline-items" onClick={goToEdit}>
+                <Dropdown.Item bsPrefix="dropdown-item underline-items" onClick={goToProfile}>
                   Profile
                 </Dropdown.Item>
-                <Dropdown.Item bsPrefix="dropdown-item underline-items"  onClick={goToProfile}>
+                <Dropdown.Item bsPrefix="dropdown-item underline-items"  onClick={goToEdit}>
                   Profile settings
                 </Dropdown.Item>
                 <Dropdown.Item
                   bsPrefix="dropdown-item underline-items"
                   onClick={logOut}
+                  href='/login'
                 >
                   Log out
                 </Dropdown.Item>

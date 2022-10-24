@@ -39,15 +39,16 @@
   align-items: center;
   border-bottom: 1px solid grey;
 }
-.profile-name a {
+.edit-profile-a{
   margin-left: 10px;
-  color: grey;
+  color: purple;
 }
-
+.edit-profile-a:hover{
+  color: #0d6efd;
+}
 .profile-details {
   display: flex;
-flex-direction: column;
-  // flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-between;
 }
 .profile-details p {

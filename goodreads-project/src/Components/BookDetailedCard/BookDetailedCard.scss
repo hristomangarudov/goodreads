@@ -8,11 +8,11 @@
 }
 .center-position a {
   text-decoration: none;
-  // color: #78dbea;
-  color: purple;
-  // color: darkviolet;
+  color: #997be2;
 }
-
+.center-position a:hover{
+  color: #0d62e3;
+}
 .detailedCard-wrapper {
   display: flex;
   flex-direction: column;
@@ -28,6 +28,7 @@
 .detailedCard-img {
   min-width: 200px;
 }
+
 .detailedCard-ratings {
   margin: 5px 0 5px 0;
 }
@@ -66,6 +67,20 @@
 .write-review {
   // border: 1px solid #78dbea;
   border: 1px solid purple;
+  border-radius: 15px;  
+  margin-left: 20px;
+}
+.write-review:hover{
+  border: 1px solid #997be2;
+  color: white;
+  background-color: #997be2;
   border-radius: 15px;
   margin-left: 20px;
+}
+.detailedCard-title {
+  margin: 0 !important;
+  color: black !important;
+}
+.community-reviews{
+  font-weight: 600;
 }
