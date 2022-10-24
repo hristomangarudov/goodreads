@@ -32,13 +32,10 @@ function App() {
           <Navigation />
           <Routes>
             <Route path="*" element={<div>Page Not Found</div>} />
-            <Route
-              path="register"
-              element={<RegisterForm/>}
-            />
+            <Route path="register" element={<RegisterForm />} />
             <Route
               path="login"
-              element={<LoginForm successLogin={handleSuccessLogin}/>}
+              element={<LoginForm successLogin={handleSuccessLogin} />}
             />
             <Route path="home" element={<HomePage/>} />
             <Route path="mybooks" element={<MyBooksPage />} />
@@ -58,13 +55,10 @@ function App() {
       ) : (
         <>
           <Routes>
-            <Route
-              path="register"
-              element={<RegisterForm/>}
-            />
+            <Route path="register" element={<RegisterForm />} />
             <Route
               path="login"
-              element={<LoginForm successLogin={handleSuccessLogin}/>}
+              element={<LoginForm successLogin={handleSuccessLogin} />}
             />
             <Route path="*" element={<Navigate to="/register" replace />} />
           </Routes>
