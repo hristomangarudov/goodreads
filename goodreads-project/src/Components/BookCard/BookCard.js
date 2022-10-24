@@ -5,7 +5,7 @@ function BookCard(props) {
   const navigate = useNavigate();
   return (
     <Card
-      style={{ width: props.cardWidth }}
+      style={{ width: "18rem" }}
       bg="light"
       text="dark"
       className="book-card"

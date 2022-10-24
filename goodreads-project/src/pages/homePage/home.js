@@ -1,25 +1,50 @@
 import BookCard from "../../Components/BookCard/BookCard";
 import ListGroupHome from "../../Components/ListGroupHome";
-import { useState,useEffect } from "react";
+import { useState,useEffect,useCallback,useRef } from "react";
+import {useBookSearch} from "./useBookSearch"
+import LoadingSpinner from "../../Components/Spinner/Spinner";
 function HomePage(props) {
-  const [data,setData] = useState(null)
-  const [loading,setLoading]= useState(true)
-  useEffect(()=>{
-    fetch(
-      "https://www.googleapis.com/books/v1/volumes?q=subject:fantasy&startIndex=0&maxResults=8&printType=books"
-    )
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((data) => {
-        setData(data);
-      })
-      .finally(()=>{
-        setLoading(false)
-      })
-  },[])
+  const [query,setQuery] = useState("")
+  const [pageNumber,setPageNumber] = useState(1)
+  const{
+    books,
+    hasMore,
+    loading,
+    error
+  }=useBookSearch(query,pageNumber)
+  const observer = useRef()
+  const lastBookRef=useCallback(node=>{
+    // console.log(node)
+    // if(loading){
+    //   return
+    // }
+    // if(observer.current){
+    //   observer.current.disconnect()
+    // }
+    //   observer.current = new IntersectionObserver(entries=>{
+    //     if(entries[0].isIntersecting && hasMore){
+    //       setPageNumber(prevPageNumber =>prevPageNumber + 10)
+    //     }
+    //   })
+    //   if(node){
+    //     observer.current.observe(node)
+    //   }
+  },[loading,hasMore])
+  
+  function debounce(func, timeout = 1300){
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    };
+  }
+  const debounceHandler=useCallback(
+    debounce(handleSearch, 1300)
+  , [])
+  function handleSearch(e){
+    setQuery(e.target.value)
+    setPageNumber(1)
+  }
 
   return (
     <div className="cards-wrapper">
@@ -29,20 +54,37 @@ function HomePage(props) {
       <div className="general-container">
         <h1>Discover</h1>
         <div className="cards-container">
-          {/* {console.log(data)} */}
-          {loading?<div>loading</div>:data.items.map(card =>
-          (<BookCard 
-          cardWidth="15rem"
-          key={card.id}
-          cover={card.volumeInfo.imageLinks.thumbnail}
-          author={card.volumeInfo.authors}
-          title={card.volumeInfo.title}
-          averageRating={card.volumeInfo.averageRating}
-          ratingsCount={card.volumeInfo.ratingsCount}
-          />)
-          )}
+          {console.log(books)}
+          {books.length>0? books[0].items.map((book,index)=>{
+            // console.log(book)
+            if(books[0].items.length === index + 1){
+              return <div ref={lastBookRef} key={book.id}><BookCard
+              key={book.id}
+              cover={book.volumeInfo.imageLinks.thumbnail?book.volumeInfo.imageLinks.thumbnail:"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1651426717i/60784641._SX300_.jpg"}
+              author={book.volumeInfo.authors?book.volumeInfo.authors:["unknown"]}
+              title={book.volumeInfo.title}
+              averageRating={book.volumeInfo.averageRating}
+              ratingsCount={book.volumeInfo.ratingsCount}
+              /></div>
+            }else{
+              return <div key={book.id}><BookCard
+              key={book.id}
+              cover={book.volumeInfo.imageLinks.thumbnail?book.volumeInfo.imageLinks.thumbnail:"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1651426717i/60784641._SX300_.jpg"}
+              author={book.volumeInfo.authors?book.volumeInfo.authors:["unknown"]}
+              title={book.volumeInfo.title}
+              averageRating={book.volumeInfo.averageRating}
+              ratingsCount={book.volumeInfo.ratingsCount}
+              /></div> 
+            }
+          }):<div><LoadingSpinner/><div>Loading...</div></div>}
         </div>
       </div>
+      <div>
+      <div className='input-field'>
+        <input style={{display:"block"}} placeholder='search books' onChange={debounceHandler}/>
+        <span></span>
+        </div>
+        </div>
     </div>
   );
 }
