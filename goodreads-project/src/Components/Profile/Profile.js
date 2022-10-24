@@ -14,7 +14,7 @@ function Profile() {
         <div className="profile-data">
           <div className="profile-name">
             <h4>{editProfile.username}</h4>
-            <a href="/edit-profile">(edit profile)</a>
+            <a className="edit-profile-a" href="/edit-profile">(edit profile)</a>
           </div>
           <div className="profile-details">
             <span>

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   profileImg: "http://bootdey.com/img/Content/avatar/avatar1.png",
-  username: "Aleksandar",
+  username: "Evlogi Georgiev",
   age: "20",
   gender: "Male",
   country: "Bulgaria",
