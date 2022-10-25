@@ -14,7 +14,7 @@ export function useBookSearch(query, pageNumber, subject, title) {
     setLoading(true);
     setError(false);
     fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=intitle:${query}&printType=books&startIndex=${pageNumber}`
+      `https://www.googleapis.com/books/v1/volumes?q=intitle:${query}&printType=books&startIndex=${pageNumber}&maxResults=9`
     )
       .then((res) => {
         if (res.ok) {

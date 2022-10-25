@@ -63,9 +63,9 @@ function HomePage(props) {
                 return <div ref={lastBookRef} key={book.id}><BookCard
                 key={book.id}
                 cover={      book.volumeInfo.imageLinks === undefined
-                  ? ""
+                  ? "https://books.google.bg/googlebooks/images/no_cover_thumb.gif"
                   : `${book.volumeInfo.imageLinks.thumbnail}`}
-                author={book.volumeInfo.authors?book.volumeInfo.authors:["unknown"]}
+                author={book.volumeInfo.authors?book.volumeInfo.authors:[""]}
                 title={book.volumeInfo.title}
                 averageRating={book.volumeInfo.averageRating}
                 ratingsCount={book.volumeInfo.ratingsCount}
@@ -74,9 +74,9 @@ function HomePage(props) {
                 return <div key={book.id}><BookCard
                 key={book.id}
                 cover={      book.volumeInfo.imageLinks === undefined
-                  ? ""
+                  ? "https://books.google.bg/googlebooks/images/no_cover_thumb.gif"
                   : `${book.volumeInfo.imageLinks.thumbnail}`}
-                author={book.volumeInfo.authors?book.volumeInfo.authors:["unknown"]}
+                author={book.volumeInfo.authors?book.volumeInfo.authors:[""]}
                 title={book.volumeInfo.title}
                 averageRating={book.volumeInfo.averageRating}
                 ratingsCount={book.volumeInfo.ratingsCount}
