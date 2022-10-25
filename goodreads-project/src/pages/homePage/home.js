@@ -33,7 +33,7 @@ function HomePage(props) {
     //   }
   },[loading,hasMore])
   
-  function debounce(func, timeout = 1300){
+  function debounce(func,timeout){
     let timer;
     return (...args) => {
       clearTimeout(timer);
@@ -58,26 +58,34 @@ function HomePage(props) {
         <div className="cards-container">
           {console.log(books)}
           {books.length>0? books[0].items.map((book,index)=>{
-            // console.log(book)
-            if(books[0].items.length === index + 1){
-              return <div ref={lastBookRef} key={book.id}><BookCard
-              key={book.id}
-              cover={book.volumeInfo.imageLinks.thumbnail?book.volumeInfo.imageLinks.thumbnail:"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1651426717i/60784641._SX300_.jpg"}
-              author={book.volumeInfo.authors?book.volumeInfo.authors:["unknown"]}
-              title={book.volumeInfo.title}
-              averageRating={book.volumeInfo.averageRating}
-              ratingsCount={book.volumeInfo.ratingsCount}
-              /></div>
+            if(books[0].totalItems >0){
+              if(books[0].items.length === index + 1){
+                return <div ref={lastBookRef} key={book.id}><BookCard
+                key={book.id}
+                cover={      book.volumeInfo.imageLinks === undefined
+                  ? ""
+                  : `${book.volumeInfo.imageLinks.thumbnail}`}
+                author={book.volumeInfo.authors?book.volumeInfo.authors:["unknown"]}
+                title={book.volumeInfo.title}
+                averageRating={book.volumeInfo.averageRating}
+                ratingsCount={book.volumeInfo.ratingsCount}
+                /></div>
+              }else{
+                return <div key={book.id}><BookCard
+                key={book.id}
+                cover={      book.volumeInfo.imageLinks === undefined
+                  ? ""
+                  : `${book.volumeInfo.imageLinks.thumbnail}`}
+                author={book.volumeInfo.authors?book.volumeInfo.authors:["unknown"]}
+                title={book.volumeInfo.title}
+                averageRating={book.volumeInfo.averageRating}
+                ratingsCount={book.volumeInfo.ratingsCount}
+                /></div> 
+              }
             }else{
-              return <div key={book.id}><BookCard
-              key={book.id}
-              cover={book.volumeInfo.imageLinks.thumbnail?book.volumeInfo.imageLinks.thumbnail:"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1651426717i/60784641._SX300_.jpg"}
-              author={book.volumeInfo.authors?book.volumeInfo.authors:["unknown"]}
-              title={book.volumeInfo.title}
-              averageRating={book.volumeInfo.averageRating}
-              ratingsCount={book.volumeInfo.ratingsCount}
-              /></div> 
+              return <div>No results found</div>
             }
+           
           }):<div><LoadingSpinner/><div>Loading...</div></div>}
         </div>
       </div>

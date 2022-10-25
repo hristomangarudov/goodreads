@@ -13,6 +13,7 @@ function BookCard(props) {
       <Card.Img
         variant="top"
         src={props.cover}
+        alt=""
       />
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
