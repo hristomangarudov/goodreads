@@ -1,47 +1,47 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {registerUser} from "../../server/users"
+import { registerUser } from "../../server/users";
 
 function RegisterForm(props) {
   const [validated, setValidated] = useState(false);
-  const [error,setError]= useState(false);
+  const [error, setError] = useState(false);
 
-  const [details,setDetails]=useState({
-    username:"",
-    password:"",
-    confirmPassword:""
-  })
+  const [details, setDetails] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
 
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
-    if(form.checkValidity() === false){
-      setValidated(true)
-    }else if(form.checkValidity() === true && error === false){
+    if (!form.checkValidity()) {
+      setValidated(true);
+    } else if (form.checkValidity() && error) {
       if (registerUser(details.username, details.password)) {
         navigate("/login");
-        setValidated(false)
+        setValidated(false);
+      }
     }
-  }
   };
- const handleChange = (e)=>{
-    const name = e.target.name
-    const value =e.target.value
-    setDetails((prev)=>{
-      return {...prev, [name]:value}
-    })
-    validatePasswords()
-  }
-  function validatePasswords(){
-      if(details.confirmPassword === details.password){
-      setError(false)
-    }else{
-      console.log(details.password,details.confirmPassword)
-      setError(true)
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setDetails((prev) => {
+      return { ...prev, [name]: value };
+    });
+    validatePasswords();
+  };
+  function validatePasswords() {
+    if (details.confirmPassword === details.password) {
+      setError(false);
+    } else {
+      console.log(details.password, details.confirmPassword);
+      setError(true);
     }
   }
   return (
