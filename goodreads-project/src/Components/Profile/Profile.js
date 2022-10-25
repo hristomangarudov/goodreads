@@ -1,9 +1,15 @@
 import "./Profile.scss";
 import SmallBookCard from "../SmallBookCard/SmallBookCard";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
   const editProfile = useSelector((state) => state.editProfile);
+  const navigate = useNavigate()
+  const toEdit = () => {
+    navigate("/edit-profile")
+  }
+
 
   return (
     <div className="profile-main-wrapper">
@@ -14,7 +20,7 @@ function Profile() {
         <div className="profile-data">
           <div className="profile-name">
             <h4>{editProfile.username}</h4>
-            <a className="edit-profile-a" href="/edit-profile">(edit profile)</a>
+            <a className="edit-profile-a" onClick={toEdit}>(edit profile)</a>
           </div>
           <div className="profile-details">
             <span>

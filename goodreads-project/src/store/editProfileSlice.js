@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+
+const activeUser = JSON.parse(localStorage.getItem('activeUser'))
+
 const initialState = {
   profileImg: "http://bootdey.com/img/Content/avatar/avatar1.png",
-  username: "Evlogi Georgiev",
+  username: activeUser?activeUser.username:"",
   age: "20",
   gender: "Male",
   country: "Bulgaria",

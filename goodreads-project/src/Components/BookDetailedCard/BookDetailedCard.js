@@ -79,7 +79,7 @@ function BookDetailedCard(props) {
             <div>
               <div>
                 <span>
-                  <a href="">Evlogi Georgiev</a>, start your review of A Sign of
+                  <a href="">{editProfile.username}</a>, start your review of A Sign of
                   Affection, Vol. 1
                 </span>
               </div>

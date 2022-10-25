@@ -7,8 +7,8 @@
   transform: scale(1.05) !important;
 }
 .dropdown-toggle {
-  background-color: white !important;
-  border-color: white !important;
+  background-color: #f8f9fa !important;
+  border-color: #f8f9fa !important;
 }
 .dropdown-toggle::after {
   content: none !important;
@@ -30,5 +30,5 @@
     5px 10px 0px -7px rgba(142, 66, 209, 0.9);
 }
 .underline-items:focus {
-  background-color: white !important;
+  background-color: white !important;   
 }
