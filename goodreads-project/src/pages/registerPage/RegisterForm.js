@@ -34,16 +34,20 @@ function RegisterForm(props) {
     setDetails((prev) => {
       return { ...prev, [name]: value };
     });
-    validatePasswords();
   };
-  function validatePasswords() {
-    if (details.confirmPassword === details.password) {
-      setError(false);
-    } else {
-      console.log(details.password, details.confirmPassword);
+  function validatePasswords(pass,confirm) {
+    if (pass === confirm) {
       setError(true);
+      console.log(error)
+    } else if(pass !== confirm) {
+      console.log(details.password, details.confirmPassword);
+      setError(false);
+      console.log(error)
     }
   }
+  useEffect(()=>{
+    validatePasswords(details.password,details.confirmPassword);
+  },[details])
   return (
     <div className="credentials-wrapper">
       <div className="form-container">
@@ -93,7 +97,7 @@ function RegisterForm(props) {
               required
               name="confirmPassword"
               onChange={handleChange}
-              isInvalid={error}
+              isInvalid={!error}
             />
             <Form.Control.Feedback type="invalid">
               Passwords do not match
