@@ -1,104 +1,132 @@
 import BookCard from "../../Components/BookCard/BookCard";
 import ListGroupHome from "../../Components/ListGroupHome";
-import { useState,useEffect,useCallback,useRef } from "react";
-import {useBookSearch} from "./useBookSearch"
+import { useState, useEffect, useCallback, useRef } from "react";
+import { useBookSearch } from "./useBookSearch";
 import LoadingSpinner from "../../Components/Spinner/Spinner";
 import CheckboxBtn from "../../Components/CheckboxButton/CheckboxButton";
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 function HomePage(props) {
-  const [query,setQuery] = useState("")
-  const [pageNumber,setPageNumber] = useState(1)
-  const{
-    books,
-    hasMore,
-    loading,
-    error
-  }=useBookSearch(query,pageNumber)
-  const observer = useRef()
-  const lastBookRef=useCallback(node=>{
-    // console.log(node)
-    // if(loading){
-    //   return
-    // }
-    // if(observer.current){
-    //   observer.current.disconnect()
-    // }
-    //   observer.current = new IntersectionObserver(entries=>{
-    //     if(entries[0].isIntersecting && hasMore){
-    //       setPageNumber(prevPageNumber =>prevPageNumber + 10)
-    //     }
-    //   })
-    //   if(node){
-    //     observer.current.observe(node)
-    //   }
-  },[loading,hasMore])
-  
-  function debounce(func,timeout){
+  const [query, setQuery] = useState("");
+  const [pageNumber, setPageNumber] = useState(1);
+  const { books, hasMore, loading, error } = useBookSearch(query, pageNumber);
+  const observer = useRef();
+  const lastBookRef = useCallback(
+    (node) => {
+      // console.log(node)
+      // if(loading){
+      //   return
+      // }
+      // if(observer.current){
+      //   observer.current.disconnect()
+      // }
+      //   observer.current = new IntersectionObserver(entries=>{
+      //     if(entries[0].isIntersecting && hasMore){
+      //       setPageNumber(prevPageNumber =>prevPageNumber + 10)
+      //     }
+      //   })
+      //   if(node){
+      //     observer.current.observe(node)
+      //   }
+    },
+    [loading, hasMore]
+  );
+
+  function debounce(func, timeout) {
     let timer;
     return (...args) => {
       clearTimeout(timer);
-      timer = setTimeout(() => { func.apply(this, args); }, timeout);
+      timer = setTimeout(() => {
+        func.apply(this, args);
+      }, timeout);
     };
   }
-  const debounceHandler=useCallback(
-    debounce(handleSearch, 1300)
-  , [])
-  function handleSearch(e){
-    setQuery(e.target.value)
-    setPageNumber(1)
+  const debounceHandler = useCallback(debounce(handleSearch, 1300), []);
+  function handleSearch(e) {
+    setQuery(e.target.value);
+    setPageNumber(1);
   }
 
   return (
     <div className="cards-wrapper">
       <div className="general-list-container">
-      <ListGroupHome></ListGroupHome>
+        <ListGroupHome></ListGroupHome>
       </div>
       <div className="general-container">
         <h1>Discover</h1>
         <div className="cards-container">
           {console.log(books)}
-          {books.length>0? books[0].items.map((book,index)=>{
-            if(books[0].totalItems >0){
-              if(books[0].items.length === index + 1){
-                return <div ref={lastBookRef} key={book.id}><BookCard
-                key={book.id}
-                cover={      book.volumeInfo.imageLinks === undefined
-                  ? "https://books.google.bg/googlebooks/images/no_cover_thumb.gif"
-                  : `${book.volumeInfo.imageLinks.thumbnail}`}
-                author={book.volumeInfo.authors?book.volumeInfo.authors:[""]}
-                title={book.volumeInfo.title}
-                averageRating={book.volumeInfo.averageRating}
-                ratingsCount={book.volumeInfo.ratingsCount}
-                /></div>
-              }else{
-                return <div key={book.id}><BookCard
-                key={book.id}
-                cover={      book.volumeInfo.imageLinks === undefined
-                  ? "https://books.google.bg/googlebooks/images/no_cover_thumb.gif"
-                  : `${book.volumeInfo.imageLinks.thumbnail}`}
-                author={book.volumeInfo.authors?book.volumeInfo.authors:[""]}
-                title={book.volumeInfo.title}
-                averageRating={book.volumeInfo.averageRating}
-                ratingsCount={book.volumeInfo.ratingsCount}
-                /></div> 
+          {books.length > 0 ? (
+            books[0].items.map((book, index) => {
+              if (books[0].totalItems > 0) {
+                if (books[0].items.length === index + 1) {
+                  return (
+                    <div ref={lastBookRef} key={book.id}>
+                      <BookCard
+                        key={book.id}
+                        cover={
+                          book.volumeInfo.imageLinks === undefined
+                            ? "https://books.google.bg/googlebooks/images/no_cover_thumb.gif"
+                            : `${book.volumeInfo.imageLinks.thumbnail}`
+                        }
+                        author={
+                          book.volumeInfo.authors
+                            ? book.volumeInfo.authors
+                            : [""]
+                        }
+                        title={book.volumeInfo.title}
+                        averageRating={book.volumeInfo.averageRating}
+                        ratingsCount={book.volumeInfo.ratingsCount}
+                      />
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div key={book.id}>
+                      <BookCard
+                        key={book.id}
+                        cover={
+                          book.volumeInfo.imageLinks === undefined
+                            ? "https://books.google.bg/googlebooks/images/no_cover_thumb.gif"
+                            : `${book.volumeInfo.imageLinks.thumbnail}`
+                        }
+                        author={
+                          book.volumeInfo.authors
+                            ? book.volumeInfo.authors
+                            : [""]
+                        }
+                        title={book.volumeInfo.title}
+                        averageRating={book.volumeInfo.averageRating}
+                        ratingsCount={book.volumeInfo.ratingsCount}
+                      />
+                    </div>
+                  );
+                }
+              } else {
+                return <div>No results found</div>;
               }
-            }else{
-              return <div>No results found</div>
-            }
-           
-          }):<div><LoadingSpinner/><div>Loading...</div></div>}
+            })
+          ) : (
+            <div>
+              <LoadingSpinner />
+              <div>Loading...</div>
+            </div>
+          )}
         </div>
       </div>
       <div className="general-container input-container">
-      <h5>What are you looking for?</h5>
-        <div className='input-field'>
-          <input style={{display:"block"}} placeholder='search books' onChange={debounceHandler}/>
+        <h5>What are you looking for?</h5>
+        <div className="input-field">
+          <input
+            style={{ display: "block" }}
+            placeholder="search books"
+            onChange={debounceHandler}
+          />
           <span></span>
         </div>
 
         <div className="checkbox-container">
-        <h6>Categories:</h6>
-          <CheckboxBtn/>
+          <h6>Categories:</h6>
+          <CheckboxBtn />
         </div>
       </div>
     </div>

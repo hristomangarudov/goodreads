@@ -6,7 +6,7 @@ import {
   changeProfilePicture,
   changeUserData,
 } from "../../store/editProfileSlice";
-
+import { getActiveUser, getAllUsers } from "../../server/users";
 
 function EditProfile() {
   const navigate = useNavigate();
@@ -16,8 +16,12 @@ function EditProfile() {
   const editProfile = useSelector((state) => state.editProfile);
   const dispatch = useDispatch();
 
-  const [profileImg, setFile] = useState(editProfile.profileImg);
   const [username, setUsername] = useState(editProfile.username);
+  const [password, setPassword] = useState(editProfile.password);
+  const [profileImg, setFile] = useState(editProfile.profileImg);
+  const [profileUsername, setProfileUsername] = useState(
+    editProfile.profileUsername
+  );
   const [age, setAge] = useState(editProfile.age);
   const [gender, setGender] = useState(editProfile.gender);
   const [country, setCountry] = useState(editProfile.country);
@@ -29,8 +33,33 @@ function EditProfile() {
   };
 
   const updtateProfileData = () => {
-    dispatch(changeUserData({ username, age, gender, country, profession }));
+    dispatch(
+      changeUserData({ profileUsername, age, gender, country, profession })
+    );
     dispatch(changeProfilePicture({ profileImg }));
+
+    let newUserInfo = {
+      username,
+      password,
+      profileUsername,
+      age,
+      gender,
+      country,
+      profession,
+      profileImg,
+    };
+    localStorage.setItem("activeUser", JSON.stringify(newUserInfo));
+
+    let active = getActiveUser();
+    let users = JSON.parse(localStorage.getItem("users"));
+    let neededUserIndex = users.findIndex(
+      (obj) => obj.username === active.username
+    );
+    users.splice(neededUserIndex, 1)
+    users.push(newUserInfo);
+  
+    localStorage.setItem("users", JSON.stringify(users));
+
     navigate("/profile");
   };
 
@@ -42,7 +71,7 @@ function EditProfile() {
             <div className="card mb-4 mb-xl-0">
               <div className="card-header">Profile Picture</div>
               <div className="card-body text-center">
-                <img className="profile-upload-img" src={profileImg} alt="" />
+                <img className="profile-upload-img" src='http://bootdey.com/img/Content/avatar/avatar1.png' alt="" />
 
                 <div className="small font-italic text-muted mb-4">
                   JPG or PNG no larger than 5 MB
@@ -71,8 +100,8 @@ function EditProfile() {
                       site)
                     </label>
                     <input
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
+                      value={profileUsername}
+                      onChange={(e) => setProfileUsername(e.target.value)}
                       className="form-control"
                       id="inputUsername"
                       type="text"

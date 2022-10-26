@@ -11,7 +11,6 @@ import "./Components/WriteAReview.scss";
 import MyBooksPage from "./pages/myBooksPage/MyBooksPage";
 import HomePage from "./pages/homePage/home";
 import ProfilePage from "./pages/profilePage/ProfilePage";
-import BookDetailedPage from "./pages/bookDetailedPage/BookDetailedPage";
 import WriteAReviewPage from "./pages/writeReviewPage/WriteAReviewPage";
 import ChallengesPage from "./pages/challengesPage/ChallengesPage";
 import BannerComponent from "./Components/Banner/Banner";
@@ -20,7 +19,7 @@ import EditProfilePage from "./pages/editProfilePage/EditProfile";
 import {getActiveUser} from "./server/users"
 import {makeInitApiCall} from "./server/users"
 import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
-import Profile from "./Components/Profile/Profile";
+import BookDetailedPage from "./Components/BookDetailedCard/BookDetailedCard"
 
 function App() {
   const [isLogged, setIsLogged] = useState(getActiveUser());
@@ -35,11 +34,11 @@ function App() {
           <Navigation />
           <Routes>
             <Route path="*" element={<div>Page Not Found</div>} />
-            {/* <Route path="register" element={<RegisterForm />} />
+            <Route path="register" element={<RegisterForm />} />
             <Route
               path="login"
               element={<LoginForm successLogin={handleSuccessLogin} />}
-            /> */}
+            />
             <Route path="home" element={<HomePage/>} />
             <Route path="mybooks" element={<MyBooksPage />} />
             <Route path="challenges" element={<ChallengesPage />} />

@@ -6,7 +6,7 @@ function SmallComment() {
       <div className="smallComment-wrapper">
         <div className="smallComment-img">
           <img
-            src={'https://cdn-icons-png.flaticon.com/512/149/149071.png'}
+            src={"https://cdn-icons-png.flaticon.com/512/149/149071.png"}
             alt="..."
           />
         </div>
@@ -19,7 +19,9 @@ function SmallComment() {
                 <span> &#9733;&#9733;&#9733;&#9733;&#9733;</span>
               </p>
               <h6 className="smallComment-title">
-              Special thanks to NetGalley and the publisher for a free, electronic copy of this novel received in exchange for an honest review.
+                Special thanks to NetGalley and the publisher for a free,
+                electronic copy of this novel received in exchange for an honest
+                review.
               </h6>
             </div>
             <br />
@@ -36,16 +38,12 @@ function SmallComment() {
             <div className="detailedCard-ratings">
               <a href="">46 likes</a>
               <span>&nbsp;·&nbsp;</span>
-              <button className="detailedCard-likeBtn">
-                Like
-              </button>
+              <button className="detailedCard-likeBtn">Like</button>
               <span>&nbsp;·&nbsp;</span>
               <a href="">comment</a>
               <span>&nbsp;·&nbsp;</span>
               <a href="">see review</a>
-
             </div>
-
           </div>
         </div>
       </div>

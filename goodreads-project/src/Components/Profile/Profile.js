@@ -19,7 +19,7 @@ function Profile() {
         </div>
         <div className="profile-data">
           <div className="profile-name">
-            <h4>{editProfile.username}</h4>
+            <h4>{editProfile.profileUsername}</h4>
             <a className="edit-profile-a" onClick={toEdit}>(edit profile)</a>
           </div>
           <div className="profile-details">

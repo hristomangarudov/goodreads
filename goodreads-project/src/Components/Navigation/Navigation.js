@@ -88,7 +88,7 @@ export default function Navigation() {
               </Dropdown.Toggle>
 
               <Dropdown.Menu bsPrefix="dropdown-menu">
-                <strong>{editProfile.username}</strong>
+                <strong>{editProfile.profileUsername}</strong>
                 <Dropdown.Item bsPrefix="dropdown-item underline-items" onClick={goToProfile}>
                   Profile
                 </Dropdown.Item>

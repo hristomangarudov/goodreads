@@ -48,9 +48,7 @@ function BookDetailedCard(props) {
                 <div className="detailedCard-ratings">
                   <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                   <small>4.54</small>
-                  <span>&nbsp;·&nbsp;</span>
-                  <a href="">Rating details</a>
-                  <span>&nbsp;·&nbsp;</span>
+                  <span>&nbsp;·&nbsp;</span>                 
                   <a href="">4.215 ratings</a>
                   <span>&nbsp;·&nbsp;</span>
                   <a href="">855 reviews</a>
@@ -79,7 +77,7 @@ function BookDetailedCard(props) {
             <div>
               <div>
                 <span>
-                  <a href="">{editProfile.username}</a>, start your review of A Sign of
+                  <a href="">{editProfile.profileUsername}</a>, start your review of A Sign of
                   Affection, Vol. 1
                 </span>
               </div>

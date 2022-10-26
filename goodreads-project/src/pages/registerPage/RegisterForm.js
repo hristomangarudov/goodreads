@@ -35,19 +35,19 @@ function RegisterForm(props) {
       return { ...prev, [name]: value };
     });
   };
-  function validatePasswords(pass,confirm) {
+  function validatePasswords(pass, confirm) {
     if (pass === confirm) {
       setError(true);
-      console.log(error)
-    } else if(pass !== confirm) {
+      console.log(error);
+    } else if (pass !== confirm) {
       console.log(details.password, details.confirmPassword);
       setError(false);
-      console.log(error)
+      console.log(error);
     }
   }
-  useEffect(()=>{
-    validatePasswords(details.password,details.confirmPassword);
-  },[details])
+  useEffect(() => {
+    validatePasswords(details.password, details.confirmPassword);
+  }, [details]);
   return (
     <div className="credentials-wrapper">
       <div className="form-container">
