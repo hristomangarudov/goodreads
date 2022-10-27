@@ -55,7 +55,7 @@ function HomePage(props) {
       <div className="general-container">
         <h1>Discover</h1>
         <div className="cards-container">
-          {console.log(books)}
+          {/* {console.log(books)} */}
           {books.length > 0 ? (
             books.map((book, index) => {
               // console.log(book)

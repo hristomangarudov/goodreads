@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function DetailedBookSearch() {
+export function DetailedBookSearch() {
   const [error, setError] = useState(false);
   const [bookInfo, setBookInfo] = useState([]);
 
@@ -16,13 +16,12 @@ export default function DetailedBookSearch() {
         }
       })
       .then((data) => {
-        // console.log(data);
-       setBookInfo(data)
+       setBookInfo([data])
       })
       .catch((e) => {
         setError(true);
       });
   }, []);
-
+  console.log(bookInfo)
   return { bookInfo };
 }

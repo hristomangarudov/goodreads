@@ -19,7 +19,7 @@ import EditProfilePage from "./pages/editProfilePage/EditProfile";
 import {getActiveUser} from "./server/users"
 import {makeInitApiCall} from "./server/users"
 import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
-import BookDetailedPage from "./Components/BookDetailedCard/BookDetailedCard"
+import BookDetailedPage from "./pages/bookDetailedPage/BookDetailedPage"
 
 function App() {
   const [isLogged, setIsLogged] = useState(getActiveUser());

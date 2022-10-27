@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import SmallComment from "../SmallComment/SmallComment";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import DetailedBookSearch from "../../pages/BookDetailedPage/DetailedBookSearch";
+import DetailedBookSearch from "../../pages/bookDetailedPage/DetailedBookSearch";
 
 function BookDetailedCard(props) {
   let navigate = useNavigate();
