@@ -1,18 +1,19 @@
-import BookDetailedCard from "../../Components/BookDetailedCard/BookDetailedCard"
+import { useEffect } from "react";
+import BookDetailedCard from "../../Components/BookDetailedCard/BookDetailedCard";
+import DetailedBookSearch from "./DetailedBookSearch";
 
+// 'zyTCAlFPjgYC'
+function BookDetailedPage() {
 
-function BookDetailedPage(){
-return(
+ 
+
+  return (
     <>
-    <BookDetailedCard
-      picture={
-        "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1470082995l/29056083._SY475_.jpg"
-      }
-    />
-    <br />
-    <br />
-    <br />
-  </>
-)
+      <BookDetailedCard title={bookInfo.volumeInfo.title} />
+      <br />
+      <br />
+      <br />
+    </>
+  );
 }
-export default BookDetailedPage
+export default BookDetailedPage;

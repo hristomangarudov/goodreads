@@ -27,10 +27,21 @@ function EditProfile() {
   const [country, setCountry] = useState(editProfile.country);
   const [profession, setProfession] = useState(editProfile.profession);
 
+  // const fileSelectedHandler = (e) => {
+  //   console.log(e.target.files[0]);
+  //   setFile(URL.createObjectURL(e.target.files[0]));
+  // };
+
   const fileSelectedHandler = (e) => {
-    console.log(e.target.files[0]);
-    setFile(URL.createObjectURL(e.target.files[0]));
+        let fileReader = new FileReader();
+        // fileReader.readAsDataURL(file);   
+        fileReader.onload = function(){
+         console.log(fileReader.result);
+         debugger
+        }
+
   };
+
 
   const updtateProfileData = () => {
     dispatch(
@@ -71,7 +82,7 @@ function EditProfile() {
             <div className="card mb-4 mb-xl-0">
               <div className="card-header">Profile Picture</div>
               <div className="card-body text-center">
-                <img className="profile-upload-img" src='http://bootdey.com/img/Content/avatar/avatar1.png' alt="" />
+                <img className="profile-upload-img" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="" />
 
                 <div className="small font-italic text-muted mb-4">
                   JPG or PNG no larger than 5 MB

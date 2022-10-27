@@ -3,6 +3,8 @@ import StarRating from "../StartRating/StarRating";
 import { useNavigate } from "react-router-dom";
 import SmallComment from "../SmallComment/SmallComment";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import DetailedBookSearch from "../../pages/BookDetailedPage/DetailedBookSearch";
 
 function BookDetailedCard(props) {
   let navigate = useNavigate();
@@ -11,13 +13,15 @@ function BookDetailedCard(props) {
     navigate(path);
   };
 
-  const editProfile = useSelector((state) => state.editProfile);
+  // const {bookInfo} = DetailedBookSearch()
+  // console.log(bookInfo.volumeInfo.title);
 
+  const editProfile = useSelector((state) => state.editProfile);
   return (
     <div className="center-position">
       <div className="general-container detailedCard-white-container">
         <div className="detailedCard-wrapper ">
-          <h1 className='detailedCard-title'>Book Details</h1>
+          <h1 className="detailedCard-title">Book Details</h1>
           <div className="detailedCard-container">
             <div className="detailedCard-img">
               <img
@@ -40,7 +44,9 @@ function BookDetailedCard(props) {
             <div className="detailedCard-body-wrapper">
               <div className="detailedCard-body">
                 <div>
-                  <h2 className="detailedCard-title">Carrie</h2>
+                  <h2 className="detailedCard-title">{props.title}</h2>
+                  {/* <h2 className="detailedCard-title">Carrie</h2> */}
+
                   <h4 className="detailedCard-title">
                     by Stephen King (Goodreads Author)
                   </h4>
@@ -48,7 +54,7 @@ function BookDetailedCard(props) {
                 <div className="detailedCard-ratings">
                   <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                   <small>4.54</small>
-                  <span>&nbsp;·&nbsp;</span>                 
+                  <span>&nbsp;·&nbsp;</span>
                   <a href="">4.215 ratings</a>
                   <span>&nbsp;·&nbsp;</span>
                   <a href="">855 reviews</a>
@@ -77,8 +83,8 @@ function BookDetailedCard(props) {
             <div>
               <div>
                 <span>
-                  <a href="">{editProfile.profileUsername}</a>, start your review of A Sign of
-                  Affection, Vol. 1
+                  <a href="">{editProfile.profileUsername}</a>, start your
+                  review of A Sign of Affection, Vol. 1
                 </span>
               </div>
               <div className="rating-review">
