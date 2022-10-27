@@ -5,7 +5,7 @@ function BookCard(props) {
   const navigate = useNavigate();
   return (
     <Card
-      style={{ width: "18rem" }}
+      style={{ width: "15rem" }}
       bg="light"
       text="dark"
       className="book-card"
@@ -16,7 +16,7 @@ function BookCard(props) {
         alt=""
       />
       <Card.Body>
-        <Card.Title>{props.title}</Card.Title>
+        <Card.Title as="h5">{props.title}</Card.Title>
         <Card.Text as="h6">{props.author.toString()}</Card.Text>
         <div>
           <span className="single-star">&#9733;</span>{props.averageRating? props.averageRating:0}

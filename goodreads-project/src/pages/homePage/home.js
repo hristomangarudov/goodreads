@@ -4,7 +4,8 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { useBookSearch } from "./useBookSearch";
 import LoadingSpinner from "../../Components/Spinner/Spinner";
 import CheckboxBtn from "../../Components/CheckboxButton/CheckboxButton";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
+import { useDispatch, useSelector } from "react-redux";
+import { getRadioValue } from "../../store/selectCategorySlice"
 function HomePage(props) {
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
@@ -12,21 +13,21 @@ function HomePage(props) {
   const observer = useRef();
   const lastBookRef = useCallback(
     (node) => {
-      // console.log(node)
-      // if(loading){
-      //   return
-      // }
-      // if(observer.current){
-      //   observer.current.disconnect()
-      // }
-      //   observer.current = new IntersectionObserver(entries=>{
-      //     if(entries[0].isIntersecting && hasMore){
-      //       setPageNumber(prevPageNumber =>prevPageNumber + 10)
-      //     }
-      //   })
-      //   if(node){
-      //     observer.current.observe(node)
-      //   }
+      console.log(node)
+      if(loading){
+        return
+      }
+      if(observer.current){
+        observer.current.disconnect()
+      }
+        observer.current = new IntersectionObserver(entries=>{
+          if(entries[0].isIntersecting && hasMore){
+            setPageNumber(prevPageNumber =>prevPageNumber + 9)
+          }
+        })
+        if(node){
+          observer.current.observe(node)
+        }
     },
     [loading, hasMore]
   );
@@ -56,13 +57,14 @@ function HomePage(props) {
         <div className="cards-container">
           {console.log(books)}
           {books.length > 0 ? (
-            books[0].items.map((book, index) => {
-              if (books[0].totalItems > 0) {
-                if (books[0].items.length === index + 1) {
+            books.map((book, index) => {
+              // console.log(book)
+              if (books.length > 0) {
+                if (books.length === index + 1) {
                   return (
                     <div ref={lastBookRef} key={book.id}>
                       <BookCard
-                        key={book.id}
+                        key={index}
                         cover={
                           book.volumeInfo.imageLinks === undefined
                             ? "https://books.google.bg/googlebooks/images/no_cover_thumb.gif"
@@ -81,7 +83,7 @@ function HomePage(props) {
                   );
                 } else {
                   return (
-                    <div key={book.id}>
+                    <div key={index}>
                       <BookCard
                         key={book.id}
                         cover={
@@ -102,14 +104,19 @@ function HomePage(props) {
                   );
                 }
               } else {
-                return <div>No results found</div>;
+                <div>
+                <LoadingSpinner />
+                <div>Loading...</div>
+              </div>
+            
               }
             })
           ) : (
             <div>
-              <LoadingSpinner />
-              <div>Loading...</div>
-            </div>
+            {loading && !error &&<LoadingSpinner />}
+            {loading  && !error &&<div>Loading...</div>}
+            {error &&<div>No items found</div>}
+          </div>
           )}
         </div>
       </div>

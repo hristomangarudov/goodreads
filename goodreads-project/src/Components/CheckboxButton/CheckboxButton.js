@@ -1,18 +1,29 @@
 import React,{ useState} from "react"
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
+import { useDispatch, useSelector } from "react-redux";
+import { getRadioValue } from "../../store/selectCategorySlice";
 
 export default function CheckboxBtn() {
-    const [checked, setChecked] = useState(false);
-    const [radioValue, setRadioValue] = useState('1');
+    const dispatch = useDispatch()
+    const radioValue = useSelector((state) =>state.category.radioValue)
     const radios = [
-        { name: 'Fiction', value: '1' },
-        { name: 'Horror', value: '2' },
-        { name: 'Education', value: '3' },
+        { name: 'Fiction', value: 'Fiction' },
+        { name: 'Cooking', value: 'Cooking' },
+        { name: 'Education', value: 'Education' },
+        { name: 'Architecture', value: 'Architecture' },
+        { name: 'Art', value: 'Art' },
+        { name: 'Philosophy', value: 'Philosophy' },
+        { name: 'Psychology', value: 'Psychology' },
+        { name: 'Science', value: 'Science' },
+        { name: 'Drama', value: 'Drama' },
+        { name: 'Humour', value: 'Humour' },
       ];
-
+    const handleChange = (e)=>{
+      dispatch(getRadioValue(e.currentTarget.value)) 
+    }
     return(
-        <ButtonGroup>
+        <ButtonGroup className="categories-group">
         {radios.map((radio, idx) => (
           <ToggleButton
             key={idx}
@@ -22,7 +33,7 @@ export default function CheckboxBtn() {
             name="radio"
             value={radio.value}
             checked={radioValue === radio.value}
-            onChange={(e) => setRadioValue(e.currentTarget.value)}
+            onChange={handleChange}
           >
             {radio.name}
           </ToggleButton>
@@ -31,3 +42,4 @@ export default function CheckboxBtn() {
       
     )
 }
+
