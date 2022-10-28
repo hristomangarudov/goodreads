@@ -1,3 +1,4 @@
+
 export function getAllUsers() {
   return JSON.parse(localStorage.getItem("users")) || [];
 }
@@ -21,7 +22,12 @@ export function registerUser(
   gender = "",
   country = "",
   profession = "",
-  profileImg = "http://bootdey.com/img/Content/avatar/avatar1.png"
+  profileImg = "http://bootdey.com/img/Content/avatar/avatar1.png",
+  bookshelf = {
+    currentlyReading: ["zyTCAlFPjgYC","3Hr5ONX-2G8C","gHcEDAAAQBAJ"],
+    wantToRead:["DaUqAQAAIAAJ"],
+    read:["NtvWPAAACAAJ"]
+  }
 ) {
   let users = getAllUsers();
   const isUserTaken = users.find((user) => user.username === username);
@@ -37,6 +43,7 @@ export function registerUser(
     country,
     profession,
     profileImg,
+    bookshelf
   });
   localStorage.setItem("users", JSON.stringify(users));
   return true;
@@ -59,17 +66,3 @@ export function getActiveUser() {
   return JSON.parse(localStorage.getItem("activeUser"));
 }
 
-export function makeInitApiCall() {
-  return fetch(
-    "https://www.googleapis.com/books/v1/volumes?q=subject:fiction&startIndex=0&maxResults=8&printType=books"
-  )
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-    .then((data) => {
-      console.log(data);
-      return data;
-    });
-}

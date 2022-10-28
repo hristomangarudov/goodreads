@@ -17,7 +17,6 @@ import BannerComponent from "./Components/Banner/Banner";
 import AuthorInfoPage from "./pages/authorInfoPage/AuthorInfoPage";
 import EditProfilePage from "./pages/editProfilePage/EditProfile";
 import {getActiveUser} from "./server/users"
-import {makeInitApiCall} from "./server/users"
 import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 import BookDetailedPage from "./pages/bookDetailedPage/BookDetailedPage"
 

@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 
-export function DetailedBookSearch() {
+export function GetSpecificBook(bookId) {
   const [error, setError] = useState(false);
-  const [bookInfo, setBookInfo] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [book, setBook] = useState([]);
 
   useEffect(() => {
       
     setError(false);
     fetch(
-      `https://www.googleapis.com/books/v1/volumes/zyTCAlFPjgYC`
+      `https://www.googleapis.com/books/v1/volumes/${bookId}`
     )
       .then((res) => {
         if (res.ok) {
@@ -16,11 +17,12 @@ export function DetailedBookSearch() {
         }
       })
       .then((data) => {
-       setBookInfo([data])
+       setBook(data)
       })
       .catch((e) => {
         setError(true);
       });
-  }, []);
-  return { bookInfo };
+  }, [bookId]);
+  return { book };
 }
+
