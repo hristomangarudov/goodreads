@@ -6,11 +6,13 @@ import LoadingSpinner from "../../Components/Spinner/Spinner";
 import CheckboxBtn from "../../Components/CheckboxButton/CheckboxButton";
 import { useDispatch, useSelector } from "react-redux";
 import { getRadioValue } from "../../store/selectCategorySlice"
+import { useNavigate } from "react-router-dom";
 function HomePage(props) {
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const { books, hasMore, loading, error } = useBookSearch(query, pageNumber);
   const observer = useRef();
+  const navigate = useNavigate()
   const lastBookRef = useCallback(
     (node) => {
       if(loading){
@@ -59,7 +61,7 @@ function HomePage(props) {
               if (books.length > 0) {
                 if (books.length === index + 1) {
                   return (
-                    <div ref={lastBookRef} key={book.id}>
+                    <div ref={lastBookRef} key={book.id} onClick={()=>navigate(`/detailed-info/id=${book.id}`)} className="fake-link">
                       <BookCard
                         key={index}
                         cover={
@@ -80,7 +82,7 @@ function HomePage(props) {
                   );
                 } else {
                   return (
-                    <div key={index}>
+                    <div key={index} onClick={()=>navigate(`/detailed-info/${book.id}`)} className="fake-link">
                       <BookCard
                         key={book.id}
                         cover={

@@ -49,7 +49,7 @@ function App() {
             <Route path="mybooks" element={<MyBooksPage />} />
             <Route path="challenges" element={<ChallengesPage />} />
             <Route path="profile" element={<ProfilePage />} />
-            <Route path="detailed-info" element={<BookDetailedPage />} />
+            <Route path="detailed-info/:id" element={<BookDetailedPage />} />
             <Route path="author-info" element={<AuthorInfoPage />} />
             <Route path="edit-profile" element={<EditProfilePage />} />
             <Route path="dropdown-menu" element={<DropdownMenu />} />

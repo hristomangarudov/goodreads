@@ -63,7 +63,7 @@ export default function Navigation() {
               </li> */}
               <li className="nav-item"></li>
               <li className="nav-item">
-                <Link className="nav-link active" to="/detailed-info">
+                <Link className="nav-link active" to="/detailed-info/">
                   Detailed Book Info
                 </Link>
               </li>
