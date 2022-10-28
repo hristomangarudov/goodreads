@@ -14,7 +14,7 @@ function SmallComment() {
           <div className="smallComment-body">
             <div>
               <p className="smallComment-title">
-                <a href="">Clay</a>
+                <a className="username-review" href="">Clay</a>
                 <span style={{ marginLeft: "5px" }}>rated it</span>
                 <span> &#9733;&#9733;&#9733;&#9733;&#9733;</span>
               </p>

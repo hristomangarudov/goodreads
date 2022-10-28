@@ -22,13 +22,12 @@
 }
 .detailedCard-likeBtn {
   text-align: center;
-  // border: 1px solid #78dbea;
-  border: 1px solid purple;
-  // background-color: purple;
+  border: 1px solid rgba(142,66,209,.9);
   border-radius: 15px;
 }
 .detailedCard-likeBtn:hover{
-  border: 1px solid #997be2;
+  border: 1px solid rgba(142,66,209,.9);
   color: white;
-  background-color: #997be2;
+  background-color: rgba(142,66,209,.9);
 }
+

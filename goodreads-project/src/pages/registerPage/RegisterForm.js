@@ -1,14 +1,15 @@
+import "./RegisterForm.scss";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState, useEffect } from "react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { registerUser } from "../../server/users";
+import { getAllUsers, registerUser } from "../../server/users";
 
 function RegisterForm(props) {
   const [validated, setValidated] = useState(false);
   const [error, setError] = useState(false);
-
+  const [enoughPassLength, setPassLength] = useState(true);
   const [details, setDetails] = useState({
     username: "",
     password: "",
@@ -35,19 +36,45 @@ function RegisterForm(props) {
       return { ...prev, [name]: value };
     });
   };
-  function validatePasswords(pass, confirm) {
-    if (pass === confirm) {
+  function validatePasswords(password, confirmPassword) {
+    if (password === confirmPassword) {
       setError(true);
       console.log(error);
-    } else if (pass !== confirm) {
+    } else if (password !== confirmPassword) {
       console.log(details.password, details.confirmPassword);
       setError(false);
       console.log(error);
     }
+
+    let decimal =
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+
+      if(password.length > 0){
+
+        if (password.match(decimal)) {
+          setPassLength(true);
+        } else {
+          setPassLength(false);
+        }
+      } else {
+        setPassLength(true);
+
+      }
+
+    console.log(password.length);
+
   }
   useEffect(() => {
-    validatePasswords(details.password, details.confirmPassword);
+    validatePasswords(
+      details.password,
+      details.confirmPassword,
+      details.username
+    );
   }, [details]);
+
+  let users = getAllUsers();
+  const isUserTaken = users.find((user) => user.username === details.username);
+
   return (
     <div className="credentials-wrapper">
       <div className="form-container">
@@ -70,6 +97,14 @@ function RegisterForm(props) {
               name="username"
               onChange={handleChange}
             />
+
+            <span
+              className="username-taken"
+              style={{ display: isUserTaken ? "block" : "none" }}
+            >
+              Username is already taken
+            </span>
+
             <Form.Control.Feedback type="invalid">
               Please enter a valid username
             </Form.Control.Feedback>
@@ -84,6 +119,14 @@ function RegisterForm(props) {
               name="password"
               onChange={handleChange}
             />
+            <span
+              className="username-taken"
+              style={{ display: enoughPassLength ? "none" : "block" }}
+            >
+              Password between 8 to 15 characters which contain at least one
+              lowercase letter, one uppercase letter, one numeric digit, and one
+              special character
+            </span>
             <Form.Control.Feedback type="invalid">
               Please input a password
             </Form.Control.Feedback>
@@ -103,7 +146,12 @@ function RegisterForm(props) {
               Passwords do not match
             </Form.Control.Feedback>
           </Form.Group>
-          <Button bsPrefix="custom-class-btn" variant="primary" type="submit">
+          <Button
+            bsPrefix="custom-class-btn"
+            variant="primary"
+            type="submit"
+            disabled={!enoughPassLength}
+          >
             REGISTER
           </Button>
         </Form>

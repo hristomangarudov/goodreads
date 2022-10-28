@@ -3,23 +3,34 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {loginUser} from "../../server/users"
+import { loginUser } from "../../server/users";
 
 function LoginForm(props) {
   const [validated, setValidated] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState(true);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    if(loginUser(username, password)) {  
-        props.successLogin();
-        navigate('/home');
+    event.preventDefault();
+    if (loginUser(username, password)) {
+      props.successLogin();
+      navigate("/home");
+      setCredentials(true);
+      setValidated(false);
     } else {
-        console.log('Wrong credentials');
+      if (username && password) {
+        setCredentials(false);
+        setValidated(false);
+      } else {
+        setCredentials(true);
+        setValidated(true);
+      }
+
+      // setCredentials(false);
     }
-};
+  };
   return (
     <div className="credentials-wrapper">
       <div className="form-container">
@@ -27,7 +38,6 @@ function LoginForm(props) {
           <h1>
             <strong> Login</strong>
           </h1>
-          {/* <h1>Login</h1> */}
         </div>
         <Form
           noValidate
@@ -44,7 +54,7 @@ function LoginForm(props) {
               required
               name="username"
               value={username}
-              onChange={(e)=>setUsername(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <Form.Control.Feedback type="invalid">
               Please enter a valid email
@@ -59,8 +69,14 @@ function LoginForm(props) {
               required
               value={password}
               name="password"
-              onChange={(e)=>setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
+            <span
+              className="username-taken"
+              style={{ display: credentials ? "none" : "block" }}
+            >
+              Wrong username or password
+            </span>
             <Form.Control.Feedback type="invalid">
               Please input a password
             </Form.Control.Feedback>

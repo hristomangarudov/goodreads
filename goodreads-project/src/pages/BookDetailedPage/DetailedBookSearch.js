@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function DetailedBookSearch() {
+export function useDetailedBookSearch() {
   const [error, setError] = useState(false);
   const [bookInfo, setBookInfo] = useState([]);
 

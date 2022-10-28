@@ -48,7 +48,6 @@ function App() {
             <Route path="edit-profile" element={<EditProfilePage />} />
             <Route path="dropdown-menu" element={<DropdownMenu />} />
 
-
             <Route
               path="/detailed-info/write-review"
               element={<WriteAReviewPage />}

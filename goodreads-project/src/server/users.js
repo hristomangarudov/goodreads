@@ -16,7 +16,7 @@ export function getAllUsers() {
 export function registerUser(
   username,
   password,
-  profileUsername = `User-${Math.floor( Math.random()*10000)}`,
+  profileUsername = `User-${Math.floor(Math.random() * 10000)}`,
   age = "",
   gender = "",
   country = "",
@@ -73,3 +73,17 @@ export function makeInitApiCall() {
       return data;
     });
 }
+
+// export function checkLoginData(name, pass) {
+//   let users = getAllUsers();
+//   const isThereSuchUser = users.find((user) => user.username === name);
+//   if (isThereSuchUser) {
+//     if (
+//       isThereSuchUser.username !== name ||
+//       isThereSuchUser.password !== pass
+//     ) {
+//       return false
+//     }
+//   }
+//   return true
+// }

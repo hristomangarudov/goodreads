@@ -8,7 +8,7 @@
 }
 .center-position a {
   text-decoration: none;
-  color: #997be2;
+  color: rgba(142,66,209,.9);
 }
 .center-position a:hover{
   color: #0d62e3;
@@ -22,11 +22,10 @@
   padding: 40px;
   display: flex;
   gap: 30px;
-  align-items: center;
   width: 60vw;
 }
 .detailedCard-img {
-  min-width: 200px;
+  min-width: 200px; 
 }
 
 .detailedCard-ratings {
@@ -66,15 +65,14 @@
   padding-top: 15px;
 }
 .write-review {
-  // border: 1px solid #78dbea;
-  border: 1px solid purple;
+  border: 1px solid rgba(142,66,209,.9);
   border-radius: 15px;  
   margin-left: 20px;
 }
 .write-review:hover{
-  border: 1px solid #997be2;
+  border: 1px solidrgba(142,66,209,.9);
   color: white;
-  background-color: #997be2;
+  background-color:rgba(142,66,209,.9);
   border-radius: 15px;
   margin-left: 20px;
 }
@@ -83,5 +81,19 @@
   color: black !important;
 }
 .community-reviews{
-  font-weight: 600;
+  font-family: "Nunito",sans-serif;
+  // color: rgba(142,66,209,.9);
+  // font-weight: 500;
 }
+.username-review{
+  font-family: "Nunito",sans-serif;
+  font-size: 16px;
+}
+.read-more-less{
+ color: rgba(142,66,209,.9);
+ border-bottom: 1px solid rgba(142,66,209,.9);
+}
+
+.read-more-less:hover{
+  color: rgba(142,66,209,.9);
+ }

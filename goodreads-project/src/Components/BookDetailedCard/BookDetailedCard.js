@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import SmallComment from "../SmallComment/SmallComment";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import DetailedBookSearch from "../../pages/bookDetailedPage/DetailedBookSearch";
 
 function BookDetailedCard(props) {
   let navigate = useNavigate();
@@ -13,8 +12,11 @@ function BookDetailedCard(props) {
     navigate(path);
   };
 
-  // const {bookInfo} = DetailedBookSearch()
-  // console.log(bookInfo.volumeInfo.title);
+  const [isReadMoreShown, setReadMoreShown] = useState(false);
+
+  const toggleBtn = () => {
+    setReadMoreShown(!isReadMoreShown);
+  }; 
 
   const editProfile = useSelector((state) => state.editProfile);
   return (
@@ -25,9 +27,7 @@ function BookDetailedCard(props) {
           <div className="detailedCard-container">
             <div className="detailedCard-img">
               <img
-                src={
-                  "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1649778755l/60095973._SX318_.jpg"
-                }
+                src={props.image}
                 className="img-fluid rounded-start"
                 alt="..."
               />
@@ -45,27 +45,37 @@ function BookDetailedCard(props) {
               <div className="detailedCard-body">
                 <div>
                   <h2 className="detailedCard-title">{props.title}</h2>
-                  {/* <h2 className="detailedCard-title">Carrie</h2> */}
-
-                  <h4 className="detailedCard-title">
-                    by Stephen King (Goodreads Author)
-                  </h4>
+                  <h4 className="detailedCard-title">{props.author}</h4>
                 </div>
                 <div className="detailedCard-ratings">
                   <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                  <small>4.54</small>
+                  <small>{props.averageRating}</small>
                   <span>&nbsp;·&nbsp;</span>
-                  <a href="">4.215 ratings</a>
+                  <a href="">{props.ratingsCount} ratings</a>
                   <span>&nbsp;·&nbsp;</span>
                   <a href="">855 reviews</a>
                 </div>
-                <p className="detailedCard-plot">
-                  A modern classic, Carrie introduced a distinctive new voice in
-                  American fiction -- Stephen King. The story of misunderstood
-                  high school girl Carrie White, her extraordinary telekinetic
-                  powers, and her violent rampage of revenge, remains one of the
-                  most barrier-breaking and shocking novels of all time.
-                </p>
+                {isReadMoreShown ? (
+                  <>
+                    <p className="detailedCard-plot">
+                      {props.description}
+                      <button className="read-more-less" onClick={toggleBtn}>
+                        {isReadMoreShown ? "read less" : "read more"}
+                      </button>
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="detailedCard-plot">
+                      {props.description.substr(0, 500)}
+
+                      <button className="read-more-less" onClick={toggleBtn}>
+                        {isReadMoreShown ? "read less" : "read more"}
+                      </button>
+                    </p>
+                  </>
+                )}
+                
                 <div className="detailedCard-text">
                   <small>Kindle Edition, 198 pages</small>
                   <small>Published March 31st 2020 by Kodansha Comics</small>
@@ -83,12 +93,12 @@ function BookDetailedCard(props) {
             <div>
               <div>
                 <span>
-                  <a href="">{editProfile.profileUsername}</a>, start your
+                  <a className="username-review" href="">{editProfile.profileUsername}</a>, start your
                   review of A Sign of Affection, Vol. 1
                 </span>
               </div>
               <div className="rating-review">
-                {<StarRating></StarRating>}
+                {/* {<StarRating></StarRating>} */}
                 <button onClick={routeChange} className="write-review">
                   Write a review
                 </button>

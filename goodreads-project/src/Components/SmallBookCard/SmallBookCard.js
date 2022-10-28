@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import "./SmallBookCard.scss";
 
 function SmallBookCard(props) {
+
+  const editProfile = useSelector((state) => state.editProfile);
   return (
     <div className="smallBook-wrapper">
       <div className="smallBook-container">
@@ -11,7 +14,7 @@ function SmallBookCard(props) {
           />
           <div className="smallBook-text">
             <span>
-              <a href="">Evlogi Georgiev</a> is currently reading
+              <a className="username-review" href="">{editProfile.profileUsername}</a> is currently reading
             </span>
             <h5>A Sign of Affection, Vol. 1 (A Sign of Affection, #1)</h5>
             <span>

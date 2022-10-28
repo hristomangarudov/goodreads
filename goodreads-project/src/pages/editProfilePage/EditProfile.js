@@ -18,7 +18,10 @@ function EditProfile() {
 
   const [username, setUsername] = useState(editProfile.username);
   const [password, setPassword] = useState(editProfile.password);
-  const [profileImg, setFile] = useState(editProfile.profileImg);
+  // const [profileImg, setFile] = useState(editProfile.profileImg);
+  // const [baseImage, setBaseImage] = useState("");
+  const [profileImg, setProfileImg] = useState(editProfile.profileImg);
+
   const [profileUsername, setProfileUsername] = useState(
     editProfile.profileUsername
   );
@@ -32,16 +35,26 @@ function EditProfile() {
   //   setFile(URL.createObjectURL(e.target.files[0]));
   // };
 
-  const fileSelectedHandler = (e) => {
-        let fileReader = new FileReader();
-        // fileReader.readAsDataURL(file);   
-        fileReader.onload = function(){
-         console.log(fileReader.result);
-         debugger
-        }
-
+  const uploadImage = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertBase64(file);
+    setProfileImg(base64);
   };
 
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
 
   const updtateProfileData = () => {
     dispatch(
@@ -66,9 +79,9 @@ function EditProfile() {
     let neededUserIndex = users.findIndex(
       (obj) => obj.username === active.username
     );
-    users.splice(neededUserIndex, 1)
+    users.splice(neededUserIndex, 1);
     users.push(newUserInfo);
-  
+
     localStorage.setItem("users", JSON.stringify(users));
 
     navigate("/profile");
@@ -82,7 +95,7 @@ function EditProfile() {
             <div className="card mb-4 mb-xl-0">
               <div className="card-header">Profile Picture</div>
               <div className="card-body text-center">
-                <img className="profile-upload-img" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="" />
+                <img className="profile-upload-img" src={profileImg} alt="" />
 
                 <div className="small font-italic text-muted mb-4">
                   JPG or PNG no larger than 5 MB
@@ -93,7 +106,9 @@ function EditProfile() {
                     <input
                       className="img-upload"
                       type="file"
-                      onChange={fileSelectedHandler}
+                      onChange={(e) => {
+                        uploadImage(e);
+                      }}
                     ></input>
                   </label>
                 </div>

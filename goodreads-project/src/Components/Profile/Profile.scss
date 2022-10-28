@@ -10,10 +10,11 @@
 }
 .profile-main-wrapper a {
   text-decoration: none;
-  color: purple;
+  color: rgba(142, 66, 209, 0.9);
 }
 .profile-h6 {
   color: black;
+  font-family: "Nunito",sans-serif;
 }
 .profile-wrapper {
   display: flex;
@@ -39,12 +40,12 @@
   align-items: center;
   border-bottom: 1px solid grey;
 }
-.edit-profile-a{
+.edit-profile-a {
   margin-left: 10px;
-  color: purple;
+  color: rgba(142, 66, 209, 0.9);
 }
 
-.edit-profile-a:hover{
+.edit-profile-a:hover {
   cursor: pointer;
   color: #0d6efd;
 }
@@ -72,6 +73,7 @@
 .bookshelf-links {
   display: flex;
   justify-content: space-between;
+  font-family: "Nunito",sans-serif;
 }
 .currently-reading-wrapper {
   margin-top: 20px;
