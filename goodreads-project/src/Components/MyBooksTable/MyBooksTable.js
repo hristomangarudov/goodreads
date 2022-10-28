@@ -1,8 +1,32 @@
+import { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 import StarRating from "../StartRating/StarRating";
-import "./MyBooksTable.scss"
+import "./MyBooksTable.scss";
 function MyBooksTable(props) {
+  const [currentBooks, setCurrentBooks] = useState(props.books);
+  const [currentShelf,setCurrentShelf] = useState(props.shelf)
+  const [newBooks, setNewBooks] = useState([]);
+  useEffect(()=>{
+    setCurrentBooks(props.books)
+    setCurrentShelf(props.shelf)
+  },[props])
+  useEffect(() => {
+    let productReturn = [];
+    let requests = currentBooks.map((id) => {
+      return new Promise((resolve, reject) => {
+        return fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
+        .then(res =>{
+          resolve(res.json())
+        })
+      });
+    });
+    Promise.all(requests)
+    .then((values)=>{
+      setNewBooks(values)
+    })
+  }, [currentBooks]);
+
   return (
     <Table striped hover>
       <thead>
@@ -17,130 +41,50 @@ function MyBooksTable(props) {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>
-            <Link to="/mybooks">
-              <img
-                width={50}
-                src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1651426717i/60784641._SX300_.jpg"
-              />
-            </Link>
-          </td>
-          <td>
-            <Link to="/mybooks">The Villa</Link>
-          </td>
-          <td>
-            <Link to="/mybooks">Catherine Steadman</Link>
-          </td>
-          <td>
-          <span>4.5</span>
-          </td>
-          <td>
-          <span><StarRating/></span>
-          </td>
-          <td>
-            <Link to="/mybooks">Currently Reading</Link>
-          </td>
-          <td>
-            <Link to="/mybooks">Write a Review</Link>
-          </td>
-          <td>
-            <button>X</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <Link to="/mybooks">
-              <img
-                width={50}
-                src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1651426717i/60784641._SX300_.jpg"
-              />
-            </Link>
-          </td>
-          <td>
-            <Link to="/mybooks">The Villa</Link>
-          </td>
-          <td>
-            <Link to="/mybooks">Catherine Steadman</Link>
-          </td>
-          <td>
-          <span>4.5</span>
-          </td>
-          <td>
-          <span><StarRating/></span>
-          </td>
-          <td>
-            <Link to="/mybooks">Currently Reading</Link>
-          </td>
-          <td>
-            <Link to="/mybooks">Write a Review</Link>
-          </td>
-          <td>
-            <button>X</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <Link to="/mybooks">
-              <img
-                width={50}
-                src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1651426717i/60784641._SX300_.jpg"
-              />
-            </Link>
-          </td>
-          <td>
-            <Link to="/mybooks">The Villa</Link>
-          </td>
-          <td>
-            <Link to="/mybooks">Catherine Steadman</Link>
-          </td>
-          <td>
-          <span>4.5</span>
-          </td>
-          <td>
-          <span><StarRating/></span>
-          </td>
-          <td>
-            <Link to="/mybooks">Currently Reading</Link>
-          </td>
-          <td>
-            <Link to="/mybooks">Write a Review</Link>
-          </td>
-          <td>
-            <button>X</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <Link to="/mybooks">
-              <img
-                width={50}
-                src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1651426717i/60784641._SX300_.jpg"
-              />
-            </Link>
-          </td>
-          <td>
-            <Link to="/mybooks">The Villa</Link>
-          </td>
-          <td>
-            <Link to="/mybooks">Catherine Steadman</Link>
-          </td>
-          <td>
-          <span>4.5</span>
-          </td>
-          <td>
-          <span><StarRating/></span>
-          </td>
-          <td>
-            <Link to="/mybooks">Currently Reading</Link>
-          </td>
-          <td>
-            <Link to="/mybooks">Write a Review</Link>
-          </td>
-          <td>
-            <button>X</button>
-          </td>
-        </tr>
+      {/* {console.log(newBooks)} */}
+        {newBooks.length>0?(
+          newBooks.map((book,index)=>{
+            return ( 
+            <tr key={index}>
+              <td>
+                <Link to="/mybooks">
+                  <img
+                    width={50}
+                    src={
+                      book.volumeInfo.imageLinks === undefined
+                            ? "https://books.google.bg/googlebooks/images/no_cover_thumb.gif"
+                            : `${book.volumeInfo.imageLinks.thumbnail}`
+                    }
+                  />
+                </Link>
+              </td>
+              <td>
+                <Link to="/mybooks">{book.volumeInfo.title}</Link>
+              </td>
+              <td>
+                <Link to="/mybooks">{book.volumeInfo.authors}</Link>
+              </td>
+              <td>
+                <span>{book.volumeInfo.averageRating}</span>
+              </td>
+              <td>
+                <span>
+                  <StarRating />
+                </span>
+              </td>
+              <td>
+                <Link to="/mybooks">{currentShelf}</Link>
+              </td>
+              <td>
+                <Link to="/mybooks">Write a Review</Link>
+              </td>
+              <td>
+                <button>X</button>
+              </td>
+            </tr>)
+          })
+        ):<tr><td>smth</td></tr>}
+       
       </tbody>
     </Table>
   );

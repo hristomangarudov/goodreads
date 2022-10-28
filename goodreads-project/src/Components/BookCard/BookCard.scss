@@ -19,7 +19,6 @@ transition: transform 0.2s ease-in-out;
     height: 25vh;
 }
 .card-body{
-    height: 20vh;
     h6,h5{
         white-space: nowrap;
         overflow: hidden;
@@ -27,4 +26,7 @@ transition: transform 0.2s ease-in-out;
         font-family: "Nunito", sans-serif;
         font-weight: bold;
     }
+}
+.bookcard-body{
+    height: 20vh !important;
 }

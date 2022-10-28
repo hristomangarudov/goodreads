@@ -13,7 +13,6 @@ function HomePage(props) {
   const observer = useRef();
   const lastBookRef = useCallback(
     (node) => {
-      console.log(node)
       if(loading){
         return
       }
@@ -55,10 +54,8 @@ function HomePage(props) {
       <div className="general-container">
         <h1>Discover</h1>
         <div className="cards-container">
-          {/* {console.log(books)} */}
           {books.length > 0 ? (
             books.map((book, index) => {
-              // console.log(book)
               if (books.length > 0) {
                 if (books.length === index + 1) {
                   return (

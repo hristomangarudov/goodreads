@@ -27,7 +27,6 @@ export function useBookSearch(query, pageNumber, subject, title) {
       .then((data) => {
         if(data.items.length >0){
           setBooks((prevBooks) => {
-            console.log(data)
             return [...new Set([...prevBooks,...data.items])];
           });
         }else{
