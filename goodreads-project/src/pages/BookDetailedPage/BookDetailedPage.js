@@ -11,6 +11,7 @@ function BookDetailedPage() {
     <>
       {bookInfo.length > 0 ? (
         <div>
+          {console.log(bookInfo[0])}
           <BookDetailedCard
             title={bookInfo[0].volumeInfo.title}
             author={
@@ -18,7 +19,7 @@ function BookDetailedPage() {
                 ? bookInfo[0].volumeInfo.authors
                 : [""]
             }
-            description={bookInfo[0].volumeInfo.description}
+            description={bookInfo[0].volumeInfo.description.replace(/<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g,'')}
             ratingsCount={bookInfo[0].volumeInfo.ratingsCount}
             image={
               bookInfo[0].volumeInfo.imageLinks.large === undefined

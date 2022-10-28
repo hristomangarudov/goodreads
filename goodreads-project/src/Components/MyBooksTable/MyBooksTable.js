@@ -83,7 +83,7 @@ function MyBooksTable(props) {
               </td>
             </tr>)
           })
-        ):<tr><td>smth</td></tr>}
+        ):<tr></tr>}
        
       </tbody>
     </Table>

@@ -61,7 +61,7 @@ function EditProfile() {
       changeUserData({ profileUsername, age, gender, country, profession })
     );
     dispatch(changeProfilePicture({ profileImg }));
-
+    let active =getActiveUser();
     let newUserInfo = {
       username,
       password,
@@ -71,10 +71,10 @@ function EditProfile() {
       country,
       profession,
       profileImg,
+      bookshelf:active.bookshelf
     };
     localStorage.setItem("activeUser", JSON.stringify(newUserInfo));
 
-    let active = getActiveUser();
     let users = JSON.parse(localStorage.getItem("users"));
     let neededUserIndex = users.findIndex(
       (obj) => obj.username === active.username

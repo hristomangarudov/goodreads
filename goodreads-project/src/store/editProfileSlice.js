@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const activeUser = JSON.parse(localStorage.getItem('activeUser'))
 
 const initialState = {
-  profileImg:activeUser?activeUser.profileImg:"",
+  profileImg:activeUser?activeUser.profileImg:"http://bootdey.com/img/Content/avatar/avatar1.png",
   // profileImg: "http://bootdey.com/img/Content/avatar/avatar1.png",
-  profileUsername: activeUser?activeUser.profileUsername:"http://bootdey.com/img/Content/avatar/avatar1.png",
+  profileUsername: activeUser?activeUser.profileUsername:"",
   username: activeUser?activeUser.username:"",
   password: activeUser?activeUser.password:"",
   age: activeUser?activeUser.age:"",
@@ -18,6 +18,9 @@ export const editProfileSlice = createSlice({
   name: "editProfile",
   initialState,
   reducers: {
+    changeUsernameData:(state,action) => {
+      state.profileUsername = action.payload.profileUsername;
+    },
     changeUserData: (state, action) => {
       state.profileUsername = action.payload.profileUsername;
       // state.username = action.payload.username;
@@ -32,7 +35,7 @@ export const editProfileSlice = createSlice({
   },
 });
 
-export const { changeUserData, changeProfilePicture } =
+export const { changeUserData, changeProfilePicture,changeUsernameData} =
   editProfileSlice.actions;
 
 export default editProfileSlice.reducer;

@@ -19,15 +19,22 @@ import EditProfilePage from "./pages/editProfilePage/EditProfile";
 import {getActiveUser} from "./server/users"
 import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 import BookDetailedPage from "./pages/bookDetailedPage/BookDetailedPage"
+import {useSelector, useDispatch} from 'react-redux'
+import {
+  changeUsernameData
+} from "./store/editProfileSlice";
+
 
 function App() {
   const [isLogged, setIsLogged] = useState(getActiveUser());
   const handleSuccessLogin = () => {
     setIsLogged(getActiveUser())
   }
+
   return (
     <BrowserRouter>
-      {isLogged ? (
+      {isLogged ?(
+        
         <>
           <BannerComponent />
           <Navigation />
