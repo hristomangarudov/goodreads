@@ -104,9 +104,9 @@ function RegisterForm(props) {
             >
               Username is already taken
             </span>
-            <div className="feedback-container">
-              <p>{validated? "Please enter a username":""}</p>
-            </div>
+            <Form.Control.Feedback type="invalid">
+              Please enter a valid username
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formPassword">
             <Form.Label>Password</Form.Label>
@@ -126,9 +126,9 @@ function RegisterForm(props) {
               lowercase letter, one uppercase letter, one numeric digit, and one
               special character
             </span>
-            <div className="feedback-container">
-              <p>{validated? "Please enter a password":""}</p>
-            </div>
+            <Form.Control.Feedback type="invalid">
+              Please input a password
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formConfirmPassword">
             <Form.Label>Confirm password</Form.Label>
@@ -141,9 +141,9 @@ function RegisterForm(props) {
               onChange={handleChange}
               isInvalid={!error}
             />
-            <div className="feedback-container">
-              <p>{validated? "Passwords do not match":""}</p>
-            </div>
+            <Form.Control.Feedback type="invalid">
+              Passwords do not match
+            </Form.Control.Feedback>
           </Form.Group>
           <Button
             bsPrefix="custom-class-btn"
