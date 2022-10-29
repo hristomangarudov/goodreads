@@ -45,7 +45,7 @@ function MyBooksTable(props) {
             return ( 
             <tr key={index}>
               <td>
-                <Link to="/mybooks">
+                <Link to={`/detailed-info/${book.id}`}>
                   <img
                     width={50}
                     src={
@@ -57,13 +57,13 @@ function MyBooksTable(props) {
                 </Link>
               </td>
               <td>
-                <Link to="/mybooks">{book.volumeInfo.title}</Link>
+                <Link to={`/detailed-info/${book.id}`}>{book.volumeInfo.title}</Link>
               </td>
               <td>
-                <Link to="/mybooks">{book.volumeInfo.authors}</Link>
+                {book.volumeInfo.authors}
               </td>
               <td>
-                <span>{book.volumeInfo.averageRating}<span className="single-star">&#9733;</span></span>
+                <span>{book.volumeInfo.averageRating?book.volumeInfo.averageRating:"0"}<span className="single-star">&#9733;</span></span>
               </td>
               <td>
                 <span>
