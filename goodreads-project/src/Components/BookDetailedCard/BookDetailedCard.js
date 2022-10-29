@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import SmallComment from "../SmallComment/SmallComment";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { getActiveUser } from "../../server/users";
 
 function BookDetailedCard(props) {
   let navigate = useNavigate();
@@ -17,7 +18,6 @@ function BookDetailedCard(props) {
   const toggleBtn = () => {
     setReadMoreShown(!isReadMoreShown);
   };
-
   const editProfile = useSelector((state) => state.editProfile);
   return (
     <div className="center-position">
@@ -41,9 +41,10 @@ function BookDetailedCard(props) {
                     name="slct"
                     id="slct"
                   >
+                    <option value="" disabled selected>Add to shelf</option>
                     <option value="currently reading">Currently reading</option>
                     <option value="read">Read</option>
-                    <option value="toRead">To read</option>
+                    <option value="toRead">Want to read</option>
                   </select>
                 </div>
               </div>

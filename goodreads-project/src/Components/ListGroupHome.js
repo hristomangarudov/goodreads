@@ -25,7 +25,7 @@ function ListGroupHome() {
         <div className='list-links-container'>
         <Link className="link-decoration underline" to='/mybooks'><span>Currenty reading</span></Link>
         <Link className="link-decoration underline" to='/mybooks'><span>Want to read</span></Link>
-        <Link className="link-decoration underline" to='/mybooks'><span>Browse collection</span></Link>
+        <Link className="link-decoration underline" to='/mybooks'><span>Read</span></Link>
         </div>
 
             
