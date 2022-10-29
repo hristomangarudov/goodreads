@@ -87,7 +87,7 @@ function RegisterForm(props) {
           onSubmit={handleSubmit}
           style={{ width: 400 }}
         >
-          <Form.Group className="" controlId="formUsername">
+          <Form.Group className="group-relative mb-3" controlId="formUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control
               bsPrefix="custom-class-input"
@@ -108,7 +108,7 @@ function RegisterForm(props) {
             </span>
 
           </Form.Group>
-          <Form.Group className="" controlId="formPassword">
+          <Form.Group className="group-relative long-validation-text mb-3" controlId="formPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
               bsPrefix="custom-class-input"
@@ -122,7 +122,7 @@ function RegisterForm(props) {
               Please input a password
             </Form.Control.Feedback>
             <span
-              className="username-taken invalid-feedback"
+              className="username-taken invalid-feedback test long-test"
               style={{ display: enoughPassLength ? "none" : "block", visibility:enoughPassLength ? "hidden":"visible" }}
             >
               Password between 8 to 15 characters which contain at least one
@@ -130,7 +130,7 @@ function RegisterForm(props) {
               special character
             </span>
           </Form.Group>
-          <Form.Group className="" controlId="formConfirmPassword">
+          <Form.Group className="group-relative mb-3" controlId="formConfirmPassword">
             <Form.Label>Confirm password</Form.Label>
             <Form.Control
               bsPrefix="custom-class-input"
