@@ -77,6 +77,7 @@ export function setNewUserData(
   profileImg,
 
 ) {
+  
   let active = getActiveUser();
   let newUserInfo = {
     username,

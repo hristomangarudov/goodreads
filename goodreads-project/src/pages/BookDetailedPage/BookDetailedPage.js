@@ -8,7 +8,8 @@ function BookDetailedPage() {
   const [currentBook, setCurrentBook] = useState([]);
   const params = useParams();
   const { bookInfo } = useDetailedBookSearch(params.id);
-  
+
+
   return params ? (
     <>
       {bookInfo.length > 0 ? (
@@ -37,6 +38,7 @@ function BookDetailedPage() {
             publishedDate={bookInfo[0].volumeInfo.publishedDate}
             publisher={bookInfo[0].volumeInfo.publisher}
             printType={bookInfo[0].volumeInfo.printType}
+            id={params.id}
           />
           <br />
           <br />

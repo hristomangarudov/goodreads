@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import SmallComment from "../SmallComment/SmallComment";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { getActiveUser } from "../../server/users";
 
 function BookDetailedCard(props) {
   let navigate = useNavigate();
@@ -16,6 +17,85 @@ function BookDetailedCard(props) {
 
   const toggleBtn = () => {
     setReadMoreShown(!isReadMoreShown);
+  };
+
+  const handleSelect = (e) => {
+    let status = e.target.value;
+    let active = getActiveUser();
+    let bookshelf = active.bookshelf;
+    let bookId = props.id;
+    let isInCurrently = bookshelf.currentlyReading.some((id) => id === bookId);
+    let isInWantToRead = bookshelf.wantToRead.some((id) => id === bookId);
+    let isInRead = bookshelf.read.some((id) => id === bookId);
+
+    switch (status) {
+      case "currentlyReading":
+        if (isInCurrently) {
+          console.log("IMA GO VECHE");
+        } else if (isInWantToRead) {
+          let bookIndex = bookshelf.wantToRead.findIndex((id) => id === bookId);
+          bookshelf.wantToRead.splice(bookIndex, 1);
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+        } else if (isInRead) {
+          let bookIndex = bookshelf.read.findIndex((id) => id === bookId);
+          bookshelf.read.splice(bookIndex, 1);
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+        } else {
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+        }
+        break;
+      case "wantToRead":
+        
+        if (isInWantToRead) {
+          console.log("IMA GO VECHE");
+        } else if (isInCurrently) {
+          let bookIndex = bookshelf.currentlyReading.findIndex((id) => id === bookId);
+          console.log(bookIndex);
+          bookshelf.currentlyReading.splice(bookIndex, 1);
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+        } else if (isInRead) {
+          console.log("GLOBALEN SI ");
+          let bookIndex = bookshelf.read.findIndex((id) => id === bookId);
+          bookshelf.read.splice(bookIndex, 1);
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+        } else {
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+        }
+        break;
+      case "read":
+        if (isInRead) {
+          console.log("IMA GO VECHE");
+        } else if (isInWantToRead) {
+          let bookIndex = bookshelf.wantToRead.findIndex((id) => id === bookId);
+          bookshelf.wantToRead.splice(bookIndex, 1);
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+        } else if (isInCurrently) {
+          let bookIndex = bookshelf.currentlyReading.findIndex((id) => id === bookId);
+          bookshelf.currentlyReading.splice(bookIndex, 1);
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+        } else {
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+        }
+        break;
+    }
   };
 
   const editProfile = useSelector((state) => state.editProfile);
@@ -35,15 +115,22 @@ function BookDetailedCard(props) {
                 <div className="select">
                   {/* <span>Currently reading </span> */}
                   <select
-                    onChange={(e) => {
-                      console.log(e.target.value);
-                    }}
+                    className="select-dropdown"
+                    onChange={handleSelect}
                     name="slct"
                     id="slct"
                   >
-                    <option value="currently reading">Currently reading</option>
+                    <option
+                      value=""
+                      disabled
+                      defaultValue={"addToShelf"}
+                      selected
+                    >
+                      Add to shelf
+                    </option>
+                    <option value="currentlyReading">Currently reading</option>
                     <option value="read">Read</option>
-                    <option value="toRead">To read</option>
+                    <option value="wantToRead">To read</option>
                   </select>
                 </div>
               </div>

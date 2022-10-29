@@ -40,7 +40,7 @@ function Profile() {
       </div>
       <div className="bookshelf-wrapper">
         <div className="bookshelf-user">
-          <h6 className="profile-h6"> EVLOGI BOOKSHELF</h6>
+          <h6 className="profile-h6"> {editProfile.profileUsername} BOOKSHELF</h6>
         </div>
         <div className="bookshelf-links">
           <a href="">Read(3)</a>
@@ -50,7 +50,7 @@ function Profile() {
       </div>
       <div className="currently-reading-wrapper">
         <div className="currently-reading-user">
-          <h6 className="profile-h6">EVLOGI IS CURRENTLY READING</h6>
+          <h6 className="profile-h6">{editProfile.profileUsername} IS CURRENTLY READING</h6>
         </div>
         <div className="currently-reading-books">
           {
@@ -74,7 +74,7 @@ function Profile() {
       </div>
       <div className="recent-updates-wrapper">
         <div className="recent-updates-user">
-          <h6 className="profile-h6"> EVLOGI BOOKSHELF</h6>
+          <h6 className="profile-h6"> {editProfile.profileUsername} BOOKSHELF</h6>
         </div>
         <div className="recent-updates-books">
           {
