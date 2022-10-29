@@ -10,10 +10,9 @@ function ListGroupHome() {
         <img src={CurrentlyReading} alt="Currently Reading"/>
         What are you reading?
         <div>
-        <div className='input-field'>
-        <input style={{display:"block"}} placeholder='search books'/>
+        {/* <div className='input-field'>
         <span></span>
-        </div>
+        </div> */}
         </div>
         </ListGroup.Item>
         <ListGroup.Item>

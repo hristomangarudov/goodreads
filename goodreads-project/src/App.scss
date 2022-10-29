@@ -150,12 +150,12 @@ align-items: center;
   height: 34px;
   line-height: 36px;
   text-transform: uppercase;
-  text-decoration: none;
+  text-decoration: none !important;
   color: rgba(142,66,209,.9);
   letter-spacing: 0.1em;
   text-align: center;
   font-size: 0.8rem;
-  margin: 10px;
+  // margin: 10px;
   position: relative;
 }
 .underline {
