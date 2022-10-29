@@ -17,7 +17,7 @@ export default function CheckboxBtn() {
         { name: 'Psychology', value: 'Psychology' },
         { name: 'Science', value: 'Science' },
         { name: 'Drama', value: 'Drama' },
-        { name: 'Humour', value: 'Humour' },
+        { name: 'History', value: 'History' },
       ];
     const handleChange = (e)=>{
       dispatch(getRadioValue(e.currentTarget.value)) 
