@@ -87,7 +87,7 @@ function RegisterForm(props) {
           onSubmit={handleSubmit}
           style={{ width: 400 }}
         >
-          <Form.Group className="mb-3" controlId="formUsername">
+          <Form.Group className="" controlId="formUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control
               bsPrefix="custom-class-input"
@@ -97,18 +97,18 @@ function RegisterForm(props) {
               name="username"
               onChange={handleChange}
             />
-
-            <span
-              className="username-taken"
-              style={{ display: isUserTaken ? "block" : "none" }}
-            >
-              Username is already taken
-            </span>
             <Form.Control.Feedback type="invalid">
               Please enter a valid username
             </Form.Control.Feedback>
+            <span
+              className="username-taken invalid-feedback test"
+              style={{ display: isUserTaken ?"none" : "block", visibility:!isUserTaken ? "hidden":"visible" }}
+            >
+              Username is already taken
+            </span>
+
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formPassword">
+          <Form.Group className="" controlId="formPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
               bsPrefix="custom-class-input"
@@ -118,19 +118,19 @@ function RegisterForm(props) {
               name="password"
               onChange={handleChange}
             />
+            <Form.Control.Feedback type="invalid">
+              Please input a password
+            </Form.Control.Feedback>
             <span
-              className="username-taken"
-              style={{ display: enoughPassLength ? "none" : "block" }}
+              className="username-taken invalid-feedback"
+              style={{ display: enoughPassLength ? "none" : "block", visibility:enoughPassLength ? "hidden":"visible" }}
             >
               Password between 8 to 15 characters which contain at least one
               lowercase letter, one uppercase letter, one numeric digit, and one
               special character
             </span>
-            <Form.Control.Feedback type="invalid">
-              Please input a password
-            </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formConfirmPassword">
+          <Form.Group className="" controlId="formConfirmPassword">
             <Form.Label>Confirm password</Form.Label>
             <Form.Control
               bsPrefix="custom-class-input"
@@ -141,7 +141,7 @@ function RegisterForm(props) {
               onChange={handleChange}
               isInvalid={!error}
             />
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback type="invalid" style={{display:!error||validated ? "block" : "none", visibility:!error || validated ? "visible":"hidden" }}>
               Passwords do not match
             </Form.Control.Feedback>
           </Form.Group>

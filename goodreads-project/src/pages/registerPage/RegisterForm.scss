@@ -62,3 +62,18 @@ input[type=submit] {
   left: -35px;
   content: "✖";
 }
+.invalid-feedback{
+  margin: 0;
+  display: block !important;
+  width: 100% !important;
+  // height: 100px !important;
+  visibility: hidden;
+}
+.was-validated :invalid~.invalid-feedback{
+  display: block !important;
+  visibility: visible;
+}
+.size-container{
+  height: 100px;
+}
+
