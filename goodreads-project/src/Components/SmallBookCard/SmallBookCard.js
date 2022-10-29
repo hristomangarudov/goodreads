@@ -2,19 +2,17 @@ import { useSelector } from "react-redux";
 import "./SmallBookCard.scss";
 
 function SmallBookCard(props) {
-
   const editProfile = useSelector((state) => state.editProfile);
   return (
     <div className="smallBook-wrapper">
       <div className="smallBook-container">
         <div className="smallBook-body-wrapper">
-          <img
-            src={props.picture}
-            alt="..."
-          />
+          <img src={props.picture} alt="..." />
           <div className="smallBook-text">
             <span>
-              <a className="username-review" href="">{editProfile.profileUsername}</a> is currently reading
+              <a className="username-review" href="">
+                {editProfile.profileUsername}
+              </a>
             </span>
             <h5>A Sign of Affection, Vol. 1 (A Sign of Affection, #1)</h5>
             <span>
@@ -23,15 +21,6 @@ function SmallBookCard(props) {
             <span>
               bookshelves: <a href="">currently-reading</a>
             </span>
-          </div>
-        </div>
-        <div className="smallBook-button">
-          <div>
-            <span>Currently reading </span>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <small>Rate this book</small>
-            <small>&#9733;&#9733;&#9733;&#9733;&#9733;</small>
           </div>
         </div>
       </div>

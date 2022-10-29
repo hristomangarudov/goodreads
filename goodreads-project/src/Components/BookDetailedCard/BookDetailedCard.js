@@ -31,7 +31,6 @@ function BookDetailedCard(props) {
     switch (status) {
       case "currentlyReading":
         if (isInCurrently) {
-          console.log("IMA GO VECHE");
         } else if (isInWantToRead) {
           let bookIndex = bookshelf.wantToRead.findIndex((id) => id === bookId);
           bookshelf.wantToRead.splice(bookIndex, 1);
@@ -51,11 +50,11 @@ function BookDetailedCard(props) {
         }
         break;
       case "wantToRead":
-        
         if (isInWantToRead) {
-          console.log("IMA GO VECHE");
         } else if (isInCurrently) {
-          let bookIndex = bookshelf.currentlyReading.findIndex((id) => id === bookId);
+          let bookIndex = bookshelf.currentlyReading.findIndex(
+            (id) => id === bookId
+          );
           console.log(bookIndex);
           bookshelf.currentlyReading.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
@@ -84,7 +83,9 @@ function BookDetailedCard(props) {
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
         } else if (isInCurrently) {
-          let bookIndex = bookshelf.currentlyReading.findIndex((id) => id === bookId);
+          let bookIndex = bookshelf.currentlyReading.findIndex(
+            (id) => id === bookId
+          );
           bookshelf.currentlyReading.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
@@ -119,18 +120,13 @@ function BookDetailedCard(props) {
                     onChange={handleSelect}
                     name="slct"
                     id="slct"
+                    defaultValue={'addToShelf'}
+                   
                   >
-                    <option
-                      value=""
-                      disabled
-                      defaultValue={"addToShelf"}
-                      selected
-                    >
-                      Add to shelf
-                    </option>
+                    <option disabled hidden value="addToShelf">Add to shelf</option>
                     <option value="currentlyReading">Currently reading</option>
                     <option value="read">Read</option>
-                    <option value="wantToRead">To read</option>
+                    <option value="wantToRead">Want to read</option>
                   </select>
                 </div>
               </div>
@@ -142,12 +138,12 @@ function BookDetailedCard(props) {
                   <h4 className="detailedCard-title">{props.author}</h4>
                 </div>
                 <div className="detailedCard-ratings">
-                  <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                  <span>&#9733;</span>
                   <small>{props.averageRating}</small>
                   <span>&nbsp;·&nbsp;</span>
-                  <a href="">{props.ratingsCount} ratings</a>
+                  <a>{props.ratingsCount} ratings</a>
                   <span>&nbsp;·&nbsp;</span>
-                  <a href="">855 reviews</a>
+                  <a>855 reviews</a>
                 </div>
                 {isReadMoreShown ? (
                   <>

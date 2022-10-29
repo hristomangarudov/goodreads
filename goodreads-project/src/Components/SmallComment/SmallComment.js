@@ -34,16 +34,6 @@ function SmallComment() {
               manga. There is this shyness about her, but also a level of
               boldness that I enjoyed.
             </p>
-
-            <div className="detailedCard-ratings">
-              <a href="">46 likes</a>
-              <span>&nbsp;·&nbsp;</span>
-              <button className="detailedCard-likeBtn">Like</button>
-              <span>&nbsp;·&nbsp;</span>
-              <a href="">comment</a>
-              <span>&nbsp;·&nbsp;</span>
-              <a href="">see review</a>
-            </div>
           </div>
         </div>
       </div>

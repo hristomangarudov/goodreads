@@ -50,7 +50,7 @@ function Profile() {
       </div>
       <div className="currently-reading-wrapper">
         <div className="currently-reading-user">
-          <h6 className="profile-h6">{editProfile.profileUsername} IS CURRENTLY READING</h6>
+          <h6 className="profile-h6">{editProfile.profileUsername} HAS READ</h6>
         </div>
         <div className="currently-reading-books">
           {

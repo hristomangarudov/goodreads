@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllUsers, registerUser } from "../../server/users";
+import { useDispatch } from "react-redux";
+import { changeUsernameData } from "../../store/editProfileSlice";
 
 function RegisterForm(props) {
   const [validated, setValidated] = useState(false);
@@ -15,7 +17,12 @@ function RegisterForm(props) {
     password: "",
     confirmPassword: "",
   });
-
+ 
+  const profileUsername = `User-${Math.floor(Math.random() * 10000)}`
+  const dispatch = useDispatch();
+  dispatch(
+    changeUsernameData({ profileUsername })
+  );
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,7 +30,7 @@ function RegisterForm(props) {
     if (!form.checkValidity()) {
       setValidated(true);
     } else if (form.checkValidity() && error) {
-      if (registerUser(details.username, details.password)) {
+      if (registerUser(details.username, details.password,profileUsername)) {
         navigate("/login");
         setValidated(false);
       }
