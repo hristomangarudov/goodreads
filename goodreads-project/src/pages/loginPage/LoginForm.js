@@ -4,6 +4,7 @@ import { useState } from "react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../server/users";
+// import {styles} from "../registerPage/RegisterForm.scss"
 
 function LoginForm(props) {
   const [validated, setValidated] = useState(false);
@@ -60,7 +61,7 @@ function LoginForm(props) {
               Please enter a valid email
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formPassword">
+          <Form.Group className="mb-3 group-relative" controlId="formPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
               bsPrefix="custom-class-input"
@@ -72,7 +73,7 @@ function LoginForm(props) {
               onChange={(e) => setPassword(e.target.value)}
             />
             <span
-              className="username-taken"
+              className="username-taken test"
               style={{ display: credentials ? "none" : "block" }}
             >
               Wrong username or password

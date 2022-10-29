@@ -1,6 +1,7 @@
 .username-taken{
-    color: red;
-    font-size: 14px;
+  margin-top: 0.25rem;
+  font-size: .875em;
+  color: #dc3545;
 }
 
 /* Style all input fields */
@@ -61,4 +62,32 @@ input[type=submit] {
   position: relative;
   left: -35px;
   content: "✖";
+}
+.invalid-feedback{
+  margin: 0;
+  display: block !important;
+  width: 100% !important;
+  // height: 100px !important;
+  visibility: hidden;
+}
+.was-validated :invalid~.invalid-feedback{
+  display: block !important;
+  visibility: visible;
+}
+.size-container{
+  height: 100px;
+}
+.group-relative{
+  position: relative;
+}
+.test{
+  position: absolute;
+  top: 77%;
+}
+.long-test{
+  position: absolute;
+  top: 46%;
+}
+.long-validation-text{
+  height: 200px !important;
 }
