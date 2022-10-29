@@ -61,7 +61,7 @@ function HomePage(props) {
               if (books.length > 0) {
                 if (books.length === index + 1) {
                   return (
-                    <div ref={lastBookRef} key={book.id} onClick={()=>navigate(`/detailed-info/id=${book.id}`)} className="fake-link">
+                    <div ref={lastBookRef} key={book.id} onClick={()=>navigate(`/detailed-info/${book.id}`)} className="fake-link">
                       <BookCard
                         key={index}
                         cover={
