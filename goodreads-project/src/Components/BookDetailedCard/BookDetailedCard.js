@@ -16,7 +16,7 @@ function BookDetailedCard(props) {
 
   const toggleBtn = () => {
     setReadMoreShown(!isReadMoreShown);
-  }; 
+  };
 
   const editProfile = useSelector((state) => state.editProfile);
   return (
@@ -32,12 +32,19 @@ function BookDetailedCard(props) {
                 alt="..."
               />
               <div className="detailedCard-button">
-                <div>
-                  <span>Currently reading </span>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <small>Rate this book</small>
-                  <small>&#9733;&#9733;&#9733;&#9733;&#9733;</small>
+                <div className="select">
+                  {/* <span>Currently reading </span> */}
+                  <select
+                    onChange={(e) => {
+                      console.log(e.target.value);
+                    }}
+                    name="slct"
+                    id="slct"
+                  >
+                    <option value="currently reading">Currently reading</option>
+                    <option value="read">Read</option>
+                    <option value="toRead">To read</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -75,10 +82,21 @@ function BookDetailedCard(props) {
                     </p>
                   </>
                 )}
-                
+
                 <div className="detailedCard-text">
-                  <small>Kindle Edition, 198 pages</small>
-                  <small>Published March 31st 2020 by Kodansha Comics</small>
+                  <small>
+                    <strong>Type:</strong> {props.printType}
+                  </small>
+                  <small>
+                    <strong>Category:</strong> {props.categories}
+                  </small>
+                  <small>
+                    <strong>Pages:</strong> {props.pageCount}
+                  </small>
+                  <small>
+                    <strong>Published:</strong> {props.publishedDate} by{" "}
+                    {props.publisher}
+                  </small>
                 </div>
               </div>
             </div>
@@ -93,8 +111,10 @@ function BookDetailedCard(props) {
             <div>
               <div>
                 <span>
-                  <a className="username-review" href="">{editProfile.profileUsername}</a>, start your
-                  review of A Sign of Affection, Vol. 1
+                  <a className="username-review" href="">
+                    {editProfile.profileUsername}
+                  </a>
+                  , start your review of A Sign of Affection, Vol. 1
                 </span>
               </div>
               <div className="rating-review">

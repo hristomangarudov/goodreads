@@ -23,9 +23,9 @@ export function registerUser(
   profession = "",
   profileImg = "http://bootdey.com/img/Content/avatar/avatar1.png",
   bookshelf = {
-    currentlyReading: ["zyTCAlFPjgYC","3Hr5ONX-2G8C","gHcEDAAAQBAJ"],
-    wantToRead:["DaUqAQAAIAAJ"],
-    read:["NtvWPAAACAAJ"]
+    currentlyReading: ["zyTCAlFPjgYC", "3Hr5ONX-2G8C", "gHcEDAAAQBAJ"],
+    wantToRead: ["DaUqAQAAIAAJ"],
+    read: ["NtvWPAAACAAJ"],
   }
 ) {
   let users = getAllUsers();
@@ -42,7 +42,7 @@ export function registerUser(
     country,
     profession,
     profileImg,
-    bookshelf
+    bookshelf,
   });
   localStorage.setItem("users", JSON.stringify(users));
   return true;
@@ -63,4 +63,39 @@ export function loginUser(username, password) {
 
 export function getActiveUser() {
   return JSON.parse(localStorage.getItem("activeUser"));
+}
+
+export function setNewUserData(
+  username,
+  password,
+  profileUsername,
+  age,
+  gender,
+  country,
+  profession,
+  profileImg,
+
+) {
+  let active = getActiveUser();
+  let newUserInfo = {
+    username,
+    password,
+    profileUsername,
+    age,
+    gender,
+    country,
+    profession,
+    profileImg,
+    bookshelf: active.bookshelf,
+  };
+  localStorage.setItem("activeUser", JSON.stringify(newUserInfo));
+
+  let users = JSON.parse(localStorage.getItem("users"));
+  let neededUserIndex = users.findIndex(
+    (obj) => obj.username === active.username
+  );
+  users.splice(neededUserIndex, 1);
+  users.push(newUserInfo);
+
+  localStorage.setItem("users", JSON.stringify(users));
 }

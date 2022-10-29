@@ -6,7 +6,7 @@ import {
   changeProfilePicture,
   changeUserData,
 } from "../../store/editProfileSlice";
-import { getActiveUser, getAllUsers } from "../../server/users";
+import { getActiveUser, getAllUsers, setNewUserData } from "../../server/users";
 
 function EditProfile() {
   const navigate = useNavigate();
@@ -15,13 +15,9 @@ function EditProfile() {
   };
   const editProfile = useSelector((state) => state.editProfile);
   const dispatch = useDispatch();
-
   const [username, setUsername] = useState(editProfile.username);
   const [password, setPassword] = useState(editProfile.password);
-  // const [profileImg, setFile] = useState(editProfile.profileImg);
-  // const [baseImage, setBaseImage] = useState("");
   const [profileImg, setProfileImg] = useState(editProfile.profileImg);
-
   const [profileUsername, setProfileUsername] = useState(
     editProfile.profileUsername
   );
@@ -29,11 +25,6 @@ function EditProfile() {
   const [gender, setGender] = useState(editProfile.gender);
   const [country, setCountry] = useState(editProfile.country);
   const [profession, setProfession] = useState(editProfile.profession);
-
-  // const fileSelectedHandler = (e) => {
-  //   console.log(e.target.files[0]);
-  //   setFile(URL.createObjectURL(e.target.files[0]));
-  // };
 
   const uploadImage = async (e) => {
     const file = e.target.files[0];
@@ -61,7 +52,7 @@ function EditProfile() {
       changeUserData({ profileUsername, age, gender, country, profession })
     );
     dispatch(changeProfilePicture({ profileImg }));
-    let active =getActiveUser();
+    let active = getActiveUser();
     let newUserInfo = {
       username,
       password,
@@ -71,7 +62,7 @@ function EditProfile() {
       country,
       profession,
       profileImg,
-      bookshelf:active.bookshelf
+      bookshelf: active.bookshelf,
     };
     localStorage.setItem("activeUser", JSON.stringify(newUserInfo));
 
