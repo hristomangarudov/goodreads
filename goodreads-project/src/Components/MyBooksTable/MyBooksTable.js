@@ -12,7 +12,6 @@ function MyBooksTable(props) {
     setCurrentShelf(props.shelf)
   },[props])
   useEffect(() => {
-    let productReturn = [];
     let requests = currentBooks.map((id) => {
       return new Promise((resolve, reject) => {
         return fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
@@ -37,7 +36,6 @@ function MyBooksTable(props) {
           <th>Average Rating</th>
           <th>Personal Rating</th>
           <th>Shelves</th>
-          <th>Review</th>
         </tr>
       </thead>
       <tbody>
@@ -65,7 +63,7 @@ function MyBooksTable(props) {
                 <Link to="/mybooks">{book.volumeInfo.authors}</Link>
               </td>
               <td>
-                <span>{book.volumeInfo.averageRating}</span>
+                <span>{book.volumeInfo.averageRating}<span className="single-star">&#9733;</span></span>
               </td>
               <td>
                 <span>
@@ -74,9 +72,6 @@ function MyBooksTable(props) {
               </td>
               <td>
                 <Link to="/mybooks">{currentShelf}</Link>
-              </td>
-              <td>
-                <Link to="/mybooks">Write a Review</Link>
               </td>
               <td>
                 <button>X</button>

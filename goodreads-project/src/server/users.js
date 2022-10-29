@@ -23,10 +23,11 @@ export function registerUser(
   profession = "",
   profileImg = "http://bootdey.com/img/Content/avatar/avatar1.png",
   bookshelf = {
-    currentlyReading: ["zyTCAlFPjgYC", "3Hr5ONX-2G8C", "gHcEDAAAQBAJ"],
-    wantToRead: ["DaUqAQAAIAAJ"],
-    read: ["NtvWPAAACAAJ"],
-  }
+    currentlyReading: ["zyTCAlFPjgYC","3Hr5ONX-2G8C","gHcEDAAAQBAJ"],
+    wantToRead:["DaUqAQAAIAAJ"],
+    read:["NtvWPAAACAAJ"]
+  },
+  ratedbooks=[]/// [{id,rating,activeUserReview}] ....for global [{id,?rating?,userReviews:[{user,review},{user,review}]}]
 ) {
   let users = getAllUsers();
   const isUserTaken = users.find((user) => user.username === username);
