@@ -52,7 +52,7 @@ export default function Navigation() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" to="/mybooks/read">
+                <Link className="nav-link active" to="/mybooks/read-books">
                   My Books
                 </Link>
               </li>

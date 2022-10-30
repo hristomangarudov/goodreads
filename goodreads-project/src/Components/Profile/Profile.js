@@ -1,7 +1,7 @@
 import "./Profile.scss";
 import SmallBookCard from "../SmallBookCard/SmallBookCard";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Profile() {
   const editProfile = useSelector((state) => state.editProfile);
@@ -43,9 +43,9 @@ function Profile() {
           <h6 className="profile-h6"> {editProfile.profileUsername} BOOKSHELF</h6>
         </div>
         <div className="bookshelf-links">
-          <a href="">Read(3)</a>
-          <a href="">Currently reading(1)</a>
-          <a href="">To read(2)</a>
+          <Link to="/mybooks/currently-reading">Currently Reading</Link>
+          <Link to="/mybooks/want-to-read">Want to read</Link>
+          <Link to="/mybooks/read-books">Read</Link>
         </div>
       </div>
       <div className="currently-reading-wrapper">

@@ -48,7 +48,7 @@ const navigate = useNavigate();
         <div className='list-links-container'>
         <Link className="link-decoration underline" to='/mybooks/currently-reading'><span>Currenty reading</span></Link>
         <Link className="link-decoration underline" to='/mybooks/want-to-read'><span>Want to read</span></Link>
-        <Link className="link-decoration underline" to='/mybooks/read'><span>Read</span></Link>
+        <Link className="link-decoration underline" to='/mybooks/read-books'><span>Read</span></Link>
         </div>  
         </ListGroup.Item>
         

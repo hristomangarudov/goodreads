@@ -11,13 +11,12 @@ function MyBooksPage() {
 
 
 useEffect(()=>{
-  debugger
   switch(params.shelf){
       case "want-to-read":
         setCurrentTab(user.bookshelf.wantToRead || []);
         setShelfName("Want to read")
         break;
-      case "read":
+      case "read-books":
           setCurrentTab(user.bookshelf.read || []);
           setShelfName("Read")
           break;
