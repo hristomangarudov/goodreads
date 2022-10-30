@@ -22,13 +22,13 @@ function BookDetailedPage() {
                 ? bookInfo[0].volumeInfo.authors
                 : [""]
             }
-            description={bookInfo[0].volumeInfo.description.replace(
+            description={bookInfo[0].volumeInfo.description === "undefined"?bookInfo[0].volumeInfo.description.replace(
               /<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g,
-              ""
-            )}
+              ""):"No available description"
+            }
             ratingsCount={bookInfo[0].volumeInfo.ratingsCount}
             image={
-              bookInfo[0].volumeInfo.imageLinks.thumbnail === undefined
+              bookInfo[0].volumeInfo.imageLinks === undefined
                 ? "https://books.google.bg/googlebooks/images/no_cover_thumb.gif"
                 : `${bookInfo[0].volumeInfo.imageLinks.thumbnail}`
             }

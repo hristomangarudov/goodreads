@@ -31,7 +31,7 @@ useEffect(()=>{
   return (
     <div className="cards-wrapper">
       <div className="general-list-container list-my-books">
-        <ListGroupMyBooks></ListGroupMyBooks>
+        <ListGroupMyBooks params={params}></ListGroupMyBooks>
       </div>
       <div className="cards-container  general-container">
         <h1>Shelves</h1>

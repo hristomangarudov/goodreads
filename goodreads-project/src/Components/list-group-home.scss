@@ -36,3 +36,51 @@ div{
     text-align:left;
     font-size: 0.9rem;
 }
+.bookshelf-active{
+    color: #0dcaf0;
+    font-size:1em;
+}
+.bookshelf-active:hover{
+    color: #0dcaf0;
+}
+.bookshelf-active{
+    display: inline-block;
+    vertical-align: top;
+    height: 34px;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    color: #0dcaf0;
+    letter-spacing: 0.1em;
+    text-align: center;
+    font-size: 1rem;
+    margin: 10px;
+    position: relative;
+  }
+  .bookshelf-underline {
+    border: 2px solid transparent;
+    
+    &::after {
+      width: 0%;
+      height: 2px;
+      display: block;
+      background-color: #0dcaf0;
+      content: " ";
+      position: absolute;
+      top: 34px;
+      left: 50%;
+      transition: left 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), width 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    
+    &:hover {
+      &::after {
+        width: 100%;
+        height: 2px;
+        display: block;
+        background-color: #0dcaf0;
+        content: " ";
+        position: absolute;
+        top: 34px;
+        left: 0;
+      }
+    }
+  }
