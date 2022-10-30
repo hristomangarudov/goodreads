@@ -9,3 +9,30 @@
     flex-direction: column;
     align-items: baseline;
 }
+.fake-link-container{
+div{
+    img{
+        border: 1px solid rgba(142, 66, 209, 0.9);
+        border-radius: 0 6% 6% 0/4%;
+    }
+}
+}
+.fake-link-container:hover{
+    div{
+        img{
+            border: 1px solid rgba(142, 66, 209, 0.9);
+            border-radius: 0 6% 6% 0/4%;
+            transform: scale(1.03);
+        }
+        p{
+            text-decoration: underline;
+        }
+    }
+    }
+.fake-link-text{
+    text-transform: uppercase;
+    color: rgba(142, 66, 209, 0.9);
+    letter-spacing: 0.1em;
+    text-align:left;
+    font-size: 0.9rem;
+}

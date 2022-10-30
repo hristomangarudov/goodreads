@@ -28,9 +28,9 @@ export default function Navigation() {
       <nav className="navbar navbar-expand-lg bg-light nav-container padding-ref">
         <div className="container-fluid">
           <div style={{ width: "150px" }}>
-            <a className="navbar-brand" href="#">
-              <img src={ReactLogo} />
-            </a>
+              <Link className="navbar-brand" to="/home">
+                <img src={ReactLogo} />
+              </Link>
           </div>
 
           <button
