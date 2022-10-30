@@ -3,6 +3,8 @@ import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 import StarRating from "../StartRating/StarRating";
 import "./MyBooksTable.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { getBookshelf } from "../../store/bookshelfTabSlice";
 function MyBooksTable(props) {
   const [currentBooks, setCurrentBooks] = useState(props.books);
   const [currentShelf,setCurrentShelf] = useState(props.shelf)
