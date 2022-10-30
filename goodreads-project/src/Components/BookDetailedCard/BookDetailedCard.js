@@ -114,7 +114,6 @@ function BookDetailedCard(props) {
               />
               <div className="detailedCard-button">
                 <div className="select">
-                  {/* <span>Currently reading </span> */}
                   <select
                     className="select-dropdown"
                     onChange={handleSelect}
