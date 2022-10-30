@@ -4,6 +4,7 @@ import StarRating from "../StartRating/StarRating";
 import "./MyBooksTable.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { getActiveUser } from "../../server/users";
+import CloseButtonComponent from "../CloseButton/CloseButton";
 function MyBooksTable(props) {
   const [currentBooks, setCurrentBooks] = useState(props.books);
   const [newBooks, setNewBooks] = useState([]);
@@ -111,6 +112,39 @@ function MyBooksTable(props) {
         break;
     }
   };
+  const removeBook = (id)=>{
+    let active = getActiveUser();
+    let bookshelf = active.bookshelf;
+    let bookId = id;
+    let isInCurrently = bookshelf.currentlyReading.some((id) => id === bookId);
+    let isInWantToRead = bookshelf.wantToRead.some((id) => id === bookId);
+    let isInRead = bookshelf.read.some((id) => id === bookId);
+    switch(props.currentShelf){
+      case "currently-reading":
+          let bookIndexCurrent = bookshelf.currentlyReading.findIndex((id) => id === bookId);
+          bookshelf.wantToRead.splice(bookIndexCurrent, 1);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active))
+          navigate(`/mybooks/${props.currentShelf}`)
+          break;
+
+      case "want-to-read":
+            let bookIndexWant = bookshelf.wantToRead.findIndex((id) => id === bookId);
+            bookshelf.wantToRead.splice(bookIndexWant, 1);
+            active.bookshelf = bookshelf;
+            localStorage.setItem("activeUser", JSON.stringify(active))
+            navigate(`/mybooks/${props.currentShelf}`)
+      break;
+
+      case "read-books":
+            let bookIndexRead = bookshelf.read.findIndex((id) => id === bookId);
+            bookshelf.wantToRead.splice(bookIndexRead, 1);
+            active.bookshelf = bookshelf;
+            localStorage.setItem("activeUser", JSON.stringify(active))
+            navigate(`/mybooks/${props.currentShelf}`)
+      break;
+    };
+  }
 
   return (
     <Table striped hover>
@@ -178,7 +212,7 @@ function MyBooksTable(props) {
                  </div>
               </td>
               <td>
-                <button>X</button>
+                <CloseButtonComponent onClick={()=>removeBook(book.id)}/>
               </td>
             </tr>)
           })
