@@ -15,8 +15,7 @@ function EditProfile() {
   };
   const editProfile = useSelector((state) => state.editProfile);
   const dispatch = useDispatch();
-  const [username, setUsername] = useState(editProfile.username);
-  const [password, setPassword] = useState(editProfile.password);
+ 
   const [profileImg, setProfileImg] = useState(editProfile.profileImg);
   const [profileUsername, setProfileUsername] = useState(
     editProfile.profileUsername
@@ -54,8 +53,8 @@ function EditProfile() {
     dispatch(changeProfilePicture({ profileImg }));
     let active = getActiveUser();
     let newUserInfo = {
-      username,
-      password,
+      username: active.username,
+      password: active.password,
       profileUsername,
       age,
       gender,
@@ -63,6 +62,7 @@ function EditProfile() {
       profession,
       profileImg,
       bookshelf: active.bookshelf,
+      ratedBooks: active.ratedBooks
     };
     localStorage.setItem("activeUser", JSON.stringify(newUserInfo));
 

@@ -2,6 +2,10 @@ export function getAllUsers() {
   return JSON.parse(localStorage.getItem("users")) || [];
 }
 
+export function getAllGlobalRatedBooks() {
+  return JSON.parse(localStorage.getItem("globalRatedBooks")) || [];
+}
+
 // export function registerUser(username, password) {
 //     let users = getAllUsers();
 //     const isUserTaken = users.find(user => user.username === username);
@@ -23,11 +27,11 @@ export function registerUser(
   profession = "",
   profileImg = "http://bootdey.com/img/Content/avatar/avatar1.png",
   bookshelf = {
-    currentlyReading: ["zyTCAlFPjgYC","3Hr5ONX-2G8C","gHcEDAAAQBAJ"],
-    wantToRead:["DaUqAQAAIAAJ"],
-    read:["NtvWPAAACAAJ"]
+    currentlyReading: ["zyTCAlFPjgYC", "3Hr5ONX-2G8C", "gHcEDAAAQBAJ"],
+    wantToRead: ["DaUqAQAAIAAJ"],
+    read: ["NtvWPAAACAAJ"],
   },
-  ratedbooks=[]/// [{id,rating,activeUserReview}] ....for global [{id,?rating?,userReviews:[{user,review},{user,review}]}]
+  ratedBooks = [{id:"TEST-id", rate:"TEST-rate",review: "TEST-review"}] /// [{id,rating,activeUserReview}] ....for global [{id,?rating?,userReviews:[{user,review},{user,review}]}]
 ) {
   let users = getAllUsers();
   const isUserTaken = users.find((user) => user.username === username);
@@ -44,6 +48,7 @@ export function registerUser(
     profession,
     profileImg,
     bookshelf,
+    ratedBooks
   });
   localStorage.setItem("users", JSON.stringify(users));
   return true;
@@ -77,7 +82,7 @@ export function setNewUserData(
   profileImg,
 
 ) {
-  
+
   let active = getActiveUser();
   let newUserInfo = {
     username,
@@ -98,6 +103,17 @@ export function setNewUserData(
   );
   users.splice(neededUserIndex, 1);
   users.push(newUserInfo);
+
+  localStorage.setItem("users", JSON.stringify(users));
+}
+
+export function updateUsers(activeUser){
+  let users = JSON.parse(localStorage.getItem("users"));
+  let neededUserIndex = users.findIndex(
+    (obj) => obj.username === activeUser.username
+  );
+  users.splice(neededUserIndex, 1);
+  users.push(activeUser);
 
   localStorage.setItem("users", JSON.stringify(users));
 }

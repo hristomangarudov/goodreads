@@ -22,9 +22,13 @@ function BookDetailedPage() {
                 ? bookInfo[0].volumeInfo.authors
                 : [""]
             }
-            description={bookInfo[0].volumeInfo.description === "undefined"?bookInfo[0].volumeInfo.description.replace(
-              /<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g,
-              ""):"No available description"
+            description={
+              bookInfo[0].volumeInfo.description
+                ? bookInfo[0].volumeInfo.description.replace(
+                    /<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g,
+                    ""
+                  )
+                : "No available description"
             }
             ratingsCount={bookInfo[0].volumeInfo.ratingsCount}
             image={

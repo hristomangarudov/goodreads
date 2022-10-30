@@ -148,7 +148,7 @@ function RegisterForm(props) {
               onChange={handleChange}
               isInvalid={!error}
             />
-            <Form.Control.Feedback type="invalid" style={{display:!error||validated ? "block" : "none", visibility:!error || validated ? "visible":"hidden" }}>
+            <Form.Control.Feedback type="invalid" style={{display:!error && validated ? "block" : "none", visibility:!error || validated ? "visible":"hidden" }}>
               Passwords do not match
             </Form.Control.Feedback>
           </Form.Group>

@@ -55,7 +55,7 @@ function App() {
             <Route path="dropdown-menu" element={<DropdownMenu />} />
 
             <Route
-              path="/detailed-info/write-review"
+              path="/detailed-info/write-review/:id"
               element={<WriteAReviewPage />}
             />
             <Route path="/" element={<Navigate to="/home" replace />} />

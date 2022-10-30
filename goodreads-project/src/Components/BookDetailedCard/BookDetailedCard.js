@@ -9,8 +9,9 @@ import { getActiveUser } from "../../server/users";
 function BookDetailedCard(props) {
   let navigate = useNavigate();
   const routeChange = () => {
-    let path = `/detailed-info/write-review`;
-    navigate(path);
+    navigate(`/detailed-info/write-review/${props.id}`);
+            //  /detailed-info/write-review/:id
+    console.log(props.id);
   };
 
   const [isReadMoreShown, setReadMoreShown] = useState(false);
