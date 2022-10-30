@@ -35,7 +35,7 @@ useEffect(()=>{
       </div>
       <div className="cards-container  general-container">
         <h1>Shelves</h1>
-        <MyBooksTable books={currentTab} shelf={shelfName}/>
+        <MyBooksTable currentShelf={params.shelf} books={currentTab} shelf={shelfName}/>
       </div>
     </div>
   );

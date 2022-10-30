@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import { Link } from "react-router-dom";
 import StarRating from "../StartRating/StarRating";
 import "./MyBooksTable.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { getBookshelf } from "../../store/bookshelfTabSlice";
+import { Link, useNavigate } from "react-router-dom";
+import { getActiveUser } from "../../server/users";
 function MyBooksTable(props) {
   const [currentBooks, setCurrentBooks] = useState(props.books);
-  const [currentShelf,setCurrentShelf] = useState(props.shelf)
   const [newBooks, setNewBooks] = useState([]);
+  const navigate = useNavigate()
   useEffect(()=>{
     setCurrentBooks(props.books)
-    setCurrentShelf(props.shelf)
   },[props])
   useEffect(() => {
     let requests = currentBooks.map((id) => {
@@ -27,6 +25,92 @@ function MyBooksTable(props) {
       setNewBooks(values)
     })
   }, [currentBooks]);
+  const handleSelect = (e,book) => {
+    let status = e.target.value;
+    let active = getActiveUser();
+    let bookshelf = active.bookshelf;
+    let bookId = book.id;
+    let isInCurrently = bookshelf.currentlyReading.some((id) => id === bookId);
+    let isInWantToRead = bookshelf.wantToRead.some((id) => id === bookId);
+    let isInRead = bookshelf.read.some((id) => id === bookId);
+    switch (status) {
+      case "currentlyReading":
+        if (isInCurrently) {
+        } else if (isInWantToRead) {
+          let bookIndex = bookshelf.wantToRead.findIndex((id) => id === bookId);
+          bookshelf.wantToRead.splice(bookIndex, 1);
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active))
+          navigate(`/mybooks/${props.currentShelf}`)
+        } else if (isInRead) {
+          let bookIndex = bookshelf.read.findIndex((id) => id === bookId);
+          bookshelf.read.splice(bookIndex, 1);
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active))
+          navigate(`/mybooks/${props.currentShelf}`)
+        } else {
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active))
+          navigate(`/mybooks/${props.currentShelf}`)
+        }
+        break;
+      case "wantToRead":
+        if (isInWantToRead) {
+        } else if (isInCurrently) {
+          let bookIndex = bookshelf.currentlyReading.findIndex(
+            (id) => id === bookId
+          );
+          console.log(bookIndex);
+          bookshelf.currentlyReading.splice(bookIndex, 1);
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+          navigate(`/mybooks/${props.currentShelf}`)
+        } else if (isInRead) {
+          let bookIndex = bookshelf.read.findIndex((id) => id === bookId);
+          bookshelf.read.splice(bookIndex, 1);
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+          navigate(`/mybooks/${props.currentShelf}`)
+        } else {
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+          navigate(`/mybooks/${props.currentShelf}`)
+        }
+        break;
+      case "read":
+        if (isInRead) {
+          console.log("IMA GO VECHE");
+        } else if (isInWantToRead) {
+          let bookIndex = bookshelf.wantToRead.findIndex((id) => id === bookId);
+          bookshelf.wantToRead.splice(bookIndex, 1);
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+          navigate(`/mybooks/${props.currentShelf}`)
+        } else if (isInCurrently) {
+          let bookIndex = bookshelf.currentlyReading.findIndex(
+            (id) => id === bookId
+          );
+          bookshelf.currentlyReading.splice(bookIndex, 1);
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+          navigate(`/mybooks/${props.currentShelf}`)
+        } else {
+          bookshelf[status].push(bookId);
+          active.bookshelf = bookshelf;
+          localStorage.setItem("activeUser", JSON.stringify(active));
+          navigate(`/mybooks/${props.currentShelf}`)
+        }
+        break;
+    }
+  };
 
   return (
     <Table striped hover>
@@ -73,7 +157,25 @@ function MyBooksTable(props) {
                 </span>
               </td>
               <td>
-                <Link to="/mybooks">{currentShelf}</Link>
+              <div className="detailedCard-button">
+                <div className="select">
+                  <select
+                    className="select-dropdown"
+                    onChange={(e)=>
+                      handleSelect(e,book)
+                    }
+                    name="slct"
+                    id="slct"
+                    defaultValue={'addToShelf'}
+
+                  >
+                    <option disabled hidden value="addToShelf">Add to shelf</option>
+                    <option value="currentlyReading">Currently reading</option>
+                    <option value="read">Read</option>
+                    <option value="wantToRead">Want to read</option>
+                  </select>
+                 </div>
+                 </div>
               </td>
               <td>
                 <button>X</button>

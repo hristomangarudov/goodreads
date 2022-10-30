@@ -46,11 +46,10 @@ function RegisterForm(props) {
   function validatePasswords(password, confirmPassword) {
     if (password === confirmPassword) {
       setError(true);
-      console.log(error);
     } else if (password !== confirmPassword) {
       console.log(details.password, details.confirmPassword);
       setError(false);
-      console.log(error);
+      setValidated(false)
     }
 
     let decimal =
