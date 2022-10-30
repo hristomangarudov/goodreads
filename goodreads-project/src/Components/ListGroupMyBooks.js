@@ -1,18 +1,15 @@
 import ListGroup from 'react-bootstrap/ListGroup';
 import {Link} from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux";
-import {getBookshelf,getNewBookshelf} from "../store/bookshelfTabSlice"
 function ListGroupMyBooks(props) {
-  const dispatch = useDispatch()
   return (
     <div className='list-group-mybooks'>
     <ListGroup variant="flush">
         <ListGroup.Item>
         <h5>BOOKSHELVES</h5>
         <div className='list-links-container'>
-        <a className="link-decoration underline" href='#' onClick={()=>dispatch(getBookshelf("currentlyReading"))}><span>Currenty reading</span></a>
-        <a className="link-decoration underline" href='#' onClick={()=>dispatch(getBookshelf("wantToRead"))}><span>Want to read</span></a>
-        <a className="link-decoration underline" href='#' onClick={()=>dispatch(getBookshelf("read"))}><span>Read</span></a>
+        <Link className="link-decoration underline" to='/mybooks/currently-reading' ><span>Currenty reading</span></Link>
+        <Link className="link-decoration underline" to='/mybooks/want-to-read' ><span>Want to read</span></Link>
+        <Link className="link-decoration underline" to='/mybooks/want-to-read' ><span>Read</span></Link>
         </div>
             
         </ListGroup.Item>

@@ -46,7 +46,7 @@ function App() {
               element={<LoginForm successLogin={handleSuccessLogin} />}
             />
             <Route path="home" element={<HomePage/>} />
-            <Route path="mybooks" element={<MyBooksPage />} />
+            <Route path="mybooks/:shelf" element={<MyBooksPage />} />
             <Route path="challenges" element={<ChallengesPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="detailed-info/:id" element={<BookDetailedPage />} />

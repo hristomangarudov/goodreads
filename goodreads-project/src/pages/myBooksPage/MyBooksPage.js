@@ -1,39 +1,33 @@
 import MyBooksTable from "../../Components/MyBooksTable/MyBooksTable";
 import ListGroupMyBooks from "../../Components/ListGroupMyBooks"
-import { GetSpecificBook } from "../../utils";
 import { useEffect, useState } from "react";
 import { getActiveUser } from "../../server/users";
-import { useDispatch, useSelector } from "react-redux";
-import {getBookshelf,getNewBookshelf,getUserShelf} from "../../store/bookshelfTabSlice"
+import { useParams } from "react-router-dom";
 function MyBooksPage() {
-  const active = getActiveUser()
-  const newShelf = useSelector((state) =>state.bookshelfTab.bookshelf)
-  const userShelf = useSelector((state) =>state.bookshelfTab.currentShelf)
-  const newShelfTitle = useSelector((state) =>state.bookshelfTab.bookshelfTitle)
-  const dispatch = useDispatch()
+  const user = getActiveUser()
   const [shelfName,setShelfName] = useState('Currently Reading')
+  const params = useParams()
+  const [currentTab,setCurrentTab] = useState([])
+
 
 useEffect(()=>{
-  switch(newShelfTitle){
-    case "wantToRead":
-      dispatch(getUserShelf(active.bookshelf.wantToRead || []))
-      setShelfName("Want to read")
-      break;
-    case "read":
-      dispatch(getUserShelf(active.bookshelf.read || []))
-        setShelfName("Read")
+  debugger
+  switch(params.shelf){
+      case "want-to-read":
+        setCurrentTab(user.bookshelf.wantToRead || []);
+        setShelfName("Want to read")
         break;
-    case "currentlyReading":
-          setShelfName("Currently Reading")
-          dispatch(getUserShelf(active.bookshelf.currentlyReading || []))
+      case "read":
+          setCurrentTab(user.bookshelf.read || []);
+          setShelfName("Read")
           break;
-    default:
-      dispatch(getUserShelf(active.bookshelf.currentlyReading || []))
-      setShelfName("Currently Reading")
-      return
+      case "currently-reading":
+            setShelfName("Currently Reading")
+            setCurrentTab(user.bookshelf.currentlyReading || []);
+            break;
 
   }
-},[newShelfTitle])
+},[params])
 
   return (
     <div className="cards-wrapper">
@@ -42,7 +36,7 @@ useEffect(()=>{
       </div>
       <div className="cards-container  general-container">
         <h1>Shelves</h1>
-        <MyBooksTable books={userShelf} shelf={shelfName}/>
+        <MyBooksTable books={currentTab} shelf={shelfName}/>
       </div>
     </div>
   );

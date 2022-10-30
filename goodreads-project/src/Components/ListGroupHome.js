@@ -15,6 +15,7 @@ const { bookInfoWantToRead } =useDetailedBookSearch(active.bookshelf.wantToRead[
 const dispatch = useDispatch()
 
 const navigate = useNavigate();
+
   return (
     <ListGroup variant="flush">
       <ListGroup.Item>
@@ -45,9 +46,9 @@ const navigate = useNavigate();
         <ListGroup.Item>
         <h5>BOOKSHELVES</h5>
         <div className='list-links-container'>
-        <Link className="link-decoration underline" to='/mybooks' onClick={()=>dispatch(getBookshelf("currentlyReading"))}><span>Currenty reading</span></Link>
-        <Link className="link-decoration underline" to='/mybooks' onClick={()=>dispatch(getBookshelf("wantToRead"))}><span>Want to read</span></Link>
-        <Link className="link-decoration underline" to='/mybooks' onClick={()=>dispatch(getBookshelf("read"))}><span>Read</span></Link>
+        <Link className="link-decoration underline" to='/mybooks/currently-reading'><span>Currenty reading</span></Link>
+        <Link className="link-decoration underline" to='/mybooks/want-to-read'><span>Want to read</span></Link>
+        <Link className="link-decoration underline" to='/mybooks/read'><span>Read</span></Link>
         </div>  
         </ListGroup.Item>
         
