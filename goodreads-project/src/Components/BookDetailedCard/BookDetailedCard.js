@@ -28,6 +28,7 @@ function BookDetailedCard(props) {
     let isInCurrently = bookshelf.currentlyReading.some((id) => id === bookId);
     let isInWantToRead = bookshelf.wantToRead.some((id) => id === bookId);
     let isInRead = bookshelf.read.some((id) => id === bookId);
+
     switch (status) {
       case "currentlyReading":
         if (isInCurrently) {

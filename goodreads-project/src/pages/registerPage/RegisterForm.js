@@ -46,10 +46,11 @@ function RegisterForm(props) {
   function validatePasswords(password, confirmPassword) {
     if (password === confirmPassword) {
       setError(true);
+      console.log(error);
     } else if (password !== confirmPassword) {
       console.log(details.password, details.confirmPassword);
       setError(false);
-      setValidated(false)
+      console.log(error);
     }
 
     let decimal =
@@ -147,7 +148,7 @@ function RegisterForm(props) {
               onChange={handleChange}
               isInvalid={!error}
             />
-            <Form.Control.Feedback type="invalid" style={{display:!error || validated ? "block" : "none", visibility:!error || validated ? "visible":"hidden" }}>
+            <Form.Control.Feedback type="invalid" style={{display:!error && validated ? "block" : "none", visibility:!error || validated ? "visible":"hidden" }}>
               Passwords do not match
             </Form.Control.Feedback>
           </Form.Group>
