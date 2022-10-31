@@ -41,11 +41,13 @@ function WriteAReview(props) {
         );
         if (!user) {
           let userReview = {
-            username: active.username,
+            username: active.profileUsername,
+            distinctName: active.username,
+            picture: active.profileImg,
             rating: bookRating,
             review: review,
           };
-          ratedBook.usersReviews.push(userReview);
+          ratedBook.usersReviews.unshift(userReview);
 
           let neededBookIndex = globalRatedBooks.findIndex(
             (obj) => obj.id === ratedBook.id
@@ -60,12 +62,14 @@ function WriteAReview(props) {
         }
       } else {
         let userReview = {
-          username: active.username,
+          username: active.profileUsername,
+          distinctName: active.username,
+          picture: active.profileImg,
           rating: bookRating,
           review: review,
         };
         let newBook = { id: props.id, usersReviews: [] };
-        newBook.usersReviews.push(userReview);
+        newBook.usersReviews.unshift(userReview);
 
         globalRatedBooks.push(newBook);
 

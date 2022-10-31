@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import SmallComment from "../SmallComment/SmallComment";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getActiveUser } from "../../server/users";
+import { getActiveUser, getAllGlobalRatedBooks } from "../../server/users";
 import jsonData from "../../Data/data.json";
 
 function BookDetailedCard(props) {
@@ -106,6 +106,96 @@ function BookDetailedCard(props) {
   }
   const randomComments = getRandomComments(jsonData, 10);
 
+  const showUsersComments = () => {
+    let active = getActiveUser();
+    let bookId = props.id;
+    let allRatedBooks = getAllGlobalRatedBooks();
+    let searchBook = allRatedBooks.find((bookObj) => bookObj.id === bookId);
+  
+
+    if (searchBook) {
+      let usersReviews = searchBook.usersReviews;
+      let currentUser = usersReviews.find(
+        (user) => user.distinctName === active.username
+      );
+      console.log(usersReviews);
+      if (currentUser) {
+        return (
+          <div>
+            {usersReviews.map((user) => (
+              <SmallComment
+              key={user.distinctName}
+              username={user.username}
+                profilePicture={user.picture}
+                rate={user.rating}
+                review={user.review}
+              />
+            ))}
+          </div>
+        );
+      } else {
+        return (
+          <>
+            <div className="write-review-wrapper">
+              <div className="user-img">
+                <img src={editProfile.profileImg} />
+              </div>
+              <div>
+                <div>
+                  <span>
+                    <a className="username-review" href="">
+                      {editProfile.profileUsername}
+                    </a>
+                    , start your review of "{props.title}""
+                  </span>
+                </div>
+                <div className="rating-review">
+                  <button onClick={routeChange} className="write-review">
+                    Write a review
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div>
+              {usersReviews.map((user) => (
+                <SmallComment
+                key={user.distinctName}
+                username={user.username}
+                profilePicture={user.picture}
+                rate={user.rating}
+                review={user.review}
+                />
+              ))}
+            </div>
+          </>
+        );
+      }
+    } else {
+      return (
+        <div className="write-review-wrapper">
+          <div className="user-img">
+            <img src={editProfile.profileImg} />
+          </div>
+          <div>
+            <div>
+              <span>
+                <a className="username-review" href="">
+                  {editProfile.profileUsername}
+                </a>
+                , start your review of "{props.title}""
+              </span>
+            </div>
+            <div className="rating-review">
+              <button onClick={routeChange} className="write-review">
+                Write a review
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  };
+
   const editProfile = useSelector((state) => state.editProfile);
   return (
     <div className="center-position">
@@ -194,7 +284,7 @@ function BookDetailedCard(props) {
         </div>
         <p className="community-reviews">COMMUNITY REVIEWS</p>
         <div className="write-review-container">
-          <div className="write-review-wrapper">
+          {/* <div className="write-review-wrapper">
             <div className="user-img">
               <img src={editProfile.profileImg} />
             </div>
@@ -204,17 +294,17 @@ function BookDetailedCard(props) {
                   <a className="username-review" href="">
                     {editProfile.profileUsername}
                   </a>
-                  , start your review of A Sign of Affection, Vol. 1
+                  , start your review of "{props.title}""
                 </span>
               </div>
               <div className="rating-review">
-                {/* {<StarRating></StarRating>} */}
                 <button onClick={routeChange} className="write-review">
                   Write a review
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
+          {showUsersComments()}
         </div>
 
         <div>
