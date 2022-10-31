@@ -76,11 +76,10 @@ function Profile() {
         <div className="currently-reading-books">
           {newBooks.length>0?(
             newBooks.map((book,index)=>{
-              console.log(readBooks)
               return(
-                <>
+                <div className="small-read-books-wrapper" key={index}>
                 <SmallBookCard
-                  key={index}
+                  key={book.id}
                   picture={book.volumeInfo.imageLinks === undefined
                     ? "https://books.google.bg/googlebooks/images/no_cover_thumb.gif"
                     : `${book.volumeInfo.imageLinks.thumbnail}`}
@@ -88,7 +87,14 @@ function Profile() {
                   author={book.volumeInfo.authors}
                   id={book.id}
                 />
-              </>
+                <div className="profile-review-container">
+                  <p>What did you think?</p>
+                <button onClick={()=>navigate(`/detailed-info/write-review/${book.id}`)} className="write-review">
+                Write a review
+              </button>
+                </div>
+              <hr/>
+              </div>
               )
               
             })

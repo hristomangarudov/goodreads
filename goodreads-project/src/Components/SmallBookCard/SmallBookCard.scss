@@ -6,7 +6,7 @@
   padding: 20px;
   display: flex;
   gap: 10px;
-  width: 60vw;
+  width: 40vw;
   flex-direction: column;
 }
 .smallBook-body-wrapper {
@@ -35,4 +35,17 @@ text-align: left !important;
   font-weight: 500;
   letter-spacing: 0.1em;
   margin: 0px;
+}
+.small-read-books-wrapper{
+  display: flex;
+}
+.profile-review-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  button,button:hover{
+    margin:0;
+  }
 }

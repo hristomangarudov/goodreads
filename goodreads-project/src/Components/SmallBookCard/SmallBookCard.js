@@ -32,7 +32,6 @@ function SmallBookCard(props) {
           </div>
         </div>
       </div>
-        <hr/>
     </div>
   );
 }
