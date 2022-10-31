@@ -19,6 +19,9 @@ function MyBooksTable(props) {
         .then(res =>{
           resolve(res.json())
         })
+        .catch(err =>{
+          return [];
+        })
       });
     });
     Promise.all(requests)
@@ -112,17 +115,15 @@ function MyBooksTable(props) {
         break;
     }
   };
-  const removeBook = (id)=>{
+  const removeBook = (e,id)=>{
+    e.preventDefault()
     let active = getActiveUser();
     let bookshelf = active.bookshelf;
     let bookId = id;
-    let isInCurrently = bookshelf.currentlyReading.some((id) => id === bookId);
-    let isInWantToRead = bookshelf.wantToRead.some((id) => id === bookId);
-    let isInRead = bookshelf.read.some((id) => id === bookId);
     switch(props.currentShelf){
       case "currently-reading":
           let bookIndexCurrent = bookshelf.currentlyReading.findIndex((id) => id === bookId);
-          bookshelf.wantToRead.splice(bookIndexCurrent, 1);
+          bookshelf.currentlyReading.splice(bookIndexCurrent, 1);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active))
           navigate(`/mybooks/${props.currentShelf}`)
@@ -138,7 +139,7 @@ function MyBooksTable(props) {
 
       case "read-books":
             let bookIndexRead = bookshelf.read.findIndex((id) => id === bookId);
-            bookshelf.wantToRead.splice(bookIndexRead, 1);
+            bookshelf.read.splice(bookIndexRead, 1);
             active.bookshelf = bookshelf;
             localStorage.setItem("activeUser", JSON.stringify(active))
             navigate(`/mybooks/${props.currentShelf}`)
@@ -159,7 +160,6 @@ function MyBooksTable(props) {
         </tr>
       </thead>
       <tbody>
-      {/* {console.log(newBooks)} */}
         {newBooks.length>0?(
           newBooks.map((book,index)=>{
             return ( 
@@ -212,7 +212,7 @@ function MyBooksTable(props) {
                  </div>
               </td>
               <td>
-                <CloseButtonComponent onClick={()=>removeBook(book.id)}/>
+                <CloseButtonComponent onClick={(e)=>removeBook(e,book.id)}/>
               </td>
             </tr>)
           })

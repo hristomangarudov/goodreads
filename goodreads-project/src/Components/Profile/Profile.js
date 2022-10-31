@@ -2,6 +2,8 @@ import "./Profile.scss";
 import SmallBookCard from "../SmallBookCard/SmallBookCard";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { getActiveUser } from "../../server/users";
+import { useState,useEffect } from "react";
 
 function Profile() {
   const editProfile = useSelector((state) => state.editProfile);
@@ -9,7 +11,26 @@ function Profile() {
   const toEdit = () => {
     navigate("/edit-profile")
   }
-
+  let active = getActiveUser()
+  const [readBooks,setReadBooks] = useState(active.bookshelf.read)
+  const [newBooks, setNewBooks] = useState([]);
+  useEffect(()=>{
+    setReadBooks(active.bookshelf.read)
+  },[])
+  useEffect(() => {
+    let requestsRead = readBooks.map((id) => {
+      return new Promise((resolve, reject) => {
+        return fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
+        .then(res =>{
+          resolve(res.json())
+        })
+      });
+    });
+    Promise.all(requestsRead)
+    .then((values)=>{
+      setNewBooks(values)
+    })
+  }, [readBooks]);
 
   return (
     <div className="profile-main-wrapper">
@@ -43,53 +64,36 @@ function Profile() {
           <h6 className="profile-h6"> {editProfile.profileUsername} BOOKSHELF</h6>
         </div>
         <div className="bookshelf-links">
-          <Link to="/mybooks/currently-reading">Currently Reading</Link>
-          <Link to="/mybooks/want-to-read">Want to read</Link>
-          <Link to="/mybooks/read-books">Read</Link>
+        <Link className="link-decoration underline" to='/mybooks/currently-reading'><span>Currenty reading</span></Link>
+        <Link className="link-decoration underline" to='/mybooks/want-to-read'><span>Want to read</span></Link>
+        <Link className="link-decoration underline" to='/mybooks/read-books'><span>Read</span></Link>
         </div>
       </div>
       <div className="currently-reading-wrapper">
         <div className="currently-reading-user">
-          <h6 className="profile-h6">{editProfile.profileUsername} HAS READ</h6>
+          <h6 className="profile-h6">{editProfile.profileUsername} READ BOOKS</h6>
         </div>
         <div className="currently-reading-books">
-          {
-            <>
-              <SmallBookCard
-                picture={"https://m.media-amazon.com/images/I/51V6zvaRjkL.jpg"}
-              />
-              <SmallBookCard
-                picture={
-                  "https://play-lh.googleusercontent.com/0eX9LmXp1-wpNNrPmqsbnZxvFm6IJWC0z-o3MGmbFEDQPKhpYP0p2saxLYL9qGlisK0w"
-                }
-              />
-              <SmallBookCard
-                picture={
-                  "https://rfbd.hs.llnwd.net/siteContent/bkimages/detail/KM765.jpg"
-                }
-              />
-            </>
-          }
-        </div>
-      </div>
-      <div className="recent-updates-wrapper">
-        <div className="recent-updates-user">
-          <h6 className="profile-h6"> {editProfile.profileUsername} BOOKSHELF</h6>
-        </div>
-        <div className="recent-updates-books">
-          {
-            <>
-              <SmallBookCard
-                picture={
-                  "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1470082995l/29056083._SY475_.jpg"
-                }
-              />
-              <SmallBookCard
-                picture={
-                  "https://images.booksense.com/images/427/791/9780545791427.jpg"
-                }
-              />
-            </>
+          {newBooks.length>0?(
+            newBooks.map((book,index)=>{
+              console.log(readBooks)
+              return(
+                <>
+                <SmallBookCard
+                  key={index}
+                  picture={book.volumeInfo.imageLinks === undefined
+                    ? "https://books.google.bg/googlebooks/images/no_cover_thumb.gif"
+                    : `${book.volumeInfo.imageLinks.thumbnail}`}
+                  title={book.volumeInfo.title}
+                  author={book.volumeInfo.authors}
+                  id={book.id}
+                />
+              </>
+              )
+              
+            })
+          ):<div></div>
+
           }
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "./SmallBookCard.scss";
 
 function SmallBookCard(props) {
@@ -6,24 +7,32 @@ function SmallBookCard(props) {
   return (
     <div className="smallBook-wrapper">
       <div className="smallBook-container">
+             <div>
+              <p className="username-review-small" to="/profile">
+                {editProfile.profileUsername} has read
+              </p>
+            </div>
         <div className="smallBook-body-wrapper">
-          <img src={props.picture} alt="..." />
+                <Link to={`/detailed-info/${props.id}`}>
+                  <img className="small-card-image"
+
+                    src={props.picture}
+                  />
+                </Link>
           <div className="smallBook-text">
+            <Link className="h5-container" to={`/detailed-info/${props.id}`}>
+            <h5>{props.title}</h5>
+            </Link>
             <span>
-              <a className="username-review" href="">
-                {editProfile.profileUsername}
-              </a>
-            </span>
-            <h5>A Sign of Affection, Vol. 1 (A Sign of Affection, #1)</h5>
-            <span>
-              by <a href="">Suu Morishita</a>
+              by {props.author[0]}
             </span>
             <span>
-              bookshelves: <a href="">currently-reading</a>
+              bookshelves: <Link to="/mybooks/read-books">read</Link>
             </span>
           </div>
         </div>
       </div>
+        <hr/>
     </div>
   );
 }

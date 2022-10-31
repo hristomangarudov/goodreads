@@ -21,7 +21,9 @@ const navigate = useNavigate();
       <ListGroup.Item>
       <h5>CURRENTLY READING</h5>
       {bookInfo.length >0? <div className='fake-link-container'><div key={bookInfo[0].id} className="fake-link " onClick={()=>navigate(`/detailed-info/${bookInfo[0].id}`)}>
-        <img src={bookInfo[0].volumeInfo.imageLinks.thumbnail} alt="Currently Reading"/>
+        <img src={bookInfo[0].volumeInfo.imageLinks === undefined
+                ? "https://books.google.bg/googlebooks/images/no_cover_thumb.gif"
+                : `${bookInfo[0].volumeInfo.imageLinks.thumbnail}`} alt="Currently Reading"/>
         <p className="fake-link-text">{bookInfo[0].volumeInfo.title}</p>
         </div></div>:<div>
         <img src={CurrentlyReading} alt="Currently Reading"/>
