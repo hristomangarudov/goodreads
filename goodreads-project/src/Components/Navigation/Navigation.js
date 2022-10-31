@@ -12,10 +12,10 @@ export default function Navigation() {
   const editProfile = useSelector((state) => state.editProfile);
 
   const navigate = useNavigate();
-  // const logOut = () => {
-  //   localStorage.removeItem("activeUser");
+  const logOut = () => {
+    localStorage.removeItem("activeUser");
 
-  // };
+  };
   
   
   const goToProfile = () =>{
@@ -99,10 +99,8 @@ export default function Navigation() {
                 </Dropdown.Item>
                 <Dropdown.Item
                   bsPrefix="dropdown-item underline-items"
-                  // onClick={(e) =>{
-                  //   return <ConfirmLogout></ConfirmLogout>
-                  // }}
-                  // href='/login'
+                  onClick={logOut}
+                  href='/login'
                 >
                   Log out
                 </Dropdown.Item>
