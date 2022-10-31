@@ -5,17 +5,19 @@ import "./Navigation.scss";
 import "./DropdownMenu.scss";
 
 import { useSelector } from "react-redux";
+import ConfirmLogout from "../ConfirmLogout/ConfirmLogout";
 
 
 export default function Navigation() {
   const editProfile = useSelector((state) => state.editProfile);
 
   const navigate = useNavigate();
-  const logOut = () => {
-    localStorage.removeItem("activeUser");
+  // const logOut = () => {
+  //   localStorage.removeItem("activeUser");
 
-  };
-
+  // };
+  
+  
   const goToProfile = () =>{
     navigate('/profile')
   };
@@ -97,8 +99,10 @@ export default function Navigation() {
                 </Dropdown.Item>
                 <Dropdown.Item
                   bsPrefix="dropdown-item underline-items"
-                  onClick={logOut}
-                  href='/login'
+                  // onClick={(e) =>{
+                  //   return <ConfirmLogout></ConfirmLogout>
+                  // }}
+                  // href='/login'
                 >
                   Log out
                 </Dropdown.Item>

@@ -5,13 +5,12 @@ import SmallComment from "../SmallComment/SmallComment";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getActiveUser } from "../../server/users";
+import jsonData from "../../Data/data.json";
 
 function BookDetailedCard(props) {
   let navigate = useNavigate();
   const routeChange = () => {
     navigate(`/detailed-info/write-review/${props.id}`);
-            //  /detailed-info/write-review/:id
-    console.log(props.id);
   };
 
   const [isReadMoreShown, setReadMoreShown] = useState(false);
@@ -100,6 +99,13 @@ function BookDetailedCard(props) {
     }
   };
 
+  function getRandomComments(arr, num) {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+
+    return shuffled.slice(0, num);
+  }
+  const randomComments = getRandomComments(jsonData, 10);
+
   const editProfile = useSelector((state) => state.editProfile);
   return (
     <div className="center-position">
@@ -120,10 +126,11 @@ function BookDetailedCard(props) {
                     onChange={handleSelect}
                     name="slct"
                     id="slct"
-                    defaultValue={'addToShelf'}
-                   
+                    defaultValue={"addToShelf"}
                   >
-                    <option disabled hidden value="addToShelf">Add to shelf</option>
+                    <option disabled hidden value="addToShelf">
+                      Add to shelf
+                    </option>
                     <option value="currentlyReading">Currently reading</option>
                     <option value="read">Read</option>
                     <option value="wantToRead">Want to read</option>
@@ -211,29 +218,15 @@ function BookDetailedCard(props) {
         </div>
 
         <div>
-          <SmallComment
-            picture={"https://jenite.bg/pictures/1542216_480_.png"}
-          />
-          <SmallComment
-            picture={
-              "https://www.obekti.bg/sites/default/files/styles/article_gallery/public/images/shutterstock_125157233.jpg?itok=ro-c05c1"
-            }
-          />
-          <SmallComment
-            picture={
-              "https://www.obekti.bg/sites/default/files/styles/article_gallery/public/gallery/shutterstock_339451460.jpg?itok=gJWH6dJC"
-            }
-          />
-          <SmallComment
-            picture={
-              "https://img.cms.bweb.bg/media/images/gallery/Oct2014/2110250466.webp"
-            }
-          />
-          <SmallComment
-            picture={
-              "https://www.obekti.bg/sites/default/files/styles/article_gallery/public/gallery/shutterstock_220755979.jpg?itok=ZbpDDqT-"
-            }
-          />
+          {randomComments.map((obj) => (
+            <SmallComment
+              key={obj.id}
+              username={obj.username}
+              profilePicture={obj.profilePicture}
+              rate={obj.rate}
+              review={obj.review}
+            />
+          ))}
         </div>
       </div>
     </div>

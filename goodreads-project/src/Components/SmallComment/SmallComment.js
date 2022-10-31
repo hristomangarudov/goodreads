@@ -1,39 +1,34 @@
 import "./SmallComment.scss";
 
-function SmallComment() {
+function SmallComment(props) {
+  function starsRating(rate) {
+    let arr = [];
+    for (let i = 0; i < rate; i++) {
+      arr.push(<span>&#9733;</span>);
+    }
+    let stars = arr.map((x) => x.props.children).join("");
+    return stars;
+  }
+
   return (
     <div className="smallComment-container">
       <div className="smallComment-wrapper">
         <div className="smallComment-img">
-          <img
-            src={"https://cdn-icons-png.flaticon.com/512/149/149071.png"}
-            alt="..."
-          />
+          <img src={props.profilePicture} alt="..." />
         </div>
         <div className="smallComment-body-wrapper">
           <div className="smallComment-body">
             <div>
               <p className="smallComment-title">
-                <a className="username-review" href="">Clay</a>
-                <span style={{ marginLeft: "5px" }}>rated it</span>
-                <span> &#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <a className="username-review" href="">
+                  {props.username}
+                </a>
+                <span style={{ marginLeft: "5px" }}>rated it </span>
+                <span>{starsRating(props.rate)}</span>
               </p>
-              <h6 className="smallComment-title">
-                Special thanks to NetGalley and the publisher for a free,
-                electronic copy of this novel received in exchange for an honest
-                review.
-              </h6>
             </div>
-            <br />
 
-            <p className="smallComment-plot">
-              A Sign of Affection is a shojo manga that follows college student
-              Yuki who is deaf. While on the train she meets fellow student
-              Itsuomi who she seemingly grows an attraction towards. Yuki is one
-              of the most charming and sweet characters that I've read in a
-              manga. There is this shyness about her, but also a level of
-              boldness that I enjoyed.
-            </p>
+            <p className="smallComment-plot">{props.review}</p>
           </div>
         </div>
       </div>
