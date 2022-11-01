@@ -3,20 +3,28 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../../server/users";
-// import {styles} from "../registerPage/RegisterForm.scss"
-
+import { getActiveUser, loginUser } from "../../server/users";
+import { useDispatch } from "react-redux";
+import {changeUsernameData} from "../../store/editProfileSlice"
 function LoginForm(props) {
   const [validated, setValidated] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [credentials, setCredentials] = useState(true);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (loginUser(username, password)) {
       props.successLogin();
+      let profileUsername = username
+      dispatch(
+        changeUsernameData({ profileUsername })
+      );
+      let active = getActiveUser()
+      active.profileUsername = profileUsername
+      localStorage.setItem('activeUser', JSON.stringify(active))
       navigate("/home");
       setCredentials(true);
       setValidated(false);
@@ -28,8 +36,8 @@ function LoginForm(props) {
         setCredentials(true);
         setValidated(true);
       }
-
-      // setCredentials(false);
+      
+      
     }
   };
   return (

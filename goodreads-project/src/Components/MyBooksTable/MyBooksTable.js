@@ -72,7 +72,7 @@ function MyBooksTable(props) {
           let bookIndex = bookshelf.currentlyReading.findIndex(
             (id) => id === bookId
           );
-          console.log(bookIndex);
+         
           bookshelf.currentlyReading.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;

@@ -26,7 +26,7 @@ function WriteAReview(props) {
 
     let isThereCurrentBook = ratedBooks.some((book) => book.id === props.id);
     if (isThereCurrentBook) {
-      console.log("You have aldready rated this book");
+  
     } else {
       let newRatedBook = { id: props.id, rating: bookRating, review: review };
       ratedBooks.push(newRatedBook);

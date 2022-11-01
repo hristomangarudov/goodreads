@@ -5,8 +5,6 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllUsers, registerUser } from "../../server/users";
-import { useDispatch } from "react-redux";
-import { changeUsernameData } from "../../store/editProfileSlice";
 
 function RegisterForm(props) {
   const [validated, setValidated] = useState(false);
@@ -17,12 +15,7 @@ function RegisterForm(props) {
     password: "",
     confirmPassword: "",
   });
- 
-  const profileUsername = `User-${Math.floor(Math.random() * 10000)}`
-  const dispatch = useDispatch();
-  dispatch(
-    changeUsernameData({ profileUsername })
-  );
+
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,7 +23,7 @@ function RegisterForm(props) {
     if (!form.checkValidity()) {
       setValidated(true);
     } else if (form.checkValidity() && error) {
-      if (registerUser(details.username, details.password,profileUsername)) {
+      if (registerUser(details.username, details.password)) {
         navigate("/login");
         setValidated(false);
       }
@@ -49,26 +42,21 @@ function RegisterForm(props) {
     } else if (password !== confirmPassword) {
       console.log(details.password, details.confirmPassword);
       setError(false);
-      setValidated(false)
+      setValidated(false);
     }
 
     let decimal =
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
 
-      if(password.length > 0){
-
-        if (password.match(decimal)) {
-          setPassLength(true);
-        } else {
-          setPassLength(false);
-        }
-      } else {
+    if (password.length > 0) {
+      if (password.match(decimal)) {
         setPassLength(true);
-
+      } else {
+        setPassLength(false);
       }
-
-    console.log(password.length);
-
+    } else {
+      setPassLength(true);
+    }
   }
   useEffect(() => {
     validatePasswords(
@@ -108,13 +96,18 @@ function RegisterForm(props) {
             </Form.Control.Feedback>
             <span
               className="username-taken invalid-feedback test"
-              style={{ display: isUserTaken ?"none" : "block", visibility:!isUserTaken ? "hidden":"visible" }}
+              style={{
+                display: isUserTaken ? "none" : "block",
+                visibility: !isUserTaken ? "hidden" : "visible",
+              }}
             >
               Username is already taken
             </span>
-
           </Form.Group>
-          <Form.Group className="group-relative long-validation-text mb-3" controlId="formPassword">
+          <Form.Group
+            className="group-relative long-validation-text mb-3"
+            controlId="formPassword"
+          >
             <Form.Label>Password</Form.Label>
             <Form.Control
               bsPrefix="custom-class-input"
@@ -129,14 +122,20 @@ function RegisterForm(props) {
             </Form.Control.Feedback>
             <span
               className="username-taken invalid-feedback test long-test"
-              style={{ display: enoughPassLength ? "none" : "block", visibility:enoughPassLength ? "hidden":"visible" }}
+              style={{
+                display: enoughPassLength ? "none" : "block",
+                visibility: enoughPassLength ? "hidden" : "visible",
+              }}
             >
               Password between 8 to 15 characters which contain at least one
               lowercase letter, one uppercase letter, one numeric digit, and one
               special character
             </span>
           </Form.Group>
-          <Form.Group className="group-relative mb-3" controlId="formConfirmPassword">
+          <Form.Group
+            className="group-relative mb-3"
+            controlId="formConfirmPassword"
+          >
             <Form.Label>Confirm password</Form.Label>
             <Form.Control
               bsPrefix="custom-class-input"
@@ -147,7 +146,13 @@ function RegisterForm(props) {
               onChange={handleChange}
               isInvalid={!error}
             />
-            <Form.Control.Feedback type="invalid" style={{display:!error && validated ? "block" : "none", visibility:!error || validated ? "visible":"hidden" }}>
+            <Form.Control.Feedback
+              type="invalid"
+              style={{
+                display: !error && validated ? "block" : "none",
+                visibility: !error || validated ? "visible" : "hidden",
+              }}
+            >
               Passwords do not match
             </Form.Control.Feedback>
           </Form.Group>
