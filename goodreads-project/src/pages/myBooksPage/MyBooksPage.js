@@ -34,7 +34,7 @@ useEffect(()=>{
         <ListGroupMyBooks params={params}></ListGroupMyBooks>
       </div>
       <div className="cards-container  general-container">
-        <h1>Shelves</h1>
+        <h1>Bookshelves</h1>
         <MyBooksTable currentShelf={params.shelf} books={currentTab} shelf={shelfName}/>
       </div>
     </div>

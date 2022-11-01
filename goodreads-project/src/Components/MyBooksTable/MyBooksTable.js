@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import Table from "react-bootstrap/Table";
 import StarRating from "../StartRating/StarRating";
 import "./MyBooksTable.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { getActiveUser } from "../../server/users";
 import CloseButtonComponent from "../CloseButton/CloseButton";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 function MyBooksTable(props) {
   const [currentBooks, setCurrentBooks] = useState(props.books);
   const [newBooks, setNewBooks] = useState([]);
+  const [selectDefault,setSelectDefault] = useState('addToShelf')
   const navigate = useNavigate()
   useEffect(()=>{
     setCurrentBooks(props.books)
@@ -30,6 +33,7 @@ function MyBooksTable(props) {
     })
   }, [currentBooks]);
   const handleSelect = (e,book) => {
+    console.log()
     let status = e.target.value;
     let active = getActiveUser();
     let bookshelf = active.bookshelf;
@@ -40,6 +44,7 @@ function MyBooksTable(props) {
     switch (status) {
       case "currentlyReading":
         if (isInCurrently) {
+          setSelectDefault('addToShelf')
         } else if (isInWantToRead) {
           let bookIndex = bookshelf.wantToRead.findIndex((id) => id === bookId);
           bookshelf.wantToRead.splice(bookIndex, 1);
@@ -89,7 +94,6 @@ function MyBooksTable(props) {
         break;
       case "read":
         if (isInRead) {
-          console.log("IMA GO VECHE");
         } else if (isInWantToRead) {
           let bookIndex = bookshelf.wantToRead.findIndex((id) => id === bookId);
           bookshelf.wantToRead.splice(bookIndex, 1);
@@ -200,13 +204,12 @@ function MyBooksTable(props) {
                     }
                     name="slct"
                     id="slct"
-                    defaultValue={'addToShelf'}
-
+                    defaultValue={selectDefault}
                   >
-                    <option disabled hidden value="addToShelf">Add to shelf</option>
+                    <option disabled hidden value="addToShelf" onSelect={(e)=>e.stopPropagation()}>Add to shelf</option>
                     <option value="currentlyReading">Currently reading</option>
-                    <option value="read">Read</option>
-                    <option value="wantToRead">Want to read</option>
+                    <option value="read" >Read</option>
+                    <option value="wantToRead" >Want to read</option>
                   </select>
                  </div>
                  </div>
