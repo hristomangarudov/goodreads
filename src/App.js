@@ -11,9 +11,7 @@ import MyBooksPage from "./pages/myBooksPage/MyBooksPage";
 import HomePage from "./pages/homePage/home";
 import ProfilePage from "./pages/profilePage/ProfilePage";
 import WriteAReviewPage from "./pages/writeReviewPage/WriteAReviewPage";
-import ChallengesPage from "./pages/challengesPage/ChallengesPage";
 import BannerComponent from "./Components/Banner/Banner";
-import AuthorInfoPage from "./pages/authorInfoPage/AuthorInfoPage";
 import EditProfilePage from "./pages/editProfilePage/EditProfile";
 import {getActiveUser} from "./server/users"
 import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
@@ -42,10 +40,8 @@ function App() {
             />
             <Route path="home" element={<HomePage/>} />
             <Route path="mybooks/:shelf" element={<MyBooksPage />} />
-            <Route path="challenges" element={<ChallengesPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="detailed-info/:id" element={<BookDetailedPage />} />
-            <Route path="author-info" element={<AuthorInfoPage />} />
             <Route path="edit-profile" element={<EditProfilePage />} />
             <Route path="dropdown-menu" element={<DropdownMenu />} />
 
