@@ -4,7 +4,15 @@ table{
         color: purple !important;
     }
   }
-  
-tbody{
-    // text-align: center;
+.errorShelf{
+    width: 100%;
+    margin-top: 0px !important;
+    font-size: 1em;
+    color: #dc3545;
+}
+.tabble-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -24,8 +24,8 @@ function RegisterForm(props) {
       setValidated(true);
     } else if (form.checkValidity() && error) {
       if (registerUser(details.username, details.password)) {
-        navigate("/login");
         setValidated(false);
+        navigate("/login");
       }
     }
   };
@@ -40,7 +40,6 @@ function RegisterForm(props) {
     if (password === confirmPassword) {
       setError(true);
     } else if (password !== confirmPassword) {
-      console.log(details.password, details.confirmPassword);
       setError(false);
       setValidated(false);
     }
@@ -67,7 +66,7 @@ function RegisterForm(props) {
   }, [details]);
 
   let users = getAllUsers();
-  const isUserTaken = users.find((user) => user.username === details.username);
+  let isUserTaken = users.find((user) => user.username === details.username);
 
   return (
     <div className="credentials-wrapper">
@@ -97,8 +96,8 @@ function RegisterForm(props) {
             <span
               className="username-taken invalid-feedback test"
               style={{
-                display: isUserTaken ? "none" : "block",
-                visibility: !isUserTaken ? "hidden" : "visible",
+                display: isUserTaken? "none" : "block",
+                visibility: !isUserTaken? "hidden" : "visible",
               }}
             >
               Username is already taken
@@ -164,6 +163,7 @@ function RegisterForm(props) {
           >
             REGISTER
           </Button>
+          
         </Form>
         <Link to="/login">Already have an account?Log in instead.</Link>
       </div>

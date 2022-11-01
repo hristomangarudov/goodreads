@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import Table from "react-bootstrap/Table";
 import StarRating from "../StartRating/StarRating";
 import "./MyBooksTable.scss";
@@ -8,6 +8,7 @@ import CloseButtonComponent from "../CloseButton/CloseButton";
 function MyBooksTable(props) {
   const [currentBooks, setCurrentBooks] = useState(props.books);
   const [newBooks, setNewBooks] = useState([]);
+  const [isInPage,setIsInPage] = useState(false)
   const navigate = useNavigate()
   useEffect(()=>{
     setCurrentBooks(props.books)
@@ -37,10 +38,13 @@ function MyBooksTable(props) {
     let isInCurrently = bookshelf.currentlyReading.some((id) => id === bookId);
     let isInWantToRead = bookshelf.wantToRead.some((id) => id === bookId);
     let isInRead = bookshelf.read.some((id) => id === bookId);
+    e.currentTarget.selectedIndex = 0;
     switch (status) {
       case "currentlyReading":
         if (isInCurrently) {
+          setIsInPage(!isInPage)
         } else if (isInWantToRead) {
+          setIsInPage(false)
           let bookIndex = bookshelf.wantToRead.findIndex((id) => id === bookId);
           bookshelf.wantToRead.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
@@ -48,6 +52,7 @@ function MyBooksTable(props) {
           localStorage.setItem("activeUser", JSON.stringify(active))
           navigate(`/mybooks/${props.currentShelf}`)
         } else if (isInRead) {
+          setIsInPage(false)
           let bookIndex = bookshelf.read.findIndex((id) => id === bookId);
           bookshelf.read.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
@@ -55,6 +60,7 @@ function MyBooksTable(props) {
           localStorage.setItem("activeUser", JSON.stringify(active))
           navigate(`/mybooks/${props.currentShelf}`)
         } else {
+          setIsInPage(false)
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active))
@@ -63,7 +69,9 @@ function MyBooksTable(props) {
         break;
       case "wantToRead":
         if (isInWantToRead) {
+          setIsInPage(!isInPage)
         } else if (isInCurrently) {
+          setIsInPage(false)
           let bookIndex = bookshelf.currentlyReading.findIndex(
             (id) => id === bookId
           );
@@ -74,6 +82,7 @@ function MyBooksTable(props) {
           localStorage.setItem("activeUser", JSON.stringify(active));
           navigate(`/mybooks/${props.currentShelf}`)
         } else if (isInRead) {
+          setIsInPage(false)
           let bookIndex = bookshelf.read.findIndex((id) => id === bookId);
           bookshelf.read.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
@@ -81,6 +90,7 @@ function MyBooksTable(props) {
           localStorage.setItem("activeUser", JSON.stringify(active));
           navigate(`/mybooks/${props.currentShelf}`)
         } else {
+          setIsInPage(false)
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
@@ -89,7 +99,9 @@ function MyBooksTable(props) {
         break;
       case "read":
         if (isInRead) {
+          setIsInPage(!isInPage)
         } else if (isInWantToRead) {
+          setIsInPage(false)
           let bookIndex = bookshelf.wantToRead.findIndex((id) => id === bookId);
           bookshelf.wantToRead.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
@@ -97,6 +109,7 @@ function MyBooksTable(props) {
           localStorage.setItem("activeUser", JSON.stringify(active));
           navigate(`/mybooks/${props.currentShelf}`)
         } else if (isInCurrently) {
+          setIsInPage(false)
           let bookIndex = bookshelf.currentlyReading.findIndex(
             (id) => id === bookId
           );
@@ -106,6 +119,7 @@ function MyBooksTable(props) {
           localStorage.setItem("activeUser", JSON.stringify(active));
           navigate(`/mybooks/${props.currentShelf}`)
         } else {
+          setIsInPage(false)
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
@@ -174,6 +188,10 @@ function MyBooksTable(props) {
   }
 
   return (
+<div className="tabble-wrapper">
+  <div>
+    <p className={`errorShelf`} style={{visibility: !isInPage ? "hidden" : "visible",}}>Book is already in shelf</p>
+  </div>
     <Table striped hover>
       <thead>
         <tr>
@@ -228,12 +246,11 @@ function MyBooksTable(props) {
                     name="slct"
                     id="slct"
                     defaultValue={'addToShelf'}
-
                   >
-                    <option disabled hidden value="addToShelf">Add to shelf</option>
+                    <option disabled hidden value="addToShelf" onSelect={(e)=>e.stopPropagation()}>Add to shelf</option>
                     <option value="currentlyReading">Currently reading</option>
-                    <option value="read">Read</option>
-                    <option value="wantToRead">Want to read</option>
+                    <option value="read" >Read</option>
+                    <option value="wantToRead" >Want to read</option>
                   </select>
                  </div>
                  </div>
@@ -241,12 +258,15 @@ function MyBooksTable(props) {
               <td>
                 <CloseButtonComponent onClick={(e)=>removeBook(e,book.id)}/>
               </td>
-            </tr>)
+            </tr>
+            )
           })
         ):<tr></tr>}
        
       </tbody>
     </Table>
+    </div>
+    
   );
 }
 
