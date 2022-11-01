@@ -14,6 +14,7 @@ function Profile() {
   let active = getActiveUser()
   const [readBooks,setReadBooks] = useState(active.bookshelf.read)
   const [newBooks, setNewBooks] = useState([]);
+  const ratedBooks=active.ratedBooks
   useEffect(()=>{
     setReadBooks(active.bookshelf.read)
   },[])
@@ -31,7 +32,29 @@ function Profile() {
       setNewBooks(values)
     })
   }, [readBooks]);
-
+const checkRatedBooks = (book)=>{
+  if(ratedBooks.length>0){
+    let isRated = ratedBooks.some(ratedBook=>ratedBook.id === book.id)
+    if(isRated){
+      return (
+        <div className="profile-review-container">
+        <p>You have already rated this book</p>
+        <button disabled onClick={()=>navigate(`/detailed-info/write-review/${book.id}`)} className="write-review">
+        Write a review
+        </button>
+        </div>
+      )
+    }
+  }
+  return(
+    <div className="profile-review-container">
+    <p>What did you think?</p>
+    <button onClick={()=>navigate(`/detailed-info/write-review/${book.id}`)} className="write-review">
+    Write a review
+    </button>
+    </div>
+  )
+}
   return (
     <div className="profile-main-wrapper">
       <div className="profile-wrapper">
@@ -76,11 +99,10 @@ function Profile() {
         <div className="currently-reading-books">
           {newBooks.length>0?(
             newBooks.map((book,index)=>{
-              console.log(readBooks)
               return(
-                
+                <div className="small-read-books-wrapper" key={index}>
                 <SmallBookCard
-                  key={index}
+                  key={book.id}
                   picture={book.volumeInfo.imageLinks === undefined
                     ? "https://books.google.bg/googlebooks/images/no_cover_thumb.gif"
                     : `${book.volumeInfo.imageLinks.thumbnail}`}
@@ -88,11 +110,14 @@ function Profile() {
                   author={book.volumeInfo.authors}
                   id={book.id}
                 />
-            
+                {checkRatedBooks(book)}
+
+              <hr/>
+              </div>
               )
               
             })
-          ):<div></div>
+          ):<div>{editProfile.profileUsername} hasn't read any books yet.{<Link to="/home">Browse books to read!</Link>}</div>
 
           }
         </div>
