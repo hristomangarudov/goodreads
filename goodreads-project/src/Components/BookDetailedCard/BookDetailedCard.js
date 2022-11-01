@@ -13,6 +13,8 @@ function BookDetailedCard(props) {
   };
 
   const [isReadMoreShown, setReadMoreShown] = useState(false);
+  const [isInPage,setIsInPage] = useState(false)
+  const [addedToPage,setAddedToPage] = useState(false)
 
   const toggleBtn = () => {
     setReadMoreShown(!isReadMoreShown);
@@ -26,24 +28,33 @@ function BookDetailedCard(props) {
     let isInCurrently = bookshelf.currentlyReading.some((id) => id === bookId);
     let isInWantToRead = bookshelf.wantToRead.some((id) => id === bookId);
     let isInRead = bookshelf.read.some((id) => id === bookId);
+    e.currentTarget.selectedIndex = 0;
 
     switch (status) {
       // DA GO OPRAVIM ZA VSICHKI USERS
       case "currentlyReading":
         if (isInCurrently) {
+          setIsInPage(true)
+          setAddedToPage(false)
         } else if (isInWantToRead) {
+          setIsInPage(false)
+          setAddedToPage(true)
           let bookIndex = bookshelf.wantToRead.findIndex((id) => id === bookId);
           bookshelf.wantToRead.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
         } else if (isInRead) {
+          setIsInPage(false)
+          setAddedToPage(true)
           let bookIndex = bookshelf.read.findIndex((id) => id === bookId);
           bookshelf.read.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
         } else {
+          setIsInPage(false)
+          setAddedToPage(true)
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
@@ -51,23 +62,30 @@ function BookDetailedCard(props) {
         break;
       case "wantToRead":
         if (isInWantToRead) {
+          setIsInPage(true)
+          setAddedToPage(false)
         } else if (isInCurrently) {
           let bookIndex = bookshelf.currentlyReading.findIndex(
             (id) => id === bookId
           );
+          setIsInPage(false)
+          setAddedToPage(true)
           console.log(bookIndex);
           bookshelf.currentlyReading.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
         } else if (isInRead) {
-          console.log("GLOBALEN SI ");
+          setIsInPage(false)
+          setAddedToPage(true)
           let bookIndex = bookshelf.read.findIndex((id) => id === bookId);
           bookshelf.read.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
         } else {
+          setIsInPage(false)
+          setAddedToPage(true)
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
@@ -75,14 +93,19 @@ function BookDetailedCard(props) {
         break;
       case "read":
         if (isInRead) {
-          console.log("IMA GO VECHE");
+          setIsInPage(true)
+          setAddedToPage(false)
         } else if (isInWantToRead) {
+          setIsInPage(false)
+          setAddedToPage(true)
           let bookIndex = bookshelf.wantToRead.findIndex((id) => id === bookId);
           bookshelf.wantToRead.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
         } else if (isInCurrently) {
+          setIsInPage(false)
+          setAddedToPage(true)
           let bookIndex = bookshelf.currentlyReading.findIndex(
             (id) => id === bookId
           );
@@ -91,6 +114,8 @@ function BookDetailedCard(props) {
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
         } else {
+          setIsInPage(false)
+          setAddedToPage(true)
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
@@ -227,6 +252,9 @@ function BookDetailedCard(props) {
                     <option value="wantToRead">Want to read</option>
                   </select>
                 </div>
+                <p className="sucessShelf" style={{display:addedToPage?"block":"none"}}>Added book to shelf</p>
+                <p className="errorShelfDetail" style={{display:isInPage?"block":"none"}}>Book is in shelf</p>
+
               </div>
             </div>
             <div className="detailedCard-body-wrapper">
