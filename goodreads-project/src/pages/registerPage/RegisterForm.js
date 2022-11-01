@@ -96,7 +96,7 @@ function RegisterForm(props) {
             <span
               className="username-taken invalid-feedback test"
               style={{
-                display: isUserTaken && !usernameLoading ? "none" : "block",
+                display: isUserTaken? "none" : "block",
                 visibility: !isUserTaken? "hidden" : "visible",
               }}
             >

@@ -5,8 +5,6 @@ import "./MyBooksTable.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { getActiveUser } from "../../server/users";
 import CloseButtonComponent from "../CloseButton/CloseButton";
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
 function MyBooksTable(props) {
   const [currentBooks, setCurrentBooks] = useState(props.books);
   const [newBooks, setNewBooks] = useState([]);
