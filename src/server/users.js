@@ -5,18 +5,6 @@ export function getAllUsers() {
 export function getAllGlobalRatedBooks() {
   return JSON.parse(localStorage.getItem("globalRatedBooks")) || [];
 }
-
-// export function registerUser(username, password) {
-//     let users = getAllUsers();
-//     const isUserTaken = users.find(user => user.username === username);
-//     if (isUserTaken) {
-//         return false;
-//     }
-//     users.push({ username, password });
-//     localStorage.setItem('users', JSON.stringify(users));
-//     return true;
-// }
-
 export function registerUser(
   username,
   password,
@@ -27,11 +15,11 @@ export function registerUser(
   profession = "",
   profileImg = "http://bootdey.com/img/Content/avatar/avatar1.png",
   bookshelf = {
-    currentlyReading: ["zyTCAlFPjgYC", "3Hr5ONX-2G8C", "gHcEDAAAQBAJ"],
-    wantToRead: ["DaUqAQAAIAAJ"],
-    read: ["NtvWPAAACAAJ"],
+    currentlyReading: [""],
+    wantToRead: [""],
+    read: [""],
   },
-  ratedBooks = [{id:"TEST-id", rate:"TEST-rate",review: "TEST-review"}] /// [{id,rating,activeUserReview}] ....for global [{id,?rating?,userReviews:[{user,review},{user,review}]}]
+  ratedBooks = [{id:"TEST-id", rate:"TEST-rate",review: "TEST-review"}]
 ) {
   let users = getAllUsers();
   const isUserTaken = users.find((user) => user.username === username);
