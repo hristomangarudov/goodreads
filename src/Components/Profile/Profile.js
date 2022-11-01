@@ -19,18 +19,23 @@ function Profile() {
     setReadBooks(active.bookshelf.read)
   },[])
   useEffect(() => {
-    let requestsRead = readBooks.map((id) => {
-      return new Promise((resolve, reject) => {
-        return fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
-        .then(res =>{
-          resolve(res.json())
-        })
+    if(readBooks.length>0){
+      let requestsRead = readBooks.map((id) => {
+        return new Promise((resolve, reject) => {
+          return fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
+          .then(res =>{
+            resolve(res.json())
+          })
+        });
       });
-    });
-    Promise.all(requestsRead)
-    .then((values)=>{
-      setNewBooks(values)
-    })
+      Promise.all(requestsRead)
+      .then((values)=>{
+        setNewBooks(values)
+      })
+    }else{
+      setNewBooks([])
+    }
+    
   }, [readBooks]);
 
 const checkRatedBooks = (book)=>{

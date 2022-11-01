@@ -15,9 +15,9 @@ export function registerUser(
   profession = "",
   profileImg = "http://bootdey.com/img/Content/avatar/avatar1.png",
   bookshelf = {
-    currentlyReading: [""],
-    wantToRead: [""],
-    read: [""],
+    currentlyReading: [],
+    wantToRead: [],
+    read: [],
   },
   ratedBooks = [{id:"TEST-id", rate:"TEST-rate",review: "TEST-review"}]
 ) {

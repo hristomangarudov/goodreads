@@ -14,21 +14,26 @@ function MyBooksTable(props) {
     setCurrentBooks(props.books)
   },[props])
   useEffect(() => {
-    let requests = currentBooks.map((id) => {
-      return new Promise((resolve, reject) => {
-        return fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
-        .then(res =>{
-          resolve(res.json())
-        })
-        .catch(err =>{
-          return [];
-        })
+    if(currentBooks.length >0){
+      let requests = currentBooks.map((id) => {
+        return new Promise((resolve, reject) => {
+          return fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
+          .then(res =>{
+            resolve(res.json())
+          })
+          .catch(err =>{
+            return [];
+          })
+        });
       });
-    });
-    Promise.all(requests)
-    .then((values)=>{
-      setNewBooks(values)
-    })
+      Promise.all(requests)
+      .then((values)=>{
+        setNewBooks(values)
+      })
+    }else{
+      setNewBooks([])
+    }
+    
   }, [currentBooks]);
   const handleSelect = (e,book) => {
     let status = e.target.value;
