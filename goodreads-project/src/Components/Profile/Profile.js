@@ -14,6 +14,7 @@ function Profile() {
   let active = getActiveUser()
   const [readBooks,setReadBooks] = useState(active.bookshelf.read)
   const [newBooks, setNewBooks] = useState([]);
+  const ratedBooks=active.ratedBooks
   useEffect(()=>{
     setReadBooks(active.bookshelf.read)
   },[])
@@ -31,7 +32,29 @@ function Profile() {
       setNewBooks(values)
     })
   }, [readBooks]);
-
+const checkRatedBooks = (book)=>{
+  if(ratedBooks.length>0){
+    let isRated = ratedBooks.some(ratedBook=>ratedBook.id === book.id)
+    if(isRated){
+      return (
+        <div className="profile-review-container">
+        <p>You have already rated this book</p>
+        <button disabled onClick={()=>navigate(`/detailed-info/write-review/${book.id}`)} className="write-review">
+        Write a review
+        </button>
+        </div>
+      )
+    }
+  }
+  return(
+    <div className="profile-review-container">
+    <p>What did you think?</p>
+    <button onClick={()=>navigate(`/detailed-info/write-review/${book.id}`)} className="write-review">
+    Write a review
+    </button>
+    </div>
+  )
+}
   return (
     <div className="profile-main-wrapper">
       <div className="profile-wrapper">
@@ -87,18 +110,14 @@ function Profile() {
                   author={book.volumeInfo.authors}
                   id={book.id}
                 />
-                <div className="profile-review-container">
-                  <p>What did you think?</p>
-                <button onClick={()=>navigate(`/detailed-info/write-review/${book.id}`)} className="write-review">
-                Write a review
-              </button>
-                </div>
+                {checkRatedBooks(book)}
+
               <hr/>
               </div>
               )
               
             })
-          ):<div></div>
+          ):<div>{editProfile.profileUsername} hasn't read any books yet.{<Link to="/home">Browse books to read!</Link>}</div>
 
           }
         </div>

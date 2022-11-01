@@ -48,4 +48,11 @@ text-align: left !important;
   button,button:hover{
     margin:0;
   }
+  button:hover:disabled{
+    background-color:transparent;
+    color: gray;
+  }
+  p{
+    text-align: center;
+  }
 }
