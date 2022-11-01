@@ -1,7 +1,6 @@
 import "./App.scss";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import RegisterForm from "./pages/registerPage/RegisterForm";
-import * as Constants from "./constants.js";
 import { useState,useEffect } from "react";
 import LoginForm from "./pages/loginPage/LoginForm";
 import Navigation from "./Components/Navigation/Navigation";
@@ -19,10 +18,6 @@ import EditProfilePage from "./pages/editProfilePage/EditProfile";
 import {getActiveUser} from "./server/users"
 import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 import BookDetailedPage from "./pages/bookDetailedPage/BookDetailedPage"
-import {useSelector, useDispatch} from 'react-redux'
-import {
-  changeUsernameData
-} from "./store/editProfileSlice";
 
 
 function App() {

@@ -6,7 +6,12 @@ import {
   changeProfilePicture,
   changeUserData,
 } from "../../store/editProfileSlice";
-import { getActiveUser, getAllUsers, setNewUserData } from "../../server/users";
+import {
+  getActiveUser,
+  getAllGlobalRatedBooks,
+  getAllUsers,
+  setNewUserData,
+} from "../../server/users";
 
 function EditProfile() {
   const navigate = useNavigate();
@@ -15,7 +20,7 @@ function EditProfile() {
   };
   const editProfile = useSelector((state) => state.editProfile);
   const dispatch = useDispatch();
- 
+
   const [profileImg, setProfileImg] = useState(editProfile.profileImg);
   const [profileUsername, setProfileUsername] = useState(
     editProfile.profileUsername
@@ -62,7 +67,7 @@ function EditProfile() {
       profession,
       profileImg,
       bookshelf: active.bookshelf,
-      ratedBooks: active.ratedBooks
+      ratedBooks: active.ratedBooks,
     };
     localStorage.setItem("activeUser", JSON.stringify(newUserInfo));
 
@@ -74,6 +79,36 @@ function EditProfile() {
     users.push(newUserInfo);
 
     localStorage.setItem("users", JSON.stringify(users));
+
+    let allRatedBooks = getAllGlobalRatedBooks();
+    allRatedBooks.forEach((book) => {
+      let usersReviews = book.usersReviews;
+      usersReviews.forEach((user) => {
+        if (user.distinctName === active.username) {
+          let userIndex = usersReviews.findIndex(
+            (user) => user.distinctName === active.username
+          );
+          let newUserComment = {
+            distinctName: user.distinctName,
+            picture: user.picture,
+            rating: user.rating,
+            review: user.review,
+            username: profileUsername,
+          };
+          usersReviews.splice(userIndex, 1, newUserComment);
+
+          let neededBookIndex = allRatedBooks.indexOf(book);
+          book.usersReviews = usersReviews;
+          allRatedBooks.splice(neededBookIndex, 1, book);
+
+          localStorage.setItem(
+            "globalRatedBooks",
+            JSON.stringify(allRatedBooks)
+          );
+        }
+      });
+    });
+
 
     navigate("/profile");
   };

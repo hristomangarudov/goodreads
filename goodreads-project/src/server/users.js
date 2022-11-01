@@ -20,7 +20,7 @@ export function getAllGlobalRatedBooks() {
 export function registerUser(
   username,
   password,
-  profileUsername = `User-${Math.floor(Math.random() * 10000)}`,
+  profileUsername = "",
   age = "",
   gender = "",
   country = "",

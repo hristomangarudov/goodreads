@@ -78,7 +78,7 @@ function Profile() {
             newBooks.map((book,index)=>{
               console.log(readBooks)
               return(
-                <>
+                
                 <SmallBookCard
                   key={index}
                   picture={book.volumeInfo.imageLinks === undefined
@@ -88,7 +88,7 @@ function Profile() {
                   author={book.volumeInfo.authors}
                   id={book.id}
                 />
-              </>
+            
               )
               
             })

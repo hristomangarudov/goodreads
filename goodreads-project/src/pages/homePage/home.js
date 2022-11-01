@@ -4,8 +4,6 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { useBookSearch } from "./useBookSearch";
 import LoadingSpinner from "../../Components/Spinner/Spinner";
 import CheckboxBtn from "../../Components/CheckboxButton/CheckboxButton";
-import { useDispatch, useSelector } from "react-redux";
-import { getRadioValue } from "../../store/selectCategorySlice"
 import { useNavigate } from "react-router-dom";
 function HomePage(props) {
   const [query, setQuery] = useState("");
@@ -33,6 +31,7 @@ function HomePage(props) {
     [loading, hasMore]
   );
 
+  //HRISTO PREMESTI V SERVER TOQ DEBOUNCE
   function debounce(func, timeout) {
     let timer;
     return (...args) => {

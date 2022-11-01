@@ -67,7 +67,7 @@ function MyBooksTable(props) {
           let bookIndex = bookshelf.currentlyReading.findIndex(
             (id) => id === bookId
           );
-          console.log(bookIndex);
+         
           bookshelf.currentlyReading.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
@@ -89,7 +89,6 @@ function MyBooksTable(props) {
         break;
       case "read":
         if (isInRead) {
-          console.log("IMA GO VECHE");
         } else if (isInWantToRead) {
           let bookIndex = bookshelf.wantToRead.findIndex((id) => id === bookId);
           bookshelf.wantToRead.splice(bookIndex, 1);

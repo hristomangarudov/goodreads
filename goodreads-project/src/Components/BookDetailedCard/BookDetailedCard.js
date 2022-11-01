@@ -1,5 +1,4 @@
 import "./BookDetailedCard.scss";
-import StarRating from "../StartRating/StarRating";
 import { useNavigate } from "react-router-dom";
 import SmallComment from "../SmallComment/SmallComment";
 import { useSelector } from "react-redux";
@@ -29,6 +28,7 @@ function BookDetailedCard(props) {
     let isInRead = bookshelf.read.some((id) => id === bookId);
 
     switch (status) {
+      // DA GO OPRAVIM ZA VSICHKI USERS
       case "currentlyReading":
         if (isInCurrently) {
         } else if (isInWantToRead) {
@@ -99,6 +99,7 @@ function BookDetailedCard(props) {
     }
   };
 
+  //TOVA NE E ZA TUK
   function getRandomComments(arr, num) {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
 
@@ -118,7 +119,7 @@ function BookDetailedCard(props) {
       let currentUser = usersReviews.find(
         (user) => user.distinctName === active.username
       );
-      console.log(usersReviews);
+      
       if (currentUser) {
         return (
           <div>
@@ -284,26 +285,7 @@ function BookDetailedCard(props) {
         </div>
         <p className="community-reviews">COMMUNITY REVIEWS</p>
         <div className="write-review-container">
-          {/* <div className="write-review-wrapper">
-            <div className="user-img">
-              <img src={editProfile.profileImg} />
-            </div>
-            <div>
-              <div>
-                <span>
-                  <a className="username-review" href="">
-                    {editProfile.profileUsername}
-                  </a>
-                  , start your review of "{props.title}""
-                </span>
-              </div>
-              <div className="rating-review">
-                <button onClick={routeChange} className="write-review">
-                  Write a review
-                </button>
-              </div>
-            </div>
-          </div> */}
+  
           {showUsersComments()}
         </div>
 
