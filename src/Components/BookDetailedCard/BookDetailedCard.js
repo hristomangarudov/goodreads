@@ -31,7 +31,6 @@ function BookDetailedCard(props) {
     e.currentTarget.selectedIndex = 0;
 
     switch (status) {
-      // DA GO OPRAVIM ZA VSICHKI USERS
       case "currentlyReading":
         if (isInCurrently) {
           setIsInPage(true)
@@ -70,7 +69,6 @@ function BookDetailedCard(props) {
           );
           setIsInPage(false)
           setAddedToPage(true)
-          console.log(bookIndex);
           bookshelf.currentlyReading.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
@@ -124,7 +122,6 @@ function BookDetailedCard(props) {
     }
   };
 
-  //TOVA NE E ZA TUK
   function getRandomComments(arr, num) {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
 

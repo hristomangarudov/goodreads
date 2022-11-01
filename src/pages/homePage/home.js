@@ -31,7 +31,7 @@ function HomePage(props) {
     [loading, hasMore]
   );
 
-  //HRISTO PREMESTI V SERVER TOQ DEBOUNCE
+
   function debounce(func, timeout) {
     let timer;
     return (...args) => {

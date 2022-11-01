@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getActiveUser } from "../../server/users";
 import "./SmallBookCard.scss";
 
 function SmallBookCard(props) {

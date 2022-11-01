@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
 import BookDetailedCard from "../../Components/BookDetailedCard/BookDetailedCard";
 import LoadingSpinner from "../../Components/Spinner/Spinner";
 import { useDetailedBookSearch } from "./DetailedBookSearch";
 import { useParams } from "react-router-dom";
 
 function BookDetailedPage() {
-  const [currentBook, setCurrentBook] = useState([]);
   const params = useParams();
   const { bookInfo } = useDetailedBookSearch(params.id);
 

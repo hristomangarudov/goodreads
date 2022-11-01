@@ -1,9 +1,5 @@
 import './ConfirmLogout.scss'
 export default function ConfirmLogout() {
-    // const logOut = () => {
-    //     localStorage.removeItem("activeUser");
-    
-    //   };
   return (
     <div className="background">
       <div className="text-wrapper">

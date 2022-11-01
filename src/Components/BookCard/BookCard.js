@@ -2,7 +2,6 @@ import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import "./BookCard.scss";
 function BookCard(props) {
-  const navigate = useNavigate();
   return (
     <Card
       style={{ width: "15rem" }}
