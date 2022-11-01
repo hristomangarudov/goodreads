@@ -25,7 +25,7 @@ function WriteAReviewPage() {
             id={params.id}
           />
         </div>
-      ) : (
+      ) : ( 
         <div style={{ display: "flex", justifyContent: "center" }}>
           <LoadingSpinner />
           <div>Loading...</div>

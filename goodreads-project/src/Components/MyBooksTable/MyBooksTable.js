@@ -146,6 +146,33 @@ function MyBooksTable(props) {
     };
   }
 
+  let active = getActiveUser()
+  const ratedBooks=active.ratedBooks
+
+  const checkRatedBooks = (book)=>{
+    if(ratedBooks.length>0){
+      let isRated = ratedBooks.some(ratedBook=>ratedBook.id === book.id)
+      if(isRated){
+        return (
+          <div className="profile-review-container">
+          <p>You have already rated this book</p>
+          <button disabled onClick={()=>navigate(`/detailed-info/write-review/${book.id}`)} className="write-review">
+          Write a review
+          </button>
+          </div>
+        )
+      }
+    }
+    return(
+      <div className="profile-review-container">
+      <p>What did you think?</p>
+      <button onClick={()=>navigate(`/detailed-info/write-review/${book.id}`)} className="write-review">
+      Write a review
+      </button>
+      </div>
+    )
+  }
+
   return (
     <Table striped hover>
       <thead>
@@ -186,7 +213,8 @@ function MyBooksTable(props) {
               </td>
               <td>
                 <span>
-                  <StarRating />
+                  {/* <StarRating /> */}
+                  {checkRatedBooks(book)}
                 </span>
               </td>
               <td>

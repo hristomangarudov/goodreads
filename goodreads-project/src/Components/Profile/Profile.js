@@ -32,17 +32,20 @@ function Profile() {
       setNewBooks(values)
     })
   }, [readBooks]);
+
 const checkRatedBooks = (book)=>{
   if(ratedBooks.length>0){
     let isRated = ratedBooks.some(ratedBook=>ratedBook.id === book.id)
     if(isRated){
       return (
+        <>
         <div className="profile-review-container">
         <p>You have already rated this book</p>
         <button disabled onClick={()=>navigate(`/detailed-info/write-review/${book.id}`)} className="write-review">
         Write a review
         </button>
         </div>
+        </>
       )
     }
   }
