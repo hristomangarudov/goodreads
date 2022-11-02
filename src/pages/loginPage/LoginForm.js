@@ -66,7 +66,7 @@ function LoginForm(props) {
               onChange={(e) => setUsername(e.target.value)}
             />
             <Form.Control.Feedback type="invalid">
-              Please enter a valid email
+              Please enter a valid username
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mb-3 group-relative" controlId="formPassword">

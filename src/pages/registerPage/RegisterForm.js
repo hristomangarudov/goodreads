@@ -10,19 +10,23 @@ function RegisterForm(props) {
   const [validated, setValidated] = useState(false);
   const [error, setError] = useState(false);
   const [enoughPassLength, setPassLength] = useState(true);
+  const [isValidUsername,setIsValidUsername] = useState(false)
   const [details, setDetails] = useState({
     username: "",
     password: "",
     confirmPassword: "",
   });
-
+  let usernameCheck = /^[a-zA-Z0-9]([-_](?![-_])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     if (!form.checkValidity()) {
       setValidated(true);
-    } else if (form.checkValidity() && error) {
+      if(details.confirmPassword.length === 0){
+        setError(false);
+      }
+    } else if (form.checkValidity() && error &&isValidUsername) {
       if (registerUser(details.username, details.password)) {
         setValidated(false);
         navigate("/login");
@@ -57,16 +61,28 @@ function RegisterForm(props) {
       setPassLength(true);
     }
   }
+  function validateUsername(username){
+    if(username.length>0){
+      if(username.match(usernameCheck)){
+        setIsValidUsername(true)
+      }else{
+        setIsValidUsername(false)
+      }
+    }else{
+      setIsValidUsername(true)
+    }
+  }
   useEffect(() => {
     validatePasswords(
       details.password,
       details.confirmPassword,
-      details.username
     );
+    validateUsername(details.username)
   }, [details]);
 
   let users = getAllUsers();
   let isUserTaken = users.find((user) => user.username === details.username);
+
 
   return (
     <div className="credentials-wrapper">
@@ -101,6 +117,15 @@ function RegisterForm(props) {
               }}
             >
               Username is already taken
+            </span>
+            <span
+              className="username-taken invalid-feedback test"
+              style={{
+                display: isValidUsername? "none" : "block",
+                visibility: isValidUsername? "hidden" : "visible",
+              }}
+            >
+              Username must start with a letter,be a minimum of three letters can only contain letters of the alphabet, "-","_" or "." characters.
             </span>
           </Form.Group>
           <Form.Group
@@ -149,7 +174,7 @@ function RegisterForm(props) {
               type="invalid"
               style={{
                 display: !error && validated ? "block" : "none",
-                visibility: !error || validated ? "visible" : "hidden",
+                visibility: !error  ? "visible" : "hidden",
               }}
             >
               Passwords do not match
