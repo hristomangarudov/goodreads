@@ -13,8 +13,8 @@ function BookDetailedCard(props) {
   };
 
   const [isReadMoreShown, setReadMoreShown] = useState(false);
-  const [isInPage,setIsInPage] = useState(false)
-  const [addedToPage,setAddedToPage] = useState(false)
+  const [isInPage, setIsInPage] = useState(false);
+  const [addedToPage, setAddedToPage] = useState(false);
 
   const toggleBtn = () => {
     setReadMoreShown(!isReadMoreShown);
@@ -33,27 +33,27 @@ function BookDetailedCard(props) {
     switch (status) {
       case "currentlyReading":
         if (isInCurrently) {
-          setIsInPage(true)
-          setAddedToPage(false)
+          setIsInPage(true);
+          setAddedToPage(false);
         } else if (isInWantToRead) {
-          setIsInPage(false)
-          setAddedToPage(true)
+          setIsInPage(false);
+          setAddedToPage(true);
           let bookIndex = bookshelf.wantToRead.findIndex((id) => id === bookId);
           bookshelf.wantToRead.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
         } else if (isInRead) {
-          setIsInPage(false)
-          setAddedToPage(true)
+          setIsInPage(false);
+          setAddedToPage(true);
           let bookIndex = bookshelf.read.findIndex((id) => id === bookId);
           bookshelf.read.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
         } else {
-          setIsInPage(false)
-          setAddedToPage(true)
+          setIsInPage(false);
+          setAddedToPage(true);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
@@ -61,29 +61,29 @@ function BookDetailedCard(props) {
         break;
       case "wantToRead":
         if (isInWantToRead) {
-          setIsInPage(true)
-          setAddedToPage(false)
+          setIsInPage(true);
+          setAddedToPage(false);
         } else if (isInCurrently) {
           let bookIndex = bookshelf.currentlyReading.findIndex(
             (id) => id === bookId
           );
-          setIsInPage(false)
-          setAddedToPage(true)
+          setIsInPage(false);
+          setAddedToPage(true);
           bookshelf.currentlyReading.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
         } else if (isInRead) {
-          setIsInPage(false)
-          setAddedToPage(true)
+          setIsInPage(false);
+          setAddedToPage(true);
           let bookIndex = bookshelf.read.findIndex((id) => id === bookId);
           bookshelf.read.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
         } else {
-          setIsInPage(false)
-          setAddedToPage(true)
+          setIsInPage(false);
+          setAddedToPage(true);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
@@ -91,19 +91,19 @@ function BookDetailedCard(props) {
         break;
       case "read":
         if (isInRead) {
-          setIsInPage(true)
-          setAddedToPage(false)
+          setIsInPage(true);
+          setAddedToPage(false);
         } else if (isInWantToRead) {
-          setIsInPage(false)
-          setAddedToPage(true)
+          setIsInPage(false);
+          setAddedToPage(true);
           let bookIndex = bookshelf.wantToRead.findIndex((id) => id === bookId);
           bookshelf.wantToRead.splice(bookIndex, 1);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
         } else if (isInCurrently) {
-          setIsInPage(false)
-          setAddedToPage(true)
+          setIsInPage(false);
+          setAddedToPage(true);
           let bookIndex = bookshelf.currentlyReading.findIndex(
             (id) => id === bookId
           );
@@ -112,8 +112,8 @@ function BookDetailedCard(props) {
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
         } else {
-          setIsInPage(false)
-          setAddedToPage(true)
+          setIsInPage(false);
+          setAddedToPage(true);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
@@ -134,21 +134,20 @@ function BookDetailedCard(props) {
     let bookId = props.id;
     let allRatedBooks = getAllGlobalRatedBooks();
     let searchBook = allRatedBooks.find((bookObj) => bookObj.id === bookId);
-  
 
     if (searchBook) {
       let usersReviews = searchBook.usersReviews;
       let currentUser = usersReviews.find(
         (user) => user.distinctName === active.username
       );
-      
+
       if (currentUser) {
         return (
           <div>
             {usersReviews.map((user) => (
               <SmallComment
-              key={user.distinctName}
-              username={user.username}
+                key={user.distinctName}
+                username={user.username}
                 profilePicture={user.picture}
                 rate={user.rating}
                 review={user.review}
@@ -166,10 +165,8 @@ function BookDetailedCard(props) {
               <div>
                 <div>
                   <span>
-                    <a className="username-review" href="">
-                      {editProfile.profileUsername}
-                    </a>
-                    , start your review of "{props.title}""
+                    <p>{editProfile.profileUsername}</p>
+                    , start your review of "{props.title}"
                   </span>
                 </div>
                 <div className="rating-review">
@@ -182,11 +179,11 @@ function BookDetailedCard(props) {
             <div>
               {usersReviews.map((user) => (
                 <SmallComment
-                key={user.distinctName}
-                username={user.username}
-                profilePicture={user.picture}
-                rate={user.rating}
-                review={user.review}
+                  key={user.distinctName}
+                  username={user.username}
+                  profilePicture={user.picture}
+                  rate={user.rating}
+                  review={user.review}
                 />
               ))}
             </div>
@@ -219,6 +216,24 @@ function BookDetailedCard(props) {
     }
   };
 
+  const showSlicedText = (description) => {
+    let splitedDescription = description.split(" ");
+    if (splitedDescription.length < 100) {
+      return description;
+    }
+    let visibleText = splitedDescription.slice(0, 100);
+    let newText = visibleText.join(" ");
+    return (
+      <p className="detailedCard-plot">
+        {newText}
+
+        <button className="read-more-less" onClick={toggleBtn}>
+          {isReadMoreShown ? "read less" : "read more"}
+        </button>
+      </p>
+    );
+  };
+
   const editProfile = useSelector((state) => state.editProfile);
   return (
     <div className="center-position">
@@ -249,9 +264,18 @@ function BookDetailedCard(props) {
                     <option value="wantToRead">Want to read</option>
                   </select>
                 </div>
-                <p className="sucessShelf" style={{display:addedToPage?"block":"none"}}>Added book to shelf</p>
-                <p className="errorShelfDetail" style={{display:isInPage?"block":"none"}}>Book is in shelf</p>
-
+                <p
+                  className="sucessShelf"
+                  style={{ display: addedToPage ? "block" : "none" }}
+                >
+                  Added book to shelf
+                </p>
+                <p
+                  className="errorShelfDetail"
+                  style={{ display: isInPage ? "block" : "none" }}
+                >
+                  Book is in shelf
+                </p>
               </div>
             </div>
             <div className="detailedCard-body-wrapper">
@@ -270,22 +294,18 @@ function BookDetailedCard(props) {
                 </div>
                 {isReadMoreShown ? (
                   <>
-                    <p className="detailedCard-plot">
+                    <div className="detailedCard-plot">
                       {props.description}
                       <button className="read-more-less" onClick={toggleBtn}>
                         {isReadMoreShown ? "read less" : "read more"}
                       </button>
-                    </p>
+                    </div>
                   </>
                 ) : (
                   <>
-                    <p className="detailedCard-plot">
-                      {props.description.substr(0, 500)}
-
-                      <button className="read-more-less" onClick={toggleBtn}>
-                        {isReadMoreShown ? "read less" : "read more"}
-                      </button>
-                    </p>
+                    <div className="detailedCard-plot">
+                      {showSlicedText(props.description)}
+                    </div>
                   </>
                 )}
 
@@ -309,10 +329,7 @@ function BookDetailedCard(props) {
           </div>
         </div>
         <p className="community-reviews">COMMUNITY REVIEWS</p>
-        <div className="write-review-container">
-  
-          {showUsersComments()}
-        </div>
+        <div className="write-review-container">{showUsersComments()}</div>
 
         <div>
           {randomComments.map((obj) => (

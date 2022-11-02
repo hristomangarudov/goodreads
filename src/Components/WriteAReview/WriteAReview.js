@@ -9,6 +9,7 @@ import {
   updateUsers,
 } from "../../server/users";
 import StarRating from "../StartRating/StarRating";
+import '../WriteAReview.scss'
 
 function WriteAReview(props) {
   const [bookRating, setBookRating] = useState("");
@@ -25,9 +26,7 @@ function WriteAReview(props) {
     let ratedBooks = active.ratedBooks;
 
     let isThereCurrentBook = ratedBooks.some((book) => book.id === props.id);
-    if (isThereCurrentBook) {
-  
-    } else {
+    if (!isThereCurrentBook) {
       let newRatedBook = { id: props.id, rating: bookRating, review: review };
       ratedBooks.push(newRatedBook);
       active.ratedBooks = ratedBooks;
@@ -79,6 +78,7 @@ function WriteAReview(props) {
         );
       }
     }
+
     navigate(-1);
   };
   return (
@@ -118,12 +118,15 @@ function WriteAReview(props) {
               />
             </Form.Group>
             <Button
+            className="post-btn"
               onClick={handlePostReview}
               variant="secondary"
-              type="submit"
+              type="button"
+              disabled={!bookRating}
             >
               Post
             </Button>
+            {/* <span style={{ visibility: bookRating ? "hidden" : "visible", color: 'red'}}>You must rate this book first</span> */}
           </Form>
         </div>
       </div>

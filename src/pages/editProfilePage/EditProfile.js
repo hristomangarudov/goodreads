@@ -29,11 +29,21 @@ function EditProfile() {
   const [gender, setGender] = useState(editProfile.gender);
   const [country, setCountry] = useState(editProfile.country);
   const [profession, setProfession] = useState(editProfile.profession);
+  const [imgSize, setImgSize] = useState(true)
+  const [editBtnDisabled, setEditBtn] = useState(false)
 
   const uploadImage = async (e) => {
     const file = e.target.files[0];
-    const base64 = await convertBase64(file);
-    setProfileImg(base64);
+    const fileSize = file.size / 1024;
+    if (fileSize < 2048) {
+      const base64 = await convertBase64(file);
+      setProfileImg(base64);
+      setImgSize(true)
+    } else {
+      console.log("GOLQMA E");
+      setImgSize(false)
+      setEditBtn(true)
+    }
   };
 
   const convertBase64 = (file) => {
@@ -109,7 +119,6 @@ function EditProfile() {
       });
     });
 
-
     navigate("/profile");
   };
 
@@ -124,7 +133,7 @@ function EditProfile() {
                 <img className="profile-upload-img" src={profileImg} alt="" />
 
                 <div className="small font-italic text-muted mb-4">
-                  JPG or PNG no larger than 5 MB
+                  JPG or PNG no larger than 2 MB
                 </div>
                 <div>
                   <label className="btn btn-primary edit-btn">
@@ -132,12 +141,14 @@ function EditProfile() {
                     <input
                       className="img-upload"
                       type="file"
+                      accept="image/jpg, image/png"
                       onChange={(e) => {
                         uploadImage(e);
                       }}
                     ></input>
                   </label>
                 </div>
+                <span style={{visibility: imgSize ? "hidden" : "visible", color: 'red'}}>The file is too large</span>
               </div>
             </div>
           </div>
@@ -230,6 +241,7 @@ function EditProfile() {
                       className="btn btn-primary edit-btn"
                       type="button"
                       onClick={updtateProfileData}
+                      disabled={editBtnDisabled}
                     >
                       Save changes
                     </button>
