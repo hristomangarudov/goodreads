@@ -1,11 +1,10 @@
 import { useParams } from "react-router-dom";
-import LoadingSpinner from "../../Components/Spinner/Spinner";
-import WriteAReview from "../../Components/WriteAReview/WriteAReview";
+import LoadingSpinner from "../../components/Spinner/Spinner";
+import WriteAReview from "../../components/WriteAReview/WriteAReview";
 import { useDetailedBookSearch } from "../bookDetailedPage/DetailedBookSearch";
 function WriteAReviewPage() {
   const params = useParams();
   const { bookInfo } = useDetailedBookSearch(params.id);
-
   return params ? (
     <>
       {bookInfo.length > 0 ? (

@@ -1,5 +1,5 @@
-import MyBooksTable from "../../Components/MyBooksTable/MyBooksTable";
-import ListGroupMyBooks from "../../Components/ListGroupMyBooks"
+import MyBooksTable from "../../components/MyBooksTable/MyBooksTable";
+import ListGroupMyBooks from "../../components/ListGroupMyBooks"
 import { useEffect, useState } from "react";
 import { getActiveUser } from "../../server/users";
 import { useParams } from "react-router-dom";
@@ -8,8 +8,6 @@ function MyBooksPage() {
   const [shelfName,setShelfName] = useState('Currently Reading')
   const params = useParams()
   const [currentTab,setCurrentTab] = useState([])
-
-
 useEffect(()=>{
   switch(params.shelf){
       case "want-to-read":
@@ -27,7 +25,6 @@ useEffect(()=>{
 
   }
 },[params])
-
   return (
     <div className="cards-wrapper">
       <div className="general-list-container list-my-books">

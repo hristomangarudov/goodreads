@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState} from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -277,7 +277,6 @@ function MyBooksTable(props) {
                   </td>
                   <td>
                     <span>
-                      {/* <StarRating /> */}
                       {checkRatedBooks(book)}
                     </span>
                   </td>

@@ -7,7 +7,6 @@ export function useBookSearch(query, pageNumber) {
   const [books, setBooks] = useState([]);
   const [hasMore, setHasMore] = useState(false);
   const category = useSelector((state) => state.category.radioValue);
-
   useEffect(() => {
     setBooks([]);
   }, [query, category]);
@@ -37,7 +36,6 @@ export function useBookSearch(query, pageNumber) {
             return [];
           });
         }
-
         setHasMore(data.items.length > 0);
         setLoading(false);
       })

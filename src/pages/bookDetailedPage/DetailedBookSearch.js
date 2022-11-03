@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-
 export function useDetailedBookSearch(id) {
   const [error, setError] = useState(false);
   const [bookInfo, setBookInfo] = useState([]);
   const [bookInfoWantToRead, setBookInfoWantToRead] = useState([]);
-
   useEffect(() => {
       if(id){
         setError(false);

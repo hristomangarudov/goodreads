@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getActiveUser } from "../../server/users";
 import { useState, useEffect } from "react";
-import AlertDismissible from "../ConfirmLogout/ConfirmLogout";
-
 function Profile() {
   const editProfile = useSelector((state) => state.editProfile);
   const navigate = useNavigate();

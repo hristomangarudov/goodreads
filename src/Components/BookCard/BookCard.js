@@ -1,5 +1,4 @@
 import Card from "react-bootstrap/Card";
-import { useNavigate } from "react-router-dom";
 import "./BookCard.scss";
 function BookCard(props) {
   return (

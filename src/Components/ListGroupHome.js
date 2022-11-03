@@ -3,9 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import WantToRead from "../assets/logo/want_to_read.svg";
 import CurrentlyReading from "../assets/logo/currently_reading.svg";
 import { getActiveUser } from "../server/users";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDetailedBookSearch } from "../pages/bookDetailedPage/DetailedBookSearch";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 
 function ListGroupHome() {
   const [active, setActive] = useState(getActiveUser());
@@ -15,8 +15,6 @@ function ListGroupHome() {
   const { bookInfoWantToRead } = useDetailedBookSearch(
     active.bookshelf.wantToRead[0]
   );
-  const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   return (
@@ -31,7 +29,6 @@ function ListGroupHome() {
               onClick={() => navigate(`/detailed-info/${bookInfo[0].id}`)}
             >
               <img
-              // HRISTO OPRAVI PROVERKATA I ZA DOLNATA KNIGA
                 src={
                   bookInfo[0].volumeInfo.imageLinks === undefined
                     ? "https://books.google.bg/googlebooks/images/no_cover_thumb.gif"

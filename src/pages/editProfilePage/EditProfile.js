@@ -9,10 +9,7 @@ import {
 import {
   getActiveUser,
   getAllGlobalRatedBooks,
-  getAllUsers,
-  setNewUserData,
 } from "../../server/users";
-
 function EditProfile() {
   const navigate = useNavigate();
   const goToProfilePage = () => {
@@ -31,7 +28,6 @@ function EditProfile() {
   const [profession, setProfession] = useState(editProfile.profession);
   const [imgSize, setImgSize] = useState(true);
   const [editBtnDisabled, setEditBtn] = useState(false);
-
   const uploadImage = async (e) => {
     const file = e.target.files[0];
     const fileSize = file.size / 1024;
@@ -44,7 +40,6 @@ function EditProfile() {
       setEditBtn(true);
     }
   };
-
   const convertBase64 = (file) => {
     try {
       setEditBtn(false);
@@ -68,7 +63,6 @@ function EditProfile() {
       setEditBtn(true);
     }
   };
-
   const updtateProfileData = () => {
     dispatch(
       changeUserData({ profileUsername, age, gender, country, profession })
@@ -95,9 +89,7 @@ function EditProfile() {
     );
     users.splice(neededUserIndex, 1);
     users.push(newUserInfo);
-
     localStorage.setItem("users", JSON.stringify(users));
-
     let allRatedBooks = getAllGlobalRatedBooks();
     allRatedBooks.forEach((book) => {
       let usersReviews = book.usersReviews;
