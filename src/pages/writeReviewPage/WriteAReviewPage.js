@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import LoadingSpinner from "../../components/Spinner/Spinner";
-import WriteAReview from "../../components/WriteAReview/WriteAReview";
+import LoadingSpinner from "../../Components/Spinner/Spinner";
+import WriteAReview from "../../Components/WriteAReview/WriteAReview";
 import { useDetailedBookSearch } from "../bookDetailedPage/DetailedBookSearch";
 function WriteAReviewPage() {
   const params = useParams();

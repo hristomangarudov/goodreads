@@ -1,9 +1,9 @@
-import BookCard from "../../components/BookCard/BookCard";
-import ListGroupHome from "../../components/ListGroupsComponents/ListGroupHome";
+import BookCard from "../../Components/BookCard/BookCard";
+import ListGroupHome from "../../Components/ListGroupsComponents/ListGroupHome";
 import { useState,useCallback, useRef } from "react";
 import { useBookSearch } from "./useBookSearch";
-import LoadingSpinner from "../../components/Spinner/Spinner";
-import CheckboxBtn from "../../components/CheckboxButton/CheckboxButton";
+import LoadingSpinner from "../../Components/Spinner/Spinner";
+import CheckboxBtn from "../../Components/CheckboxButton/CheckboxButton";
 import { useNavigate } from "react-router-dom";
 function HomePage() {
   const [query, setQuery] = useState("");

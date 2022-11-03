@@ -1,5 +1,5 @@
-import BookDetailedCard from "../../components/BookDetailedCard/BookDetailedCard";
-import LoadingSpinner from "../../components/Spinner/Spinner";
+import BookDetailedCard from "../../Components/BookDetailedCard/BookDetailedCard";
+import LoadingSpinner from "../../Components/Spinner/Spinner";
 import { useDetailedBookSearch } from "./DetailedBookSearch";
 import { useParams } from "react-router-dom";
 function BookDetailedPage() {
