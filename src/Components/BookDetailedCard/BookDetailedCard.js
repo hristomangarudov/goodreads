@@ -132,7 +132,7 @@ function BookDetailedCard(props) {
   };
 
   function getRandomComments(arr, num) {
-    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+    const shuffled = arr.sort(() => 0.5 - Math.random());
 
     return shuffled.slice(0, num);
   }
@@ -233,7 +233,7 @@ function BookDetailedCard(props) {
     let visibleText = splitedDescription.slice(0, 100);
     let newText = visibleText.join(" ");
     return (
-      <p className="detailedCard-plot">
+      <p className="detailedCard-plot-show">
         {newText}
 
         <button className="read-more-less" onClick={toggleBtn}>
