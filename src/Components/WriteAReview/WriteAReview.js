@@ -9,7 +9,7 @@ import {
   updateUsers,
 } from "../../server/users";
 import StarRating from "../StartRating/StarRating";
-import '../WriteAReview.scss'
+import './WriteAReview.scss'
 
 function WriteAReview(props) {
   const [bookRating, setBookRating] = useState("");

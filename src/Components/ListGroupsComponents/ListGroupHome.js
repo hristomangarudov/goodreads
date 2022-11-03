@@ -1,12 +1,10 @@
 import ListGroup from "react-bootstrap/ListGroup";
 import { Link, useNavigate } from "react-router-dom";
-import WantToRead from "../assets/logo/want_to_read.svg";
-import CurrentlyReading from "../assets/logo/currently_reading.svg";
-import { getActiveUser } from "../server/users";
+import WantToRead from "../../assets/logo/want_to_read.svg";
+import CurrentlyReading from "../../assets/logo/currently_reading.svg";
+import { getActiveUser } from "../../server/users";
 import { useState } from "react";
-import { useDetailedBookSearch } from "../pages/bookDetailedPage/DetailedBookSearch";
-import { useDispatch} from "react-redux";
-
+import { useDetailedBookSearch } from "../../pages/bookDetailedPage/DetailedBookSearch";
 function ListGroupHome() {
   const [active, setActive] = useState(getActiveUser());
   const { bookInfo } = useDetailedBookSearch(

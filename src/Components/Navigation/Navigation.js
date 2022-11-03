@@ -1,6 +1,6 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import { Link, useNavigate } from "react-router-dom";
-import ReactLogo from "../newLogo.svg";
+import ReactLogo from "../../assets/logo/newLogo.svg";
 import "./Navigation.scss";
 import "./DropdownMenu.scss";
 

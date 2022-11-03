@@ -1,5 +1,5 @@
 import MyBooksTable from "../../components/MyBooksTable/MyBooksTable";
-import ListGroupMyBooks from "../../components/ListGroupMyBooks"
+import ListGroupMyBooks from "../../components/ListGroupsComponents/ListGroupMyBooks"
 import { useEffect, useState } from "react";
 import { getActiveUser } from "../../server/users";
 import { useParams } from "react-router-dom";
