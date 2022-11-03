@@ -4,7 +4,6 @@ const activeUser = JSON.parse(localStorage.getItem('activeUser'))
 
 const initialState = {
   profileImg:activeUser?activeUser.profileImg:"http://bootdey.com/img/Content/avatar/avatar1.png",
-  // profileImg: "http://bootdey.com/img/Content/avatar/avatar1.png",
   profileUsername: activeUser?activeUser.profileUsername:"",
   username: activeUser?activeUser.username:"",
   password: activeUser?activeUser.password:"",
@@ -23,7 +22,6 @@ export const editProfileSlice = createSlice({
     },
     changeUserData: (state, action) => {
       state.profileUsername = action.payload.profileUsername;
-      // state.username = action.payload.username;
       state.age = action.payload.age;
       state.gender = action.payload.gender;
       state.country = action.payload.country;

@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./MyBooksTable.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { getActiveUser } from "../../server/users";
+import { getActiveUser, updateUsers } from "../../server/users";
 import CloseButtonComponent from "../CloseButton/CloseButton";
 function MyBooksTable(props) {
   const [currentBooks, setCurrentBooks] = useState(props.books);
@@ -63,6 +63,7 @@ function MyBooksTable(props) {
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
           navigate(`/mybooks/${props.currentShelf}`);
         } else if (isInRead) {
           setIsInPage(false);
@@ -71,12 +72,14 @@ function MyBooksTable(props) {
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
           navigate(`/mybooks/${props.currentShelf}`);
         } else {
           setIsInPage(false);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
           navigate(`/mybooks/${props.currentShelf}`);
         }
         break;
@@ -93,6 +96,7 @@ function MyBooksTable(props) {
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
           navigate(`/mybooks/${props.currentShelf}`);
         } else if (isInRead) {
           setIsInPage(false);
@@ -101,12 +105,14 @@ function MyBooksTable(props) {
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
           navigate(`/mybooks/${props.currentShelf}`);
         } else {
           setIsInPage(false);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
           navigate(`/mybooks/${props.currentShelf}`);
         }
         break;
@@ -120,6 +126,7 @@ function MyBooksTable(props) {
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
           navigate(`/mybooks/${props.currentShelf}`);
         } else if (isInCurrently) {
           setIsInPage(false);
@@ -130,12 +137,14 @@ function MyBooksTable(props) {
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
           navigate(`/mybooks/${props.currentShelf}`);
         } else {
           setIsInPage(false);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
           navigate(`/mybooks/${props.currentShelf}`);
         }
         break;
@@ -154,6 +163,7 @@ function MyBooksTable(props) {
         bookshelf.currentlyReading.splice(bookIndexCurrent, 1);
         active.bookshelf = bookshelf;
         localStorage.setItem("activeUser", JSON.stringify(active));
+        updateUsers(active)
         navigate(`/mybooks/${props.currentShelf}`);
         break;
 
@@ -164,6 +174,7 @@ function MyBooksTable(props) {
         bookshelf.wantToRead.splice(bookIndexWant, 1);
         active.bookshelf = bookshelf;
         localStorage.setItem("activeUser", JSON.stringify(active));
+        updateUsers(active)
         navigate(`/mybooks/${props.currentShelf}`);
         break;
 
@@ -172,6 +183,7 @@ function MyBooksTable(props) {
         bookshelf.read.splice(bookIndexRead, 1);
         active.bookshelf = bookshelf;
         localStorage.setItem("activeUser", JSON.stringify(active));
+        updateUsers(active)
         navigate(`/mybooks/${props.currentShelf}`);
         break;
     }

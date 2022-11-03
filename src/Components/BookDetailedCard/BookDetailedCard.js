@@ -2,8 +2,8 @@ import "./BookDetailedCard.scss";
 import { useNavigate } from "react-router-dom";
 import SmallComment from "../SmallComment/SmallComment";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { getActiveUser, getAllGlobalRatedBooks } from "../../server/users";
+import { useState } from "react";
+import { getActiveUser, getAllGlobalRatedBooks, updateUsers } from "../../server/users";
 import jsonData from "../../Data/data.json";
 
 function BookDetailedCard(props) {
@@ -43,6 +43,7 @@ function BookDetailedCard(props) {
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
         } else if (isInRead) {
           setIsInPage(false);
           setAddedToPage(true);
@@ -51,12 +52,14 @@ function BookDetailedCard(props) {
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
         } else {
           setIsInPage(false);
           setAddedToPage(true);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
         }
         break;
       case "wantToRead":
@@ -73,6 +76,7 @@ function BookDetailedCard(props) {
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
         } else if (isInRead) {
           setIsInPage(false);
           setAddedToPage(true);
@@ -81,12 +85,14 @@ function BookDetailedCard(props) {
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
         } else {
           setIsInPage(false);
           setAddedToPage(true);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
         }
         break;
       case "read":
@@ -101,6 +107,7 @@ function BookDetailedCard(props) {
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
         } else if (isInCurrently) {
           setIsInPage(false);
           setAddedToPage(true);
@@ -111,12 +118,14 @@ function BookDetailedCard(props) {
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
         } else {
           setIsInPage(false);
           setAddedToPage(true);
           bookshelf[status].push(bookId);
           active.bookshelf = bookshelf;
           localStorage.setItem("activeUser", JSON.stringify(active));
+          updateUsers(active)
         }
         break;
     }

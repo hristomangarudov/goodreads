@@ -32,7 +32,7 @@ function WriteAReview(props) {
       active.ratedBooks = ratedBooks;
       localStorage.setItem("activeUser", JSON.stringify(active));
       updateUsers(active);
-      //
+      
       let ratedBook = globalRatedBooks.find((obj) => obj.id === props.id);
       if (ratedBook) {
         let user = ratedBook.usersReviews.find(
@@ -126,7 +126,6 @@ function WriteAReview(props) {
             >
               Post
             </Button>
-            {/* <span style={{ visibility: bookRating ? "hidden" : "visible", color: 'red'}}>You must rate this book first</span> */}
           </Form>
         </div>
       </div>

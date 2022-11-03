@@ -40,7 +40,6 @@ function EditProfile() {
       setProfileImg(base64);
       setImgSize(true)
     } else {
-      console.log("GOLQMA E");
       setImgSize(false)
       setEditBtn(true)
     }

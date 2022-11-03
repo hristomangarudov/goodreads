@@ -22,7 +22,6 @@ export const bookshelfTabSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
 export const { getBookshelf,getNewBookshelf,getUserShelf } = bookshelfTabSlice.actions
 
 export default bookshelfTabSlice.reducer

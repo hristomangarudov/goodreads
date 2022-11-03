@@ -12,7 +12,6 @@ function BookDetailedPage() {
     <>
       {bookInfo.length > 0 ? (
         <div>
-          {console.log(bookInfo[0])}
           <BookDetailedCard
             title={bookInfo[0].volumeInfo.title}
             author={

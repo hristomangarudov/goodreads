@@ -19,7 +19,8 @@ export function registerUser(
     wantToRead: [],
     read: [],
   },
-  ratedBooks = [{id:"TEST-id", rate:"TEST-rate",review: "TEST-review"}]
+  ratedBooks = []
+
 ) {
   let users = getAllUsers();
   const isUserTaken = users.find((user) => user.username === username);

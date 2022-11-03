@@ -28,5 +28,4 @@ function BookCard(props) {
     </Card>
   );
 }
-
 export default BookCard;

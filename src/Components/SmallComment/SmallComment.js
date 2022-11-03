@@ -20,9 +20,7 @@ function SmallComment(props) {
           <div className="smallComment-body">
             <div>
               <p className="smallComment-title">
-                <span className="username-review">
-                  {props.username}
-                </span>
+                <span className="username-review">{props.username}</span>
                 <span style={{ marginLeft: "5px" }}>rated it </span>
                 <span>{starsRating(props.rate)}</span>
               </p>
