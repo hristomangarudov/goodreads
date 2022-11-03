@@ -8,7 +8,7 @@ import {
   getAllGlobalRatedBooks,
   updateUsers,
 } from "../../server/users";
-import jsonData from "../../Data/data.json";
+import jsonData from "../../data/data.json";
 
 function BookDetailedCard(props) {
   let navigate = useNavigate();
