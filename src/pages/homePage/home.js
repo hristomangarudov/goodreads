@@ -5,7 +5,7 @@ import { useBookSearch } from "./useBookSearch";
 import LoadingSpinner from "../../Components/Spinner/Spinner";
 import CheckboxBtn from "../../Components/CheckboxButton/CheckboxButton";
 import { useNavigate } from "react-router-dom";
-function HomePage(props) {
+function HomePage() {
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const { books, hasMore, loading, error } = useBookSearch(query, pageNumber);

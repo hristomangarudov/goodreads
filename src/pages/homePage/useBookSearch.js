@@ -31,7 +31,7 @@ export function useBookSearch(query, pageNumber) {
             return [...new Set([...prevBooks, ...data.items])];
           });
         } else {
-          setBooks((prevBooks) => {
+          setBooks(() => {
             setLoading(false);
             setError(true);
             return [];

@@ -46,18 +46,29 @@ function EditProfile() {
   };
 
   const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
+    try {
+      setEditBtn(false)
+      if(file.type.match('image.*')){
+        return new Promise((resolve, reject) => {
+          const fileReader = new FileReader();
+          fileReader.readAsDataURL(file);
+    
+          fileReader.onload = () => {
+            resolve(fileReader.result);
+          };
+    
+          fileReader.onerror = (error) => {
+            reject(error);
+          };
+        });
+      }else{
+        throw new Error('you are uploading a wrong file type')
+      }
+    } catch (error) {
+      setEditBtn(true)
+    }
 
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
+    
   };
 
   const updtateProfileData = () => {
