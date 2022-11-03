@@ -29,8 +29,8 @@ function EditProfile() {
   const [gender, setGender] = useState(editProfile.gender);
   const [country, setCountry] = useState(editProfile.country);
   const [profession, setProfession] = useState(editProfile.profession);
-  const [imgSize, setImgSize] = useState(true)
-  const [editBtnDisabled, setEditBtn] = useState(false)
+  const [imgSize, setImgSize] = useState(true);
+  const [editBtnDisabled, setEditBtn] = useState(false);
 
   const uploadImage = async (e) => {
     const file = e.target.files[0];
@@ -38,37 +38,35 @@ function EditProfile() {
     if (fileSize < 2048) {
       const base64 = await convertBase64(file);
       setProfileImg(base64);
-      setImgSize(true)
+      setImgSize(true);
     } else {
-      setImgSize(false)
-      setEditBtn(true)
+      setImgSize(false);
+      setEditBtn(true);
     }
   };
 
   const convertBase64 = (file) => {
     try {
-      setEditBtn(false)
-      if(file.type.match('image.*')){
+      setEditBtn(false);
+      if (file.type.match("image.*")) {
         return new Promise((resolve, reject) => {
           const fileReader = new FileReader();
           fileReader.readAsDataURL(file);
-    
+
           fileReader.onload = () => {
             resolve(fileReader.result);
           };
-    
+
           fileReader.onerror = (error) => {
             reject(error);
           };
         });
-      }else{
-        throw new Error('you are uploading a wrong file type')
+      } else {
+        throw new Error("you are uploading a wrong file type");
       }
     } catch (error) {
-      setEditBtn(true)
+      setEditBtn(true);
     }
-
-    
   };
 
   const updtateProfileData = () => {
@@ -110,7 +108,7 @@ function EditProfile() {
           );
           let newUserComment = {
             distinctName: user.distinctName,
-            picture: user.picture,
+            picture: profileImg,
             rating: user.rating,
             review: user.review,
             username: profileUsername,
@@ -158,7 +156,14 @@ function EditProfile() {
                     ></input>
                   </label>
                 </div>
-                <span style={{visibility: imgSize ? "hidden" : "visible", color: 'red'}}>The file is too large</span>
+                <span
+                  style={{
+                    visibility: imgSize ? "hidden" : "visible",
+                    color: "red",
+                  }}
+                >
+                  The file is too large
+                </span>
               </div>
             </div>
           </div>
